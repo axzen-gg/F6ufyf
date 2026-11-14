@@ -1,0 +1,6590 @@
+-- This file was generated at discord.gg/syncrypt
+
+local unpack_ = unpack or table.unpack
+local t1 = {
+	value1 = game:GetService("Players"),
+	value2 = game:GetService("CoreGui")
+}
+local UserInputService = game:GetService("UserInputService")
+
+t1.value3 = game:GetService("ReplicatedStorage")
+t1.value4 = game:GetService("MarketplaceService")
+t1.value5 = game:GetService("TweenService")
+t1.value6 = game:GetService("HttpService")
+game:GetService("RunService")
+t1.value7 = game:GetService("StarterGui")
+game:GetService("ContentProvider")
+_G.AntiBanEnabled = true
+task.spawn(function()
+	local Players = game:GetService("Players")
+	local BadgeService = game:GetService("BadgeService")
+	local LocalPlayer = Players.LocalPlayer
+
+	if game.PlaceId ~= 4924922222 then
+		return
+	end
+
+	local t2 = {
+		[3104358] = {
+			Rank = 200,
+			Name = "Voldex (Brookhaven Group)"
+		},
+		[857] = {
+			Rank = 200,
+			Name = "Voldex Corporate Hub"
+		},
+		[2840742] = {
+			Rank = 200,
+			Name = "Legacy Wolfpaq Studio"
+		},
+		[1200769] = {
+			Rank = 1,
+			Name = "Official Roblox Staff Admin"
+		},
+		[2868472] = {
+			Rank = 1,
+			Name = "Official Roblox QA Team"
+		},
+		[3059674] = {
+			Rank = 1,
+			Name = "Official Roblox Intern Team"
+		}
+	}
+	local t3 = { "Official Roblox Administrator Site-Badge" }
+	local t4 = {
+		[6059369] = "Wolfpaq (Original Brookhaven Creator)",
+		[16738992] = "Aidanleewolf (Brookhaven Co-Creator)"
+	}
+	local t5 = {
+		"ban hammer",
+		"banhammer",
+		"server controller",
+		"mod menu",
+		"admin panel",
+		"ban stick"
+	}
+
+	local function v11(p1, p2, p3, p4)
+		if _G.AntiBanEnabled then
+			LocalPlayer:Kick((string.format("\n[!] FORBIDMUSIC CODENAME: SHIELD ACTIVE\n==============================================\n🚨 THREAT NEUTRALIZED BY AXZEN🔥 🚨\n==============================================\n• Detected Target : %s\n• Target UserID   : %d\n• Breach Layer    : %s\n• Core Reason     : %s\n==============================================\nACTION TAKEN: Emergency Account Disconnect Issued.\n👉 Recommendation: Avoid this server for 30+ mins.\n🗿 SYSTEM REINFORCED UPON EXECUTION.", p1, p2, p4, p3)))
+		end
+	end
+	local function v12(p5, p6)
+		local v13 = string.lower(p5.Name)
+
+		for _, v in ipairs(t5) do
+			if string.find(v13, v) then
+				local v16 = t4[p6.UserId] ~= nil
+
+				if not v16 then
+					for k, v2 in pairs(t2) do
+						local ok, result = pcall(function()
+							return p6:GetRankInGroup(k)
+						end)
+
+						if ok then
+							ok = v2.Rank <= result
+						end
+
+						if ok then
+							v16 = true
+
+							break
+						end
+					end
+				end
+
+				if not v16 then
+					v16 = p5:FindFirstChildWhichIsA("Script")
+
+					if v16 then
+						v16 = v13 == "banhammer"
+					end
+				end
+
+				if v16 then
+					v11(p6.Name, p6.UserId, "Wielding Verified High-Risk Admin Item: " .. p5.Name, "LAYER 3 (Physical Inventory)")
+				else
+					warn("🚨 AXZEN RADAR: Blocked false kick attempt! User " .. p6.Name .. " is spoofing item: " .. p5.Name)
+				end
+			end
+		end
+	end
+
+	local GetPlayers = Players.GetPlayers
+
+	local function v22(player)
+		if not _G.AntiBanEnabled or player == LocalPlayer then
+			return
+		end
+
+		if t4[player.UserId] then
+			local Name = player.Name
+			local UserId = player.UserId
+			local v25 = "Blacklisted Identity Match: " .. t4[player.UserId]
+
+			if _G.AntiBanEnabled then
+				LocalPlayer:Kick((string.format("\n[!] FORBIDMUSIC CODENAME: SHIELD ACTIVE\n==============================================\n🚨 THREAT NEUTRALIZED BY AXZEN🔥 🚨\n==============================================\n• Detected Target : %s\n• Target UserID   : %d\n• Breach Layer    : %s\n• Core Reason     : %s\n==============================================\nACTION TAKEN: Emergency Account Disconnect Issued.\n👉 Recommendation: Avoid this server for 30+ mins.\n🗿 SYSTEM REINFORCED UPON EXECUTION.", Name, UserId, "LAYER 1A (Static DB)", v25)))
+
+				return
+			else
+				return
+			end
+		end
+
+		local v26, v27, v28 = pairs(t2)
+
+		while true do
+			local v29
+
+			v28, v29 = v26(v27, v28)
+
+			if not v28 then
+				break
+			end
+
+			task.defer(function()
+				local function v30()
+					return player:GetRankInGroup(v28)
+				end
+
+				local ok, result = pcall(v30)
+
+				if ok then
+					ok = v29.Rank <= result
+				end
+
+				if not ok then
+					return
+				end
+
+				local Name = player.Name
+				local UserId = player.UserId
+				local v35 = "Rank " .. result .. " found in Restricted Group: " .. v29.Name
+
+				if not _G.AntiBanEnabled then
+					return
+				end
+
+				LocalPlayer:Kick((string.format("\n[!] FORBIDMUSIC CODENAME: SHIELD ACTIVE\n==============================================\n🚨 THREAT NEUTRALIZED BY AXZEN🔥 🚨\n==============================================\n• Detected Target : %s\n• Target UserID   : %d\n• Breach Layer    : %s\n• Core Reason     : %s\n==============================================\nACTION TAKEN: Emergency Account Disconnect Issued.\n👉 Recommendation: Avoid this server for 30+ mins.\n🗿 SYSTEM REINFORCED UPON EXECUTION.", Name, UserId, "LAYER 1B (Network Group Scan)", v35)))
+			end)
+		end
+
+		for k, v in pairs(t3) do
+			task.defer(function()
+				local function v38()
+					return BadgeService:UserHasBadgeAsync(player.UserId, k)
+				end
+
+				local ok, result = pcall(v38)
+
+				if not (ok and result) then
+					return
+				end
+
+				local Name = player.Name
+				local UserId = player.UserId
+				local v43 = "Possesses Administrative Site Credentials (" .. v .. ")"
+
+				if not _G.AntiBanEnabled then
+					return
+				end
+
+				LocalPlayer:Kick((string.format("\n[!] FORBIDMUSIC CODENAME: SHIELD ACTIVE\n==============================================\n🚨 THREAT NEUTRALIZED BY AXZEN🔥 🚨\n==============================================\n• Detected Target : %s\n• Target UserID   : %d\n• Breach Layer    : %s\n• Core Reason     : %s\n==============================================\nACTION TAKEN: Emergency Account Disconnect Issued.\n👉 Recommendation: Avoid this server for 30+ mins.\n🗿 SYSTEM REINFORCED UPON EXECUTION.", Name, UserId, "LAYER 1C (Credential Audit)", v43)))
+			end)
+		end
+
+		task.spawn(function()
+			local function v44(child)
+				local function v45()
+					if not child:IsA("ValueBase") then
+						return
+					end
+
+					local v46 = string.lower(child.Name)
+
+					if not (string.find(v46, "admin") or string.find(v46, "mod")) then
+						return
+					end
+
+					local Name = player.Name
+					local UserId = player.UserId
+					local v49 = "Stealth Metadata Tag Triggered (" .. child.Name .. ")"
+
+					if not _G.AntiBanEnabled then
+						return
+					end
+
+					LocalPlayer:Kick((string.format("\n[!] FORBIDMUSIC CODENAME: SHIELD ACTIVE\n==============================================\n🚨 THREAT NEUTRALIZED BY AXZEN🔥 🚨\n==============================================\n• Detected Target : %s\n• Target UserID   : %d\n• Breach Layer    : %s\n• Core Reason     : %s\n==============================================\nACTION TAKEN: Emergency Account Disconnect Issued.\n👉 Recommendation: Avoid this server for 30+ mins.\n🗿 SYSTEM REINFORCED UPON EXECUTION.", Name, UserId, "LAYER 2 (Hidden Directory)", v49)))
+				end
+
+				pcall(v45)
+			end
+
+			player.ChildAdded:Connect(v44)
+
+			local v50 = player
+
+			for _, child in ipairs(v50.GetChildren(v50)) do
+				v44(child)
+			end
+		end)
+
+		local function v53(character)
+			local function v54(child)
+				if not child:IsA("Tool") then
+					return
+				end
+
+				v12(child, player)
+			end
+
+			character.ChildAdded:Connect(v54)
+
+			for _, child in ipairs(character:GetChildren()) do
+				if child:IsA("Tool") then
+					v12(child, player)
+				end
+			end
+		end
+
+		if not player.Character then
+			player.CharacterAdded:Connect(v53)
+
+			return
+		end
+
+		v53(player.Character)
+		player.CharacterAdded:Connect(v53)
+	end
+
+	for _, v in ipairs(GetPlayers(Players)) do
+		v22(v)
+	end
+
+	Players.PlayerAdded:Connect(v22)
+	warn("⚡ [AXZENMUSIC]: APEX ZERO-TRUST ANTI-BAN V9 TITANIUM ACTIVE.")
+	print("      -> Thread Architecture & Framework Core: AXZEN🔥")
+	print("      -> Safe Mode: Enabled | Universal Bypass Guards: Online.")
+end)
+task.spawn(function()
+	local function v59()
+		local t6 = {
+			"SimpleSpyExecuted",
+			"rspy",
+			"RemoteSpy",
+			"TurtleSpy",
+			"HydroxideLoaded"
+		}
+
+		if not getgenv then
+			for _, v in ipairs({ "SimpleSpy", "Hydroxide", "RemoteSpy" }) do
+				if t1.value2:FindFirstChild(v) then
+					return true
+				end
+			end
+
+			return false
+		end
+
+		for _, v in ipairs(t6) do
+			if getgenv()[v] then
+				return true
+			end
+		end
+
+		for _, v in ipairs({ "SimpleSpy", "Hydroxide", "RemoteSpy" }) do
+			if t1.value2:FindFirstChild(v) then
+				return true
+			end
+		end
+
+		return false
+	end
+
+	while task.wait(2) do
+		if v59() then
+			t1.value1.LocalPlayer:Kick("AXZEN Music 🛡️: Remote Spy (RSPY) detected. Execution Blocked. 🗿🤚")
+			task.wait(0.5)
+
+			while true do
+
+			end
+
+			return
+		end
+	end
+end);
+(function()
+	local t7 = { t1.value2, t1.value1.LocalPlayer:WaitForChild("PlayerGui") }
+	local ForbidMusicGUI
+
+	if not gethui then
+		for _, v in ipairs(t7) do
+			ForbidMusicGUI = v:FindFirstChild("ForbidMusicGUI")
+
+			if ForbidMusicGUI then
+				ForbidMusicGUI:Destroy()
+			end
+		end
+
+		if not _G.ForbidAudioLoggerConnection then
+			return
+		end
+
+		_G.ForbidAudioLoggerConnection:Disconnect()
+		_G.ForbidAudioLoggerConnection = nil
+
+		return
+	end
+
+	local gethui_ = gethui
+
+	table.insert(t7, gethui_())
+
+	for _, v in ipairs(t7) do
+		ForbidMusicGUI = v:FindFirstChild("ForbidMusicGUI")
+
+		if ForbidMusicGUI then
+			ForbidMusicGUI:Destroy()
+		end
+	end
+
+	if not _G.ForbidAudioLoggerConnection then
+		return
+	end
+
+	_G.ForbidAudioLoggerConnection:Disconnect()
+	_G.ForbidAudioLoggerConnection = nil
+end)()
+t1.value8 = ""
+t1.value9 = {}
+t1.value10 = true
+t1.value11 = true
+t1.value12 = true
+t1.value13 = true
+t1.value14 = 0
+t1.value15 = 0
+t1.value16 = false
+t1.value17 = "Play"
+t1.value18 = nil
+t1.value19 = Color3.fromRGB(255, 255, 255)
+t1.value20 = {}
+t1.value21 = false
+t1.value22 = nil
+t1.value23 = nil
+t1.value24 = "SkateBoard"
+t1.value25 = true
+t1.value26 = false
+t1.value27 = {}
+t1.value28 = 1
+t1.value29 = nil
+t1.value30 = {}
+t1.value31 = "ForbidMusic_Favorites.json"
+t1.value32 = "ForbidMusic_Playlist.json"
+
+local function v74()
+	if not writefile then
+		return
+	end
+
+	local function v75()
+		writefile(t1.value31, t1.value6:JSONEncode(t1.value30))
+	end
+
+	pcall(v75)
+	pcall(function()
+		writefile(t1.value32, t1.value6:JSONEncode(t1.value27))
+	end)
+end
+
+(function()
+	if not isfile then
+		return
+	end
+
+	if isfile(t1.value31) then
+		local function v76()
+			return t1.value6:JSONDecode(unpack_({ readfile(t1.value31) }))
+		end
+
+		local ok, value30 = pcall(v76)
+
+		if ok then
+			ok = type(value30) == "table"
+		end
+
+		if ok then
+			t1.value30 = value30
+		else
+			t1.value30 = {}
+			pcall(function()
+				writefile(t1.value31, t1.value6:JSONEncode(t1.value30))
+			end)
+		end
+	end
+
+	if not isfile(t1.value32) then
+		return
+	end
+
+	local ok, value27 = pcall(function()
+		return t1.value6:JSONDecode(unpack_({ readfile(t1.value32) }))
+	end)
+
+	if ok then
+		ok = type(value27) == "table"
+	end
+
+	if ok then
+		t1.value27 = value27
+
+		return
+	end
+
+	t1.value27 = {}
+
+	local function v81()
+		writefile(t1.value32, t1.value6:JSONEncode(t1.value27))
+	end
+
+	pcall(v81)
+end)()
+t1.value33 = Instance.new("Sound")
+t1.value33.Name = "ForbidClick"
+t1.value33.SoundId = "rbxassetid://9083627113"
+t1.value33.Volume = 1
+t1.value33.Parent = t1.value2
+
+local Sound = Instance.new("Sound")
+
+Sound.Name = "ForbidIntroAudio"
+Sound.SoundId = "rbxassetid://91299590639144"
+Sound.Volume = 1
+Sound.Parent = t1.value2
+
+function t1.value34()
+	if not t1.value12 then
+		return
+	end
+
+	t1.value33:Play()
+end
+function t1.value35(p7)
+	local value20 = t1.value20
+
+	table.insert(value20, p7)
+
+	if not t1.value21 then
+		p7.TextColor3 = t1.value19
+	end
+
+	p7.AncestryChanged:Connect(function(_, parent)
+		if parent then
+			return
+		end
+
+		for i, v in ipairs(t1.value20) do
+			if v == p7 then
+				table.remove(t1.value20, i)
+
+				return
+			end
+		end
+	end)
+end
+function t1.value36(p8, p9)
+	t1.value21 = p9 or false
+	t1.value19 = p8
+
+	if p9 then
+		return
+	end
+
+	local v86, v87, v88 = pairs(t1.value20)
+
+	while true do
+		local v89
+
+		v88, v89 = v86(v87, v88)
+
+		if not v88 then
+			break
+		end
+
+		v89.TextColor3 = p8
+	end
+
+	local ForbidMusicGUI = t1.value2:FindFirstChild("ForbidMusicGUI")
+
+	if ForbidMusicGUI then
+		ForbidMusicGUI = t1.value2.ForbidMusicGUI:FindFirstChild("ToggleGUI")
+	end
+
+	if not ForbidMusicGUI then
+		ForbidMusicGUI = gethui and gethui():FindFirstChild("ForbidMusicGUI")
+
+		if ForbidMusicGUI then
+			ForbidMusicGUI = gethui().ForbidMusicGUI:FindFirstChild("ToggleGUI")
+		end
+	end
+
+	local UIStroke
+
+	if ForbidMusicGUI then
+		UIStroke = ForbidMusicGUI:FindFirstChild("UIStroke")
+	else
+		UIStroke = ForbidMusicGUI
+	end
+
+	if not UIStroke then
+		return
+	end
+
+	ForbidMusicGUI.UIStroke.Color = p8
+end
+
+task.spawn(function()
+	while true do
+		if t1.value21 then
+			local v92 = tick() % 5 / 5
+			local color3 = Color3.fromHSV(v92, 1, 1)
+
+			for _, v in pairs(t1.value20) do
+				v.TextColor3 = color3
+			end
+
+			local ForbidMusicGUI = t1.value2:FindFirstChild("ForbidMusicGUI")
+
+			if ForbidMusicGUI then
+				ForbidMusicGUI = t1.value2.ForbidMusicGUI:FindFirstChild("ToggleGUI")
+			end
+
+			if not ForbidMusicGUI then
+				ForbidMusicGUI = gethui and gethui():FindFirstChild("ForbidMusicGUI")
+
+				if ForbidMusicGUI then
+					ForbidMusicGUI = gethui().ForbidMusicGUI:FindFirstChild("ToggleGUI")
+				end
+			end
+
+			local UIStroke
+
+			if ForbidMusicGUI then
+				UIStroke = ForbidMusicGUI:FindFirstChild("UIStroke")
+			else
+				UIStroke = ForbidMusicGUI
+			end
+
+			if UIStroke then
+				ForbidMusicGUI.UIStroke.Color = color3
+			end
+		end
+
+		task.wait(0.05)
+	end
+end)
+task.spawn(function()
+	local RE = t1.value3:WaitForChild("RE", 5)
+
+	if not RE then
+		return
+	end
+
+	local v99 = RE:WaitForChild("1RPNam1eColo1r", 5)
+	local v100 = RE:WaitForChild("1RPNam1eTex1t", 5)
+
+	if not (v99 and v100) then
+		return
+	end
+
+	task.spawn(function()
+		while task.wait(0.5) do
+			local color3 = Color3.fromHSV(tick() % 5 / 5, 1, 1)
+
+			v99:FireServer("PickingRPNameColor", color3)
+			v99:FireServer("PickingRPBioColor", color3)
+		end
+	end)
+	v100:FireServer("RolePlayName", "👾AXZEN Music User ⚔️")
+	v100:FireServer("RolePlayBio", t1.value1.LocalPlayer.DisplayName)
+end)
+t1.value37 = t1.value3:FindFirstChild("RE") or t1.value3:WaitForChild("RE", 5)
+
+local value37 = t1.value37
+
+if value37 then
+	value37 = t1.value37:FindFirstChild("1NoMoto1rVehicle1s")
+end
+
+t1.value38 = value37
+
+local value372 = t1.value37
+
+if value372 then
+	value372 = t1.value37:FindFirstChild("1Clea1rTool1s")
+end
+
+t1.value39 = nil
+t1.value40 = value372
+t1.value39 = true
+
+function t1.value41(p10)
+	if not t1.value39 or (p10 == "" and true or p10 == nil) then
+		return p10
+	else
+		local v104 = tonumber(p10)
+
+		if v104 then
+			local v105 = string.format("%X", v104)
+
+			return "0x" .. string.rep("0", math.random(8, 15)) .. v105
+		else
+			return p10
+		end
+	end
+end
+function t1.value42()
+	task.spawn(function()
+		local function v106()
+			local value3 = t1.value3
+			local SetNoMotorVehicleSpeed = nil
+			local GetNoMotorVehicleSpeed = nil
+
+			if value3:FindFirstChild("Remotes") then
+				GetNoMotorVehicleSpeed = value3.Remotes:FindFirstChild("GetNoMotorVehicleSpeed")
+				SetNoMotorVehicleSpeed = value3.Remotes:FindFirstChild("SetNoMotorVehicleSpeed")
+			elseif value3:FindFirstChild("RE") then
+				GetNoMotorVehicleSpeed = value3.RE:FindFirstChild("GetNoMotorVehicleSpeed")
+				SetNoMotorVehicleSpeed = value3.RE:FindFirstChild("SetNoMotorVehicleSpeed")
+			end
+
+			if not (GetNoMotorVehicleSpeed and SetNoMotorVehicleSpeed) then
+				return
+			end
+
+			GetNoMotorVehicleSpeed:InvokeServer()
+			SetNoMotorVehicleSpeed:InvokeServer(25)
+		end
+
+		pcall(v106)
+	end)
+end
+function t1.value43(p11, p12)
+	if not (not p11 or p12 == "") then
+		local v110 = t1.value41(p12)
+
+		p11:FireServer("PickingScooterMusicText", v110, nil, true)
+		p11:FireServer("PickingScooterMusicText", v110)
+		p11:FireServer("PickingScooterMusicText", v110, nil, true)
+	end
+end
+
+_G.ForcePlayMusic = t1.value43
+t1.value44 = nil
+t1.value44 = false
+
+function t1.value45()
+	if not t1.value26 then
+		t1.value44 = false
+
+		return
+	end
+
+	if #t1.value27 ~= 0 then
+		if t1.value44 then
+			return
+		end
+
+		t1.value44 = true
+		task.spawn(function()
+			while true do
+				local value26 = t1.value26
+
+				if value26 then
+					value26 = t1.value44
+				end
+
+				if not value26 then
+					t1.value44 = false
+
+					return
+				end
+
+				local value8 = t1.value8
+				local match = tostring(value8):match("%d+")
+
+				if not match then
+					local value82 = t1.value8
+
+					match = tostring(value82)
+				end
+
+				local Sound2 = Instance.new("Sound")
+
+				Sound2.SoundId = "rbxassetid://" .. match
+				Sound2.Volume = 0
+				Sound2.Parent = game:GetService("CoreGui")
+				pcall(function()
+					local t8 = { Sound2 }
+
+					game:GetService("ContentProvider"):PreloadAsync(t8)
+				end)
+
+				local n1 = 10
+
+				while true do
+					local value262 = t1.value26
+
+					if value262 then
+						if Sound2.TimeLength == 0 then
+							value262 = n1 > 0
+						else
+							value262 = false
+						end
+					end
+
+					if not value262 then
+						break
+					end
+
+					task.wait(0.5)
+					n1 = n1 - 0.5
+
+					continue
+				end
+
+				local TimeLength = Sound2.TimeLength > 0 and (Sound2.TimeLength or 10) or 10
+
+				Sound2:Destroy()
+
+				local n2 = 0
+
+				while true do
+					local value262 = t1.value26
+
+					if value262 then
+						value262 = n2 < TimeLength
+					end
+
+					if not value262 then
+						break
+					end
+
+					task.wait(1)
+					n2 = n2 + 1
+
+					local match2 = tostring(t1.value8):match("%d+")
+
+					if not match2 then
+						local value82 = t1.value8
+
+						match2 = tostring(value82)
+					end
+
+					if match2 ~= match then
+						break
+					end
+				end
+
+				local value82 = t1.value8
+				local match2 = tostring(value82):match("%d+")
+
+				if not match2 then
+					local value83 = t1.value8
+
+					match2 = tostring(value83)
+				end
+
+				local value262 = t1.value26
+
+				if value262 then
+					value262 = match2 == match
+				end
+
+				if value262 then
+					t1.value28 = t1.value28 + 1
+
+					if t1.value28 > #t1.value27 then
+						t1.value28 = 1
+					end
+
+					local value28 = t1.value28
+					local v129 = t1.value27[value28]
+					local v130 = t1
+					local ID = v129.ID
+					local match3 = tostring(ID):match("%d+")
+
+					if not match3 then
+						local ID2 = v129.ID
+
+						match3 = tostring(ID2)
+					end
+
+					v130.value8 = match3
+
+					if t1.value29 then
+						t1.value29.Text = "Now Playing: " .. v129.Name
+					end
+
+					t1.value16 = false
+
+					if t1.value38 then
+						t1.value38:FireServer("Delete NoMotorVehicle")
+					end
+
+					task.wait(0.1)
+
+					if t1.value40 then
+						t1.value40:FireServer("ClearAllTools")
+					end
+
+					task.wait(0.15)
+					t1.value42()
+
+					if t1.value38 then
+						t1.value38:FireServer(t1.value24)
+					end
+
+					task.wait(1)
+					t1.value43(t1.value38, t1.value8)
+
+					if _G.RefreshPlaylist then
+						_G.RefreshPlaylist()
+					end
+				end
+
+				continue
+			end
+		end)
+
+		return
+	end
+
+	t1.value26 = false
+	t1.value44 = false
+
+	if not t1.value29 then
+		return
+	end
+
+	t1.value29.Text = "Status: Idle"
+end
+function _G.SyncAllPlayButtons(p13)
+	local function v134(p14)
+		if p14 then
+			for _, v in ipairs(p14) do
+				if v.PlayBtn then
+					local ID = v.ID
+					local v138 = tostring(ID)
+					local v139 = p13
+
+					if v138 == tostring(v139) then
+						local value5 = t1.value5
+
+						value5.Create(value5, v.PlayBtn, TweenInfo.new(0.2), {
+							BackgroundColor3 = Color3.fromRGB(150, 50, 50)
+						}):Play()
+						v.PlayBtn.Text = "STOP"
+					else
+						local value5 = t1.value5
+						local PlayBtn = v.PlayBtn
+						local tweenInfo = TweenInfo.new(0.2)
+						local color3 = Color3.fromRGB
+
+						value5.Create(value5, PlayBtn, tweenInfo, {
+							BackgroundColor3 = color3(0, 150, 0)
+						}):Play()
+						v.PlayBtn.Text = "PLAY"
+					end
+				end
+			end
+		end
+	end
+
+	v134(AllAudioFrames)
+	v134(AllFavFrames)
+	v134(AllLoggedFrames)
+end
+function _G.SmartPlayMusic(p15, p16)
+	if not (t1.value38 and t1.value40) then
+		return
+	end
+
+	t1.value8 = p15
+	_G.SyncAllPlayButtons(p15)
+
+	if t1.value29 and p16 then
+		t1.value29.Text = "Now Playing: " .. p16
+	end
+
+	task.spawn(function()
+		t1.value38:FireServer("Delete NoMotorVehicle")
+		task.wait(0.1)
+		t1.value40:FireServer("ClearAllTools")
+		task.wait(0.15)
+		t1.value42()
+		t1.value38:FireServer(t1.value24)
+		task.wait(1)
+		t1.value43(t1.value38, p15)
+
+		if not t1.value26 then
+			return
+		end
+
+		t1.value45()
+	end)
+end
+
+local function stopMusic()
+	t1.value26 = false
+	t1.value8 = ""
+
+	if _G.SyncAllPlayButtons then
+		_G.SyncAllPlayButtons(nil)
+	end
+
+	if t1.value29 then
+		t1.value29.Text = "Status: Idle"
+	end
+
+	if t1.value38 then
+		t1.value38:FireServer("Delete NoMotorVehicle")
+	end
+
+	task.spawn(function()
+		task.wait(0.1)
+
+		if not t1.value40 then
+			return
+		end
+
+		t1.value40:FireServer("ClearAllTools")
+	end)
+end
+
+_G.StopMusic = stopMusic
+
+function t1.value46(p17)
+	p17.MouseEnter:Connect(function()
+		t1.value5:Create(p17, TweenInfo.new(0.2), {
+			BackgroundTransparency = 0.1
+		}):Play()
+	end)
+	p17.MouseLeave:Connect(function()
+		t1.value5:Create(p17, TweenInfo.new(0.2), {
+			BackgroundTransparency = 0.2
+		}):Play()
+	end)
+	p17.MouseButton1Click:Connect(function()
+		t1.value5:Create(p17, TweenInfo.new(0.05), {
+			BackgroundTransparency = 0
+		}):Play()
+		task.wait(0.05)
+		t1.value5:Create(p17, TweenInfo.new(0.15), {
+			BackgroundTransparency = 0.2
+		}):Play()
+	end)
+end
+
+ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Name = "ForbidMusicGUI"
+
+if gethui then
+	ScreenGui.Parent = gethui()
+else
+	ScreenGui.Parent = t1.value2
+end
+
+t1.value47 = Instance.new("CanvasGroup")
+t1.value47.Name = "MainFrame"
+t1.value47.Parent = ScreenGui
+t1.value47.BackgroundColor3 = Color3.fromRGB(12, 12, 12)
+t1.value47.BackgroundTransparency = 0.1
+t1.value47.Position = UDim2.new(0.5, -175, 0.5, -125)
+t1.value47.Size = UDim2.new(0, 350, 0, 250)
+t1.value47.ClipsDescendants = true
+t1.value47.Visible = false
+t1.value47.GroupTransparency = 1
+
+local UIStroke = Instance.new("UIStroke")
+
+UIStroke.Parent = t1.value47
+UIStroke.Color = Color3.fromRGB(80, 80, 80)
+UIStroke.Thickness = 1
+UIStroke.Transparency = 0.5
+UIStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+Instance.new("UICorner", t1.value47).CornerRadius = UDim.new(0, 8)
+_G.TargetMainSizeX = 350
+_G.TargetMainSizeY = 250
+t1.value48 = nil
+t1.value48 = false
+
+function t1.value49(p18)
+	if p18 == t1.value48 then
+		return
+	end
+
+	t1.value48 = p18
+
+	if p18 then
+		t1.value47.Visible = true
+
+		if t1.value13 then
+			t1.value5:Create(t1.value47, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+				GroupTransparency = 0
+			}):Play()
+			t1.value47.Size = UDim2.new(0, _G.TargetMainSizeX - 20, 0, _G.TargetMainSizeY - 20)
+
+			local value5 = t1.value5
+			local value47 = t1.value47
+			local tweenInfoNew = TweenInfo.new
+			local Back = Enum.EasingStyle.Back
+
+			value5.Create(value5, value47, tweenInfoNew(0.3, Back, Enum.EasingDirection.Out), {
+				Size = UDim2.new(0, _G.TargetMainSizeX, 0, _G.TargetMainSizeY)
+			}):Play()
+
+			return
+		else
+			t1.value47.GroupTransparency = 0
+			t1.value47.Size = UDim2.new(0, _G.TargetMainSizeX, 0, _G.TargetMainSizeY)
+
+			return
+		end
+	end
+
+	if not t1.value13 then
+		t1.value47.GroupTransparency = 1
+		t1.value47.Visible = false
+
+		return
+	end
+
+	local value5 = t1.value5
+	local value47 = t1.value47
+	local tweenInfo = TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.In)
+	local uDim2New = UDim2.new
+	local v155 = _G.TargetMainSizeX - 20
+	local v156 = _G.TargetMainSizeY - 20
+	local v157 = value5.Create(value5, value47, tweenInfo, {
+		GroupTransparency = 1,
+		Size = uDim2New(0, v155, 0, v156)
+	})
+
+	v157:Play()
+	v157.Completed:Connect(function()
+		if t1.value48 then
+			return
+		end
+
+		t1.value47.Visible = false
+	end)
+end
+
+Instance.new("UICorner", t1.value47).CornerRadius = UDim.new(0, 8)
+
+function _G.ShowPopupMessage(p19)
+	local TextLabel = Instance.new("TextLabel")
+
+	TextLabel.Parent = t1.value47
+	TextLabel.Size = UDim2.new(0, 240, 0, 25)
+	TextLabel.Position = UDim2.new(0.5, -120, 1, 0)
+	TextLabel.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+	TextLabel.TextColor3 = Color3.new(1, 1, 1)
+	TextLabel.Font = Enum.Font.Gotham
+	TextLabel.TextSize = 11
+	TextLabel.Text = p19
+	TextLabel.ZIndex = 500
+	TextLabel.BackgroundTransparency = 1
+	TextLabel.TextTransparency = 1
+	Instance.new("UICorner", TextLabel).CornerRadius = UDim.new(0, 6)
+
+	local UIStroke2 = Instance.new("UIStroke", TextLabel)
+
+	UIStroke2.Color = Color3.fromRGB(100, 100, 100)
+	UIStroke2.Transparency = 1
+	t1.value5:Create(TextLabel, TweenInfo.new(0.3, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {
+		Position = UDim2.new(0.5, -120, 0.85, 0),
+		BackgroundTransparency = 0.1,
+		TextTransparency = 0
+	}):Play()
+	t1.value5:Create(UIStroke2, TweenInfo.new(0.3), {
+		Transparency = 0
+	}):Play()
+	task.wait(2.5)
+	t1.value5:Create(TextLabel, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {
+		Position = UDim2.new(0.5, -120, 1, 0),
+		BackgroundTransparency = 1,
+		TextTransparency = 1
+	}):Play()
+	t1.value5:Create(UIStroke2, TweenInfo.new(0.3), {
+		Transparency = 1
+	}):Play()
+	task.delay(0.4, function()
+		TextLabel:Destroy()
+	end)
+end
+
+t1.value50 = Instance.new("TextButton")
+t1.value50.Name = "ToggleGUI"
+t1.value50.Parent = ScreenGui
+t1.value50.Size = UDim2.new(0, 40, 0, 40)
+t1.value50.Position = UDim2.new(0.1, 0, 0.1, 0)
+t1.value50.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+t1.value50.Text = ""
+t1.value50.Visible = false
+Instance.new("UICorner", t1.value50).CornerRadius = UDim.new(1, 0)
+
+local UIStroke2 = Instance.new("UIStroke")
+
+UIStroke2.Parent = t1.value50
+UIStroke2.Color = t1.value19
+UIStroke2.Thickness = 2
+UIStroke2.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+
+local TextLabel = Instance.new("TextLabel")
+
+TextLabel.Parent = t1.value50
+TextLabel.Size = UDim2.new(1, 0, 1, 0)
+TextLabel.BackgroundTransparency = 1
+TextLabel.Text = "F"
+TextLabel.TextColor3 = t1.value19
+TextLabel.Font = Enum.Font.GothamBold
+TextLabel.TextSize = 20
+t1.value35(TextLabel)
+t1.value51 = nil
+t1.value52 = nil
+t1.value53 = nil
+t1.value50.InputBegan:Connect(function(input)
+	if not (input.UserInputType == Enum.UserInputType.MouseButton1 and true or input.UserInputType == Enum.UserInputType.Touch) then
+		return
+	end
+
+	t1.value51 = true
+	t1.value52 = input.Position
+	t1.value53 = t1.value50.Position
+end)
+t1.value50.InputEnded:Connect(function(input)
+	if not (input.UserInputType == Enum.UserInputType.MouseButton1 and true or input.UserInputType == Enum.UserInputType.Touch) then
+		return
+	end
+
+	t1.value51 = false
+
+	local value52 = t1.value52
+
+	if value52 then
+		value52 = (input.Position - t1.value52).Magnitude < 5
+	end
+
+	if not value52 then
+		return
+	end
+
+	t1.value34()
+	t1.value49(not t1.value48)
+end)
+UserInputService.InputChanged:Connect(function(input)
+	if not (t1.value51 and input.UserInputType == Enum.UserInputType.MouseMovement and true or input.UserInputType == Enum.UserInputType.Touch) then
+		return
+	end
+
+	local v163 = input.Position - t1.value52
+	local uDim2 = UDim2.new(t1.value53.X.Scale, t1.value53.X.Offset + v163.X, t1.value53.Y.Scale, t1.value53.Y.Offset + v163.Y)
+
+	if t1.value25 then
+		t1.value50.Position = uDim2
+
+		return
+	end
+
+	t1.value5:Create(t1.value50, TweenInfo.new(0.08, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {
+		Position = uDim2
+	}):Play()
+end)
+task.spawn(function()
+	_G.ForbidLoading = true
+
+	local TweenService = game:GetService("TweenService")
+	local Lighting = game:GetService("Lighting")
+	local CoreGui = game:GetService("CoreGui")
+	local LocalPlayer = game:GetService("Players").LocalPlayer
+	local DisplayName = LocalPlayer and LocalPlayer.DisplayName or "Guest"
+
+	if gethui then
+		CoreGui = gethui() or CoreGui
+	end
+
+	if CoreGui:FindFirstChild("ForbidGrandEntry") then
+		CoreGui.ForbidGrandEntry:Destroy()
+	end
+
+	local ScreenGui_ = Instance.new("ScreenGui")
+
+	ScreenGui_.Name = "ForbidGrandEntry"
+	ScreenGui_.Parent = CoreGui
+	ScreenGui_.IgnoreGuiInset = true
+
+	local Sound2 = Instance.new("Sound", ScreenGui_)
+
+	Sound2.SoundId = "rbxassetid://123047130884626"
+	Sound2.Volume = 0
+	Sound2.TimePosition = 3
+	Sound2:Play()
+
+	local Frame = Instance.new("Frame")
+
+	Frame.Size = UDim2.new(1, 0, 1, 0)
+	Frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	Frame.BackgroundTransparency = 1
+	Frame.BorderSizePixel = 0
+	Frame.Parent = ScreenGui_
+
+	local BlurEffect = Instance.new("BlurEffect")
+
+	BlurEffect.Size = 0
+	BlurEffect.Parent = Lighting
+
+	local Frame2 = Instance.new("Frame")
+
+	Frame2.Size = UDim2.new(0, 0, 0, 0)
+	Frame2.Position = UDim2.new(0.5, 0, 0.5, 0)
+	Frame2.AnchorPoint = Vector2.new(0.5, 0.5)
+	Frame2.BackgroundColor3 = Color3.fromRGB(10, 10, 12)
+	Frame2.BackgroundTransparency = 0.25
+	Frame2.BorderSizePixel = 0
+	Frame2.ClipsDescendants = true
+	Frame2.Parent = ScreenGui_
+
+	local UICorner = Instance.new("UICorner")
+
+	UICorner.CornerRadius = UDim.new(0, 12)
+	UICorner.Parent = Frame2
+
+	local UIStroke3 = Instance.new("UIStroke")
+
+	UIStroke3.Color = Color3.fromRGB(255, 255, 255)
+	UIStroke3.Thickness = 1.2
+	UIStroke3.Transparency = 1
+	UIStroke3.Parent = Frame2
+
+	local TextLabel2 = Instance.new("TextLabel")
+
+	TextLabel2.Size = UDim2.new(1, 0, 0, 35)
+	TextLabel2.Position = UDim2.new(0, 0, 0, 8)
+	TextLabel2.BackgroundTransparency = 1
+	TextLabel2.Font = Enum.Font.GothamBlack
+	TextLabel2.Text = ""
+	TextLabel2.TextColor3 = Color3.fromRGB(255, 255, 255)
+	TextLabel2.TextSize = 22
+	TextLabel2.TextTransparency = 0
+	TextLabel2.Parent = Frame2
+
+	local TextLabel3 = Instance.new("TextLabel")
+
+	TextLabel3.Size = UDim2.new(1, 0, 0, 20)
+	TextLabel3.Position = UDim2.new(0, 0, 0, 36)
+	TextLabel3.BackgroundTransparency = 1
+	TextLabel3.Font = Enum.Font.Gotham
+	TextLabel3.Text = ""
+	TextLabel3.TextColor3 = Color3.fromRGB(150, 150, 150)
+	TextLabel3.TextSize = 12
+	TextLabel3.TextTransparency = 0
+	TextLabel3.Parent = Frame2
+
+	local TextLabel4 = Instance.new("TextLabel")
+
+	TextLabel4.Size = UDim2.new(0.7, 0, 0, 15)
+	TextLabel4.Position = UDim2.new(0.05, 0, 0, 70)
+	TextLabel4.BackgroundTransparency = 1
+	TextLabel4.Font = Enum.Font.Code
+	TextLabel4.Text = "> Awaiting execution..."
+	TextLabel4.TextColor3 = Color3.fromRGB(100, 255, 100)
+	TextLabel4.TextSize = 10
+	TextLabel4.TextXAlignment = Enum.TextXAlignment.Left
+	TextLabel4.TextTransparency = 1
+	TextLabel4.Parent = Frame2
+
+	local TextLabel5 = Instance.new("TextLabel")
+
+	TextLabel5.Size = UDim2.new(0.7, 0, 0, 15)
+	TextLabel5.Position = UDim2.new(0.05, 0, 0, 85)
+	TextLabel5.BackgroundTransparency = 1
+	TextLabel5.Font = Enum.Font.GothamBold
+	TextLabel5.Text = "Initializing..."
+	TextLabel5.TextColor3 = Color3.fromRGB(200, 200, 200)
+	TextLabel5.TextSize = 11
+	TextLabel5.TextXAlignment = Enum.TextXAlignment.Left
+	TextLabel5.TextTransparency = 1
+	TextLabel5.Parent = Frame2
+
+	local Frame3 = Instance.new("Frame")
+
+	Frame3.Size = UDim2.new(0.7, 0, 0, 4)
+	Frame3.Position = UDim2.new(0.05, 0, 0, 105)
+	Frame3.BackgroundColor3 = Color3.fromRGB(40, 40, 45)
+	Frame3.BorderSizePixel = 0
+	Frame3.BackgroundTransparency = 1
+	Frame3.Parent = Frame2
+	Instance.new("UICorner", Frame3).CornerRadius = UDim.new(1, 0)
+
+	local Frame4 = Instance.new("Frame")
+
+	Frame4.Size = UDim2.new(0, 0, 1, 0)
+	Frame4.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Frame4.BorderSizePixel = 0
+	Frame4.BackgroundTransparency = 1
+	Frame4.Parent = Frame3
+	Instance.new("UICorner", Frame4).CornerRadius = UDim.new(1, 0)
+
+	local Frame5 = Instance.new("Frame")
+
+	Frame5.Size = UDim2.new(0, 36, 0, 36)
+	Frame5.Position = UDim2.new(0.82, 0, 0, 75)
+	Frame5.BackgroundColor3 = Color3.fromRGB(15, 15, 18)
+	Frame5.BackgroundTransparency = 1
+	Frame5.BorderSizePixel = 0
+	Frame5.Parent = Frame2
+	Instance.new("UICorner", Frame5).CornerRadius = UDim.new(1, 0)
+
+	local UIStroke4 = Instance.new("UIStroke")
+
+	UIStroke4.Color = Color3.fromRGB(255, 255, 255)
+	UIStroke4.Thickness = 1.5
+	UIStroke4.Transparency = 1
+	UIStroke4.Parent = Frame5
+
+	local TextLabel6 = Instance.new("TextLabel")
+
+	TextLabel6.Size = UDim2.new(1, 0, 1, 0)
+	TextLabel6.BackgroundTransparency = 1
+	TextLabel6.Font = Enum.Font.GothamBold
+	TextLabel6.Text = "0%"
+	TextLabel6.TextColor3 = Color3.fromRGB(255, 255, 255)
+	TextLabel6.TextSize = 12
+	TextLabel6.TextTransparency = 1
+	TextLabel6.Parent = Frame5
+
+	local tweenInfo = TweenInfo.new(1.2, Enum.EasingStyle.Quint, Enum.EasingDirection.Out)
+	local tweenInfo2 = TweenInfo.new(0.4, Enum.EasingStyle.Sine, Enum.EasingDirection.Out)
+
+	local function v188(p20, p21, p22)
+		p20.TextTransparency = 0
+		p20.Text = ""
+
+		for i = 1, #p21 do
+			p20.Text = string.sub(p21, 1, i)
+			task.wait(p22)
+		end
+	end
+
+	TweenService:Create(Sound2, tweenInfo, {
+		Volume = 1
+	}):Play()
+	TweenService:Create(BlurEffect, tweenInfo, {
+		Size = 20
+	}):Play()
+	TweenService:Create(Frame, tweenInfo, {
+		BackgroundTransparency = 0.4
+	}):Play()
+
+	local UDim2_ = UDim2
+	local v191 = TweenService.Create(TweenService, Frame2, tweenInfo, {
+		Size = UDim2_.new(0, 440, 0, 135)
+	})
+
+	v191:Play()
+	TweenService:Create(UIStroke3, tweenInfo, {
+		Transparency = 0.4
+	}):Play()
+	TweenService:Create(Frame3, tweenInfo2, {
+		BackgroundTransparency = 0
+	}):Play()
+	TweenService:Create(Frame4, tweenInfo2, {
+		BackgroundTransparency = 0
+	}):Play()
+	TweenService:Create(TextLabel5, tweenInfo2, {
+		TextTransparency = 0
+	}):Play()
+	TweenService:Create(TextLabel4, tweenInfo2, {
+		TextTransparency = 0
+	}):Play()
+	TweenService:Create(Frame5, tweenInfo2, {
+		BackgroundTransparency = 0
+	}):Play()
+	TweenService:Create(UIStroke4, tweenInfo2, {
+		Transparency = 0.6
+	}):Play()
+	TweenService:Create(TextLabel6, tweenInfo2, {
+		TextTransparency = 0
+	}):Play()
+	v191.Completed:Wait()
+
+	local tweenInfoNew = TweenInfo.new
+	local EasingStyle = Enum.EasingStyle
+	local v194 = TweenService.Create(TweenService, Frame4, tweenInfoNew(3.5, EasingStyle.Quart, Enum.EasingDirection.Out), {
+		Size = UDim2.new(1, 0, 1, 0)
+	})
+
+	v194:Play()
+
+	local t9 = {
+		"> Initializing AXZEN🔥 V1.0 ULTIMATE...",
+		"> Synchronizing Shadow-Timer Auto-Play Engine...",
+		"> Purifying Global Playlist UI Sync Handlers...",
+		"> Injecting Premium Favorites Clipboard...",
+		"> Upgrading Logger with Anti-Steal Hex Radar...",
+		"> Modularizing Omni-God Engine to External Hub...",
+		"> Calibrating Smart Prop-Limit Lag Tolerance...",
+		"> Hooking Audio Bass-Drop & RGB Telemetry...",
+		"> Executing Zero-Lag Asynchronous Math Loops...",
+		"> System Override Successful."
+	}
+
+	task.spawn(function()
+		local v196 = 3.5 / 100
+		local n3 = 1
+
+		for i = 1, 100 do
+			TextLabel6.Text = tostring(i) .. "%"
+
+			local v199
+
+			if i % 12 == 0 then
+				v199 = n3 <= #t9
+			else
+				v199 = false
+			end
+
+			if v199 then
+				TextLabel4.Text = t9[n3]
+				n3 = n3 + 1
+			end
+
+			if i == 15 then
+				TextLabel5.Text = "Fetching Libraries..."
+			elseif i == 45 then
+				TextLabel5.Text = "Securing Network..."
+			elseif i == 75 then
+				TextLabel5.Text = "Finalizing UI Engine..."
+			elseif i == 100 then
+				TextLabel5.Text = "Execution Ready."
+				TextLabel4.Text = "> FORBID MUSIC ON TOP"
+			end
+
+			task.wait(v196)
+		end
+	end)
+	task.spawn(function()
+		task.wait(0.1)
+		v188(TextLabel2, "🎀AXZEN MUSIC 1.0🎉", 0.04)
+		task.wait(0.2)
+		v188(TextLabel3, "Welcome, " .. DisplayName, 0.03)
+	end)
+	v194.Completed:Wait()
+
+	local tweenInfo3 = TweenInfo.new(0.3, Enum.EasingStyle.Sine, Enum.EasingDirection.Out)
+	local color3 = Color3.fromRGB
+
+	TweenService.Create(TweenService, UIStroke4, tweenInfo3, {
+		Thickness = 3,
+		Color = color3(100, 255, 100)
+	}):Play()
+	task.wait(1.5)
+	TweenService:Create(Sound2, tweenInfo, {
+		Volume = 0
+	}):Play()
+
+	local GetDescendants = Frame2.GetDescendants
+
+	for _, v in pairs(GetDescendants(Frame2)) do
+		if v:IsA("TextLabel") or v:IsA("UIStroke") then
+			TweenService:Create(v, tweenInfo2, {
+				Transparency = 1
+			}):Play()
+
+			if v:IsA("TextLabel") then
+				TweenService.Create(TweenService, v, tweenInfo2, {
+					TextTransparency = 1
+				}):Play()
+			end
+		else
+			local isFrame = v:IsA("Frame")
+
+			if isFrame then
+				isFrame = v ~= Frame2
+			end
+
+			if isFrame then
+				TweenService.Create(TweenService, v, tweenInfo2, {
+					BackgroundTransparency = 1
+				}):Play()
+			end
+		end
+	end
+
+	TweenService:Create(BlurEffect, tweenInfo, {
+		Size = 0
+	}):Play()
+	TweenService:Create(Frame, tweenInfo, {
+		BackgroundTransparency = 1
+	}):Play()
+	TweenService:Create(UIStroke3, tweenInfo, {
+		Transparency = 1
+	}):Play()
+
+	local uDim2New = UDim2.new
+	local v207 = TweenService.Create(TweenService, Frame2, tweenInfo, {
+		Size = uDim2New(0, 0, 0, 0)
+	})
+
+	v207:Play()
+	v207.Completed:Wait()
+	BlurEffect:Destroy()
+	ScreenGui_:Destroy()
+	_G.ForbidLoading = false
+
+	if t1.value50 then
+		t1.value50.Visible = true
+	end
+
+	if t1.value49 then
+		t1.value49(true)
+	end
+
+	task.spawn(function()
+		task.wait(0.6)
+
+		local Frame6 = Instance.new("Frame")
+
+		Frame6.Parent = t1.value47
+		Frame6.Size = UDim2.new(0, 0, 0, 0)
+		Frame6.AnchorPoint = Vector2.new(0.5, 0.5)
+		Frame6.Position = UDim2.new(0.5, 0, 0.5, 0)
+		Frame6.BackgroundColor3 = Color3.fromRGB(15, 15, 18)
+		Frame6.ZIndex = 1000
+		Frame6.ClipsDescendants = true
+		Instance.new("UICorner", Frame6).CornerRadius = UDim.new(0, 8)
+		Instance.new("UIStroke", Frame6).Color = Color3.fromRGB(50, 255, 100)
+
+		local TextLabel7 = Instance.new("TextLabel", Frame6)
+
+		TextLabel7.Size = UDim2.new(1, 0, 0, 25)
+		TextLabel7.Position = UDim2.new(0, 0, 0, 5)
+		TextLabel7.BackgroundTransparency = 1
+		TextLabel7.Text = "🔥 V1.7 ULTIMATE UPDATE 💥"
+		TextLabel7.TextColor3 = Color3.fromRGB(255, 255, 255)
+		TextLabel7.Font = Enum.Font.GothamBold
+		TextLabel7.TextSize = 10
+		TextLabel7.ZIndex = 1001
+
+		local TextLabel8 = Instance.new("TextLabel", Frame6)
+
+		TextLabel8.Size = UDim2.new(0.9, 0, 0, 95)
+		TextLabel8.Position = UDim2.new(0.05, 0, 0, 35)
+		TextLabel8.BackgroundTransparency = 1
+		TextLabel8.Text = "Welcome to FORB1D Music V1.7 ULTIMATE!\n\n ⚠️ Audio Status might bug if you got poor connection and its recommended to backup all your codes in favorites!\n🚨 ANTI BAN IS VERY OP\n🎧 Added way more bypassed audios in TopHits.\n🔥 Join discord for more!.\n\n"
+		TextLabel8.TextColor3 = Color3.fromRGB(200, 200, 200)
+		TextLabel8.Font = Enum.Font.Gotham
+		TextLabel8.TextSize = 9
+		TextLabel8.TextWrapped = true
+		TextLabel8.TextYAlignment = Enum.TextYAlignment.Top
+		TextLabel8.ZIndex = 1001
+
+		local TextButton = Instance.new("TextButton", Frame6)
+
+		TextButton.Size = UDim2.new(0.6, 0, 0, 25)
+		TextButton.Position = UDim2.new(0.2, 0, 1, -32)
+		TextButton.BackgroundColor3 = Color3.fromRGB(50, 255, 100)
+		TextButton.Text = "Open🔥"
+		TextButton.TextColor3 = Color3.fromRGB(10, 10, 10)
+		TextButton.Font = Enum.Font.GothamBlack
+		TextButton.TextSize = 10
+		TextButton.ZIndex = 1001
+		Instance.new("UICorner", TextButton).CornerRadius = UDim.new(0, 6)
+
+		local v212 = TweenService
+		local tweenInfo4 = TweenInfo.new(0.4, Enum.EasingStyle.Back, Enum.EasingDirection.Out)
+		local uDim2New2 = UDim2.new
+
+		v212.Create(v212, Frame6, tweenInfo4, {
+			Size = uDim2New2(0, 200, 0, 170)
+		}):Play()
+		TextButton.MouseButton1Click:Connect(function()
+			if not t1.value12 then
+				v237 = TweenService:Create(Frame6, TweenInfo.new(0.3, Enum.EasingStyle.Back, Enum.EasingDirection.In), {
+					Size = UDim2.new(0, 0, 0, 0)
+				})
+				v237:Play()
+				v237.Completed:Wait()
+				Frame6:Destroy()
+
+				return
+			end
+
+			t1.value33:Play()
+
+			local tween = TweenService:Create(Frame6, TweenInfo.new(0.3, Enum.EasingStyle.Back, Enum.EasingDirection.In), {
+				Size = UDim2.new(0, 0, 0, 0)
+			})
+
+			tween:Play()
+			tween.Completed:Wait()
+			Frame6:Destroy()
+		end)
+	end)
+end)
+t1.value54 = Instance.new("Frame")
+t1.value54.Name = "Particles"
+t1.value54.Parent = t1.value47
+t1.value54.Size = UDim2.new(1, 0, 1, 0)
+t1.value54.BackgroundTransparency = 1
+t1.value54.ZIndex = 1
+task.spawn(function()
+	while task.wait(0.2) do
+		if t1.value47.Visible then
+			local Frame = Instance.new("Frame")
+
+			Frame.Parent = t1.value54
+			Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+			Frame.BorderSizePixel = 0
+			Frame.Size = UDim2.new(0, math.random(2, 4), 0, math.random(2, 4))
+			Frame.BackgroundTransparency = math.random(6, 9) / 10
+			Frame.Position = UDim2.new(math.random(), 0, 1.1, 0)
+			Instance.new("UICorner", Frame).CornerRadius = UDim.new(1, 0)
+			t1.value5:Create(Frame, TweenInfo.new(math.random(3, 7), Enum.EasingStyle.Linear), {
+				Position = UDim2.new(math.random(), 0, -0.2, 0),
+				BackgroundTransparency = 1
+			}):Play()
+			game.Debris:AddItem(Frame, 8)
+		end
+	end
+end)
+
+local Frame = Instance.new("Frame")
+
+Frame.Parent = t1.value47
+Frame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+Frame.BackgroundTransparency = 0.1
+Frame.Size = UDim2.new(1, 0, 0, 35)
+Frame.ZIndex = 2
+Instance.new("UICorner", Frame).CornerRadius = UDim.new(0, 8)
+
+local TextLabel2 = Instance.new("TextLabel")
+
+TextLabel2.Name = "Title"
+TextLabel2.Parent = Frame
+TextLabel2.Text = "FORBID MUSIC"
+TextLabel2.TextColor3 = t1.value19
+TextLabel2.BackgroundTransparency = 1
+TextLabel2.Size = UDim2.new(0, 150, 0, 30)
+TextLabel2.Position = UDim2.new(0, 15, 0, -4)
+TextLabel2.Font = Enum.Font.GothamBold
+TextLabel2.TextSize = 13
+TextLabel2.TextXAlignment = Enum.TextXAlignment.Left
+TextLabel2.ZIndex = 2
+
+if t1.value35 then
+	t1.value35(TextLabel2)
+end
+
+local TextLabel3 = Instance.new("TextLabel")
+
+TextLabel3.Name = "SubTitle"
+TextLabel3.Parent = Frame
+TextLabel3.Text = "v1.7 by FORB1D🔥"
+TextLabel3.TextColor3 = t1.value19
+TextLabel3.BackgroundTransparency = 1
+TextLabel3.Size = UDim2.new(0, 150, 0, 15)
+TextLabel3.Position = UDim2.new(0, 15, 0, 15)
+TextLabel3.Font = Enum.Font.Gotham
+TextLabel3.TextSize = 10
+TextLabel3.TextTransparency = 0.5
+TextLabel3.TextXAlignment = Enum.TextXAlignment.Left
+TextLabel3.ZIndex = 2
+
+if t1.value35 then
+	t1.value35(TextLabel3)
+end
+
+t1.value55 = Instance.new("TextButton")
+t1.value55.Name = "DiscordBtn"
+t1.value55.Parent = Frame
+t1.value55.BackgroundTransparency = 1
+t1.value55.Size = UDim2.new(0, 100, 0, 15)
+t1.value55.Position = UDim2.new(0.5, -50, 0, 14)
+t1.value55.Font = Enum.Font.GothamBold
+t1.value55.TextSize = 10
+t1.value55.Text = "Loading..."
+t1.value55.TextColor3 = Color3.fromRGB(80, 150, 255)
+t1.value55.ZIndex = 2
+t1.value56 = "Youtube: @forbidofficial"
+task.spawn(function()
+	local ok, result = pcall(function()
+		return game:HttpGet("https://gist.githubusercontent.com/forbidtherobloxscripter/fc8e23cab59c819531f5147eaa9c0d58/raw/gistfile1.txt")
+	end)
+
+	if ok then
+		if result then
+			ok = #result < 50
+		else
+			ok = result
+		end
+	end
+
+	if not ok then
+		t1.value55.Text = t1.value56
+
+		return
+	end
+
+	t1.value56 = string.gsub(result, "^%s*(.-)%s*$", "%1")
+	t1.value55.Text = t1.value56
+end)
+t1.value57 = game:GetService("TweenService")
+t1.value55.MouseEnter:Connect(function()
+	local value57 = t1.value57
+	local value55 = t1.value55
+	local tweenInfo = TweenInfo.new(0.15)
+
+	value57.Create(value57, value55, tweenInfo, {
+		TextColor3 = Color3.fromRGB(130, 200, 255)
+	}):Play()
+end)
+t1.value55.MouseLeave:Connect(function()
+	local value57 = t1.value57
+	local value55 = t1.value55
+	local tweenInfo = TweenInfo.new(0.15)
+	local Color3_ = Color3
+
+	value57.Create(value57, value55, tweenInfo, {
+		TextColor3 = Color3_.fromRGB(80, 150, 255)
+	}):Play()
+end)
+t1.value55.MouseButton1Click:Connect(function()
+	if t1.value34 then
+		pcall(t1.value34)
+	end
+
+	local function v229()
+		if setclipboard then
+			setclipboard(t1.value56)
+
+			return
+		end
+
+		if not toclipboard then
+			return
+		end
+
+		toclipboard(t1.value56)
+	end
+
+	pcall(v229)
+	t1.value55.Text = "Copied!"
+	t1.value57:Create(t1.value55, TweenInfo.new(0.05), {
+		TextColor3 = Color3.fromRGB(50, 255, 100)
+	}):Play()
+	task.wait(1.5)
+	t1.value55.Text = t1.value56
+	t1.value57:Create(t1.value55, TweenInfo.new(0.3), {
+		TextColor3 = Color3.fromRGB(80, 150, 255)
+	}):Play()
+end)
+t1.value58 = Instance.new("ImageLabel")
+t1.value58.Parent = Frame
+t1.value58.Size = UDim2.new(0, 25, 0, 25)
+t1.value58.Position = UDim2.new(1, -60, 0, 5)
+t1.value58.BackgroundTransparency = 1
+t1.value58.BorderSizePixel = 0
+t1.value58.ZIndex = 2
+Instance.new("UICorner", t1.value58).CornerRadius = UDim.new(1, 0)
+Instance.new("UIStroke", t1.value58).Color = Color3.fromRGB(255, 255, 255)
+task.spawn(function()
+	local ok, image = pcall(function()
+		return t1.value1:GetUserThumbnailAsync(t1.value1.LocalPlayer.UserId, Enum.ThumbnailType.HeadShot, Enum.ThumbnailSize.Size420x420)
+	end)
+
+	if not (ok and image) then
+		return
+	end
+
+	t1.value58.Image = image
+end)
+
+local TextButton = Instance.new("TextButton")
+
+TextButton.Parent = Frame
+TextButton.Size = UDim2.new(0, 25, 0, 25)
+TextButton.Position = UDim2.new(1, -30, 0, 5)
+TextButton.BackgroundColor3 = Color3.fromRGB(200, 50, 50)
+TextButton.Text = "X"
+TextButton.TextColor3 = Color3.new(1, 1, 1)
+TextButton.Font = Enum.Font.GothamBold
+TextButton.ZIndex = 2
+Instance.new("UICorner", TextButton).CornerRadius = UDim.new(0, 6)
+TextButton.MouseButton1Click:Connect(function()
+	t1.value34()
+	t1.value49(false)
+end)
+t1.value59 = nil
+t1.value60 = nil
+t1.value61 = nil
+t1.value62 = nil
+Frame.InputBegan:Connect(function(input)
+	if not (input.UserInputType == Enum.UserInputType.MouseButton1 and true or input.UserInputType == Enum.UserInputType.Touch) then
+		return
+	end
+
+	t1.value59 = true
+	t1.value61 = input.Position
+	t1.value62 = t1.value47.Position
+	input.Changed:Connect(function()
+		if input.UserInputState ~= Enum.UserInputState.End then
+			return
+		end
+
+		t1.value59 = false
+	end)
+end)
+Frame.InputChanged:Connect(function(input)
+	if not (input.UserInputType == Enum.UserInputType.MouseMovement and true or input.UserInputType == Enum.UserInputType.Touch) then
+		return
+	end
+
+	t1.value60 = input
+end)
+UserInputService.InputChanged:Connect(function(input)
+	local value59
+
+	if input == t1.value60 then
+		value59 = t1.value59
+	else
+		value59 = false
+	end
+
+	if not value59 then
+		return
+	end
+
+	local v234 = input.Position - t1.value61
+
+	t1.value47.Position = UDim2.new(t1.value62.X.Scale, t1.value62.X.Offset + v234.X, t1.value62.Y.Scale, t1.value62.Y.Offset + v234.Y)
+end)
+t1.value63 = Instance.new("Frame")
+t1.value63.Parent = t1.value47
+t1.value63.BackgroundColor3 = Color3.fromRGB(18, 18, 18)
+t1.value63.BackgroundTransparency = 0.2
+t1.value63.Size = UDim2.new(0, 85, 1, -35)
+t1.value63.Position = UDim2.new(0, 0, 0, 35)
+t1.value63.ZIndex = 2
+Instance.new("UICorner", t1.value63).CornerRadius = UDim.new(0, 8)
+
+local Frame2 = Instance.new("Frame")
+
+Frame2.Parent = t1.value47
+Frame2.BackgroundTransparency = 1
+Frame2.Size = UDim2.new(1, -95, 1, -45)
+Frame2.Position = UDim2.new(0, 90, 0, 40)
+Frame2.ClipsDescendants = true
+
+local function v236(p23, p24)
+	p23.CanvasSize = UDim2.new(0, 0, 0, p24.AbsoluteContentSize.Y + 40)
+	p24:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(function()
+		p23.CanvasSize = UDim2.new(0, 0, 0, p24.AbsoluteContentSize.Y + 40)
+	end)
+end
+
+t1.value64 = nil
+Frame2.ZIndex = 2
+
+local function createTextButton(p25, p26, p27, p28)
+	local TextButton2 = Instance.new("TextButton")
+
+	TextButton2.Parent = p25
+	TextButton2.Size = UDim2.new(1, -5, 0, 26)
+	TextButton2.BackgroundColor3 = p27 or Color3.fromRGB(35, 35, 35)
+	TextButton2.BackgroundTransparency = 0.2
+	TextButton2.Text = p26
+	TextButton2.TextColor3 = t1.value19
+	TextButton2.Font = Enum.Font.Gotham
+	TextButton2.TextSize = 10
+	TextButton2.ZIndex = 3
+	Instance.new("UICorner", TextButton2).CornerRadius = UDim.new(0, 6)
+	t1.value35(TextButton2)
+	TextButton2.MouseButton1Click:Connect(function()
+		t1.value34()
+		p28()
+	end)
+	t1.value46(TextButton2)
+
+	return TextButton2
+end
+local function createTextBox(p29, p30)
+	local TextBox = Instance.new("TextBox")
+
+	TextBox.Parent = p29
+	TextBox.Size = UDim2.new(0.9, 0, 0, 22)
+	TextBox.Position = UDim2.new(0.05, 0, 0, 0)
+	TextBox.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+	TextBox.BackgroundTransparency = 0.5
+	TextBox.Text = ""
+	TextBox.PlaceholderText = p30
+	TextBox.TextColor3 = t1.value19
+	TextBox.PlaceholderColor3 = Color3.fromRGB(180, 180, 180)
+	TextBox.Font = Enum.Font.Gotham
+	TextBox.TextSize = 10
+	TextBox.ZIndex = 3
+	TextBox.ClipsDescendants = true
+	TextBox.TextTruncate = Enum.TextTruncate.AtEnd
+	t1.value35(TextBox)
+	Instance.new("UICorner", TextBox).CornerRadius = UDim.new(0, 6)
+
+	local UIStroke3 = Instance.new("UIStroke")
+
+	UIStroke3.Parent = TextBox
+	UIStroke3.Thickness = 1
+	UIStroke3.Color = Color3.fromRGB(255, 255, 255)
+	UIStroke3.Transparency = 0.6
+	UIStroke3.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+
+	local function v242()
+		local value5 = t1.value5
+		local v244 = UIStroke3
+		local tweenInfo = TweenInfo.new(0.2)
+
+		value5.Create(value5, v244, tweenInfo, {
+			Transparency = 0,
+			Color = Color3.fromRGB(0, 200, 255)
+		}):Play()
+	end
+
+	TextBox.Focused:Connect(v242)
+	TextBox.FocusLost:Connect(function()
+		local value5 = t1.value5
+		local v247 = UIStroke3
+		local tweenInfo = TweenInfo.new(0.2)
+
+		value5.Create(value5, v247, tweenInfo, {
+			Transparency = 0.6,
+			Color = Color3.fromRGB(255, 255, 255)
+		}):Play()
+	end)
+
+	return TextBox
+end
+
+t1.value64 = {}
+
+function t1.value65(p31, p32)
+	if not (p32 and p32.Parent) then
+		return
+	end
+
+	if t1.value64[p31] == "GOOD" then
+		p32.BackgroundColor3 = Color3.fromRGB(50, 255, 50)
+
+		return
+	end
+
+	if t1.value64[p31] == "BAD" then
+		p32.BackgroundColor3 = Color3.fromRGB(255, 50, 50)
+
+		return
+	end
+
+	p32.BackgroundColor3 = Color3.fromRGB(255, 150, 0)
+
+	if not p31 or tonumber(p31) == nil then
+		p32.BackgroundColor3 = Color3.fromRGB(255, 50, 50)
+		t1.value64[p31] = "BAD"
+
+		return
+	end
+
+	task.spawn(function()
+		task.wait(math.random(0, 100) / 100)
+
+		local Sound2 = Instance.new("Sound")
+
+		Sound2.SoundId = "rbxassetid://" .. p31
+		Sound2.Volume = 0
+		Sound2.Parent = game:GetService("CoreGui")
+		pcall(function()
+			local t10 = { Sound2 }
+
+			game:GetService("ContentProvider"):PreloadAsync(t10)
+		end)
+
+		local n4 = 5
+
+		while true do
+			local v252 = not Sound2.IsLoaded
+
+			if v252 then
+				if Sound2.TimeLength == 0 then
+					v252 = n4 > 0
+				else
+					v252 = false
+				end
+			end
+
+			if not v252 then
+				break
+			end
+
+			task.wait(0.5)
+			n4 = n4 - 0.5
+		end
+
+		local IsLoaded = Sound2.IsLoaded
+
+		if IsLoaded then
+			IsLoaded = Sound2.TimeLength == 0
+		end
+
+		if IsLoaded then
+			task.wait(1)
+		end
+
+		local v254 = Sound2.TimeLength > 0.05
+
+		if v254 then
+			t1.value64[p31] = "GOOD"
+		elseif n4 > 0 then
+			t1.value64[p31] = "BAD"
+		end
+
+		local Parent = p32
+
+		if Parent then
+			Parent = p32.Parent
+		end
+
+		if not Parent then
+			Sound2:Destroy()
+
+			return
+		end
+
+		if v254 then
+			p32.BackgroundColor3 = Color3.fromRGB(50, 255, 50)
+		else
+			p32.BackgroundColor3 = Color3.fromRGB(255, 50, 50)
+		end
+
+		Sound2:Destroy()
+	end)
+end
+
+t1.value66 = {}
+t1.value67 = nil
+
+function t1.value68(p33, p34, p35)
+	local Frame3 = Instance.new("Frame")
+
+	Frame3.Parent = p33
+	Frame3.Size = UDim2.new(1, -5, 0, 35)
+	Frame3.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+	Frame3.BackgroundTransparency = 0.3
+	Instance.new("UICorner", Frame3).CornerRadius = UDim.new(0, 6)
+
+	local TextLabel4 = Instance.new("TextLabel")
+
+	TextLabel4.Parent = Frame3
+	TextLabel4.Size = UDim2.new(0.4, 0, 1, 0)
+	TextLabel4.Position = UDim2.new(0, 20, 0, 0)
+	TextLabel4.BackgroundTransparency = 1
+	TextLabel4.Text = p34
+	TextLabel4.TextColor3 = t1.value19
+	TextLabel4.Font = Enum.Font.Gotham
+	TextLabel4.TextSize = 10
+	TextLabel4.TextXAlignment = Enum.TextXAlignment.Left
+	TextLabel4.TextTruncate = Enum.TextTruncate.AtEnd
+	t1.value35(TextLabel4)
+
+	if p34 == "AutoFetch" then
+		TextLabel4.Text = "Fetching Name..."
+		task.spawn(function()
+			local function v258()
+				local value4 = t1.value4
+				local t11 = {}
+				local v261 = p35
+
+				__set_list(t11, 1, {(tonumber(v261))})
+
+				return value4:GetProductInfo(unpack_(t11))
+			end
+
+			local ok, result = pcall(v258)
+
+			if not ok then
+				if ok then
+					TextLabel4.Text = result.Name
+
+					for _, v in ipairs(t1.value66) do
+						if v.Frame == Frame3 then
+							v.Name = string.lower(result.Name)
+						end
+					end
+				else
+					TextLabel4.Text = "Unknown Audio [" .. p35 .. "]"
+				end
+
+				return
+			end
+
+			if result then
+				ok = result.Name
+			else
+				ok = result
+			end
+
+			if ok then
+				TextLabel4.Text = result.Name
+
+				for _, v in ipairs(t1.value66) do
+					if v.Frame == Frame3 then
+						v.Name = string.lower(result.Name)
+					end
+				end
+			else
+				TextLabel4.Text = "Unknown Audio [" .. p35 .. "]"
+			end
+		end)
+	end
+
+	local Frame4 = Instance.new("Frame")
+
+	Frame4.Parent = Frame3
+	Frame4.Size = UDim2.new(0, 8, 0, 8)
+	Frame4.Position = UDim2.new(0, 6, 0.5, -4)
+	Frame4.BackgroundColor3 = Color3.fromRGB(100, 100, 100)
+	Instance.new("UICorner", Frame4).CornerRadius = UDim.new(1, 0)
+	t1.value65(p35, Frame4)
+
+	local TextButton2 = Instance.new("TextButton")
+
+	TextButton2.Parent = Frame3
+	TextButton2.Size = UDim2.new(0, 25, 0, 25)
+	TextButton2.Position = UDim2.new(1, -90, 0, 5)
+	TextButton2.BackgroundTransparency = 1
+	TextButton2.Font = Enum.Font.GothamBold
+	TextButton2.TextSize = 20
+
+	local match = tostring(p35):match("%d+") or tostring(p35)
+	local v271, v272, v273 = ipairs(t1.value30)
+	local v274 = false
+
+	while true do
+		local v275
+
+		v273, v275 = v271(v272, v273)
+
+		if not v273 then
+			break
+		end
+
+		local ID = v275.ID
+
+		if tostring(ID):match("%d+") == match then
+			v274 = true
+
+			break
+		end
+	end
+
+	if v274 then
+		TextButton2.Text = "♥"
+		TextButton2.TextColor3 = Color3.fromRGB(255, 50, 80)
+	else
+		TextButton2.Text = "♡"
+		TextButton2.TextColor3 = Color3.fromRGB(200, 200, 200)
+	end
+
+	TextButton2.MouseButton1Click:Connect(function()
+		t1.value34()
+		TextButton2.TextSize = 15
+		t1.value5:Create(TextButton2, TweenInfo.new(0.15, Enum.EasingStyle.Bounce), {
+			TextSize = 20
+		}):Play()
+
+		local v277, v278, v279 = ipairs(t1.value30)
+		local v280 = false
+		local v281 = nil
+
+		while true do
+			local v282
+
+			v279, v282 = v277(v278, v279)
+
+			if not v279 then
+				v279 = v281
+
+				break
+			end
+
+			local ID = v282.ID
+
+			if tostring(ID):match("%d+") == match then
+				v280 = true
+
+				break
+			end
+		end
+
+		if v280 then
+			v280 = v279 ~= nil
+		end
+
+		if v280 then
+			table.remove(t1.value30, v279)
+			TextButton2.Text = "♡"
+
+			local value5 = t1.value5
+			local v285 = TextButton2
+			local tweenInfo = TweenInfo.new(0.15)
+			local color3 = Color3.fromRGB
+
+			value5.Create(value5, v285, tweenInfo, {
+				TextColor3 = color3(200, 200, 200)
+			}):Play()
+			task.spawn(function()
+				_G.ShowPopupMessage("Removed from Favorites")
+			end)
+
+			if _G.RemoveFavoriteUI then
+				_G.RemoveFavoriteUI(p35)
+			end
+		else
+			local Text = TextLabel4.Text
+			local t12 = {
+				Name = Text == "Fetching Name..." and "Unknown Audio" or Text,
+				ID = match
+			}
+			local value30 = t1.value30
+
+			table.insert(value30, t12)
+			TextButton2.Text = "♥"
+
+			local value5 = t1.value5
+			local v292 = TextButton2
+			local tweenInfo = TweenInfo.new(0.15)
+
+			value5.Create(value5, v292, tweenInfo, {
+				TextColor3 = Color3.fromRGB(255, 50, 80)
+			}):Play()
+			task.spawn(function()
+				_G.ShowPopupMessage("Added to Favorites 🎀")
+			end)
+
+			if _G.CreateSingleFavoriteUI then
+				_G.CreateSingleFavoriteUI(t12)
+			end
+		end
+
+		v74()
+
+		if not _G.UpdateFavStats then
+			return
+		end
+
+		_G.UpdateFavStats()
+	end)
+
+	local TextButton3 = Instance.new("TextButton")
+
+	TextButton3.Parent = Frame3
+	TextButton3.Size = UDim2.new(0, 25, 0, 25)
+	TextButton3.Position = UDim2.new(1, -60, 0, 5)
+	TextButton3.BackgroundColor3 = Color3.fromRGB(0, 150, 0)
+	TextButton3.BackgroundTransparency = 0.2
+	TextButton3.Text = "▶"
+	TextButton3.TextColor3 = Color3.new(1, 1, 1)
+	Instance.new("UICorner", TextButton3).CornerRadius = UDim.new(0, 4)
+	t1.value46(TextButton3)
+	TextButton3.MouseButton1Click:Connect(function()
+		t1.value34()
+
+		if t1.value23 == TextButton3 then
+			TextButton3.BackgroundColor3 = Color3.fromRGB(0, 150, 0)
+			TextButton3.BackgroundTransparency = 0.2
+			_G.StopMusic()
+			t1.value23 = nil
+
+			return
+		end
+
+		if not t1.value23 then
+			TextButton3.BackgroundColor3 = Color3.fromRGB(200, 50, 50)
+			TextButton3.BackgroundTransparency = 0.2
+			t1.value23 = TextButton3
+			_G.SmartPlayMusic(p35, TextLabel4.Text)
+
+			return
+		end
+
+		t1.value23.BackgroundColor3 = Color3.fromRGB(0, 150, 0)
+		t1.value23.BackgroundTransparency = 0.2
+		TextButton3.BackgroundColor3 = Color3.fromRGB(200, 50, 50)
+		TextButton3.BackgroundTransparency = 0.2
+		t1.value23 = TextButton3
+		_G.SmartPlayMusic(p35, TextLabel4.Text)
+	end)
+
+	local TextButton4 = Instance.new("TextButton")
+
+	TextButton4.Parent = Frame3
+	TextButton4.Size = UDim2.new(0, 25, 0, 25)
+	TextButton4.Position = UDim2.new(1, -30, 0, 5)
+	TextButton4.BackgroundColor3 = Color3.fromRGB(100, 100, 100)
+	TextButton4.BackgroundTransparency = 0.2
+	TextButton4.Text = "C"
+	TextButton4.TextColor3 = Color3.new(1, 1, 1)
+	Instance.new("UICorner", TextButton4).CornerRadius = UDim.new(0, 4)
+	t1.value46(TextButton4)
+	TextButton4.MouseButton1Click:Connect(function()
+		t1.value34()
+		t1.value22.Text = p35
+		t1.value8 = p35
+		setclipboard(p35)
+		TextButton4.Text = "✔"
+		task.wait(1)
+		TextButton4.Text = "C"
+	end)
+	table.insert(t1.value66, {
+		Frame = Frame3,
+		OriginalParent = p33,
+		Name = string.lower(p34)
+	})
+
+	return Frame3
+end
+
+local Frame3 = Instance.new("Frame")
+
+Frame3.Parent = Frame2
+Frame3.Size = UDim2.new(1, 0, 1, 0)
+Frame3.BackgroundTransparency = 1
+Frame3.Visible = true
+
+local Frame4 = Instance.new("Frame")
+
+Frame4.Parent = Frame2
+Frame4.Size = UDim2.new(1, 0, 1, 0)
+Frame4.BackgroundTransparency = 1
+Frame4.Visible = false
+
+local Frame5 = Instance.new("Frame")
+
+Frame5.Parent = Frame2
+Frame5.Size = UDim2.new(1, 0, 1, 0)
+Frame5.BackgroundTransparency = 1
+Frame5.Visible = false
+t1.value69 = Instance.new("Frame")
+t1.value69.Parent = Frame2
+t1.value69.Size = UDim2.new(1, 0, 1, 0)
+t1.value69.BackgroundTransparency = 1
+t1.value69.Visible = false
+
+local Frame6 = Instance.new("Frame")
+
+Frame6.Parent = Frame2
+Frame6.Size = UDim2.new(1, 0, 1, 0)
+Frame6.BackgroundTransparency = 1
+Frame6.Visible = false
+
+local Frame7 = Instance.new("Frame")
+
+Frame7.Parent = Frame2
+Frame7.Size = UDim2.new(1, 0, 1, 0)
+Frame7.BackgroundTransparency = 1
+Frame7.Visible = false
+
+local ScrollingFrame = Instance.new("ScrollingFrame")
+
+ScrollingFrame.Parent = Frame2
+ScrollingFrame.Size = UDim2.new(1, 0, 1, 0)
+ScrollingFrame.BackgroundTransparency = 1
+ScrollingFrame.Visible = false
+ScrollingFrame.ScrollBarThickness = 2
+ScrollingFrame.BorderSizePixel = 0
+t1.value70 = Instance.new("ScrollingFrame")
+t1.value70.Parent = Frame2
+t1.value70.Size = UDim2.new(1, 0, 1, 0)
+t1.value70.BackgroundTransparency = 1
+t1.value70.Visible = false
+t1.value70.ScrollBarThickness = 2
+t1.value70.BorderSizePixel = 0
+
+local value71 = {
+	Frame3,
+	Frame4,
+	Frame5,
+	t1.value69,
+	Frame6,
+	Frame7,
+	ScrollingFrame,
+	t1.value70
+}
+
+t1.value71 = nil
+t1.value71 = value71
+
+function t1.value72(p36, p37)
+	if t1.value17 == p37 then
+		return
+	end
+
+	local v303, v304, v305 = pairs(t1.value71)
+
+	while true do
+		local v306
+
+		v305, v306 = v303(v304, v305)
+
+		if not v305 then
+			break
+		end
+
+		if v306.Visible then
+			v306.Visible = false
+		end
+	end
+
+	p36.Visible = true
+
+	if t1.value13 then
+		p36.Position = UDim2.new(0, 0, 0, 20)
+
+		local value5 = t1.value5
+		local tweenInfoNew = TweenInfo.new
+
+		value5.Create(value5, p36, tweenInfoNew(0.3, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {
+			Position = UDim2.new(0, 0, 0, 0)
+		}):Play()
+	else
+		p36.Position = UDim2.new(0, 0, 0, 0)
+	end
+
+	t1.value17 = p37
+
+	local value18
+
+	if p37 == "Logger" then
+		value18 = t1.value18
+	else
+		value18 = false
+	end
+
+	if not value18 then
+		return
+	end
+
+	t1.value15 = 0
+	t1.value18.Visible = false
+end
+
+local function v310(p38, p39)
+	local TextButton2 = Instance.new("TextButton")
+
+	TextButton2.Parent = t1.value63
+	TextButton2.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+	TextButton2.BackgroundTransparency = 0.5
+	TextButton2.TextColor3 = t1.value19
+	TextButton2.Text = p38
+	TextButton2.Font = Enum.Font.GothamBold
+	TextButton2.TextSize = 9
+	TextButton2.Size = UDim2.new(0, 75, 0, 20)
+	TextButton2.ZIndex = 3
+	Instance.new("UICorner", TextButton2).CornerRadius = UDim.new(0, 4)
+	t1.value35(TextButton2)
+	TextButton2.MouseButton1Click:Connect(function()
+		t1.value34()
+		t1.value72(p39, p38)
+	end)
+	t1.value46(TextButton2)
+
+	if p38 ~= "Logger" then
+		return
+	end
+
+	t1.value18 = Instance.new("TextLabel")
+	t1.value18.Parent = TextButton2
+	t1.value18.BackgroundColor3 = Color3.fromRGB(255, 50, 50)
+	t1.value18.Size = UDim2.new(0, 14, 0, 14)
+	t1.value18.Position = UDim2.new(1, -8, 0, -5)
+	t1.value18.Text = "0"
+	t1.value18.TextColor3 = Color3.new(1, 1, 1)
+	t1.value18.Font = Enum.Font.GothamBold
+	t1.value18.TextSize = 8
+	t1.value18.Visible = false
+	t1.value18.ZIndex = 4
+	Instance.new("UICorner", t1.value18).CornerRadius = UDim.new(1, 0)
+end
+
+local UIListLayout = Instance.new("UIListLayout")
+
+UIListLayout.Parent = t1.value63
+UIListLayout.Padding = UDim.new(0, 3)
+UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+Instance.new("UIPadding", t1.value63).PaddingTop = UDim.new(0, 5)
+v310("Play", Frame3)
+v310("IDs", Frame4)
+v310("Favorites", Frame5)
+v310("Playlist", t1.value69)
+v310("Visualizer [OP]", Frame6)
+v310("Logger", Frame7)
+v310("Settings", ScrollingFrame)
+v310("Credits", t1.value70)
+AntiStealFrame = Instance.new("Frame")
+AntiStealFrame.Parent = Frame3
+AntiStealFrame.Size = UDim2.new(0.95, 0, 0, 32)
+AntiStealFrame.Position = UDim2.new(0.025, 0, 0, 5)
+AntiStealFrame.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+AntiStealFrame.BackgroundTransparency = 0.3
+Instance.new("UICorner", AntiStealFrame).CornerRadius = UDim.new(0, 6)
+Instance.new("UIStroke", AntiStealFrame).Color = Color3.fromRGB(60, 60, 60)
+ASTitle = Instance.new("TextLabel")
+ASTitle.Parent = AntiStealFrame
+ASTitle.Size = UDim2.new(0.7, 0, 0.5, 0)
+ASTitle.Position = UDim2.new(0, 10, 0, 2)
+ASTitle.BackgroundTransparency = 1
+ASTitle.Text = "Anti-Steal"
+ASTitle.TextColor3 = t1.value19
+ASTitle.Font = Enum.Font.GothamBold
+ASTitle.TextSize = 11
+ASTitle.TextXAlignment = Enum.TextXAlignment.Left
+t1.value35(ASTitle)
+ASSub = Instance.new("TextLabel")
+ASSub.Parent = AntiStealFrame
+ASSub.Size = UDim2.new(0.7, 0, 0.4, 0)
+ASSub.Position = UDim2.new(0, 10, 0.5, 0)
+ASSub.BackgroundTransparency = 1
+ASSub.Text = "Prevents your audio from being stolen"
+ASSub.TextColor3 = Color3.fromRGB(150, 150, 150)
+ASSub.Font = Enum.Font.Gotham
+ASSub.TextSize = 8
+ASSub.TextXAlignment = Enum.TextXAlignment.Left
+TogglePill = Instance.new("TextButton")
+TogglePill.Parent = AntiStealFrame
+TogglePill.Size = UDim2.new(0, 36, 0, 18)
+TogglePill.Position = UDim2.new(1, -45, 0.5, -9)
+TogglePill.BackgroundColor3 = Color3.fromRGB(0, 200, 100)
+TogglePill.Text = ""
+TogglePill.AutoButtonColor = false
+Instance.new("UICorner", TogglePill).CornerRadius = UDim.new(1, 0)
+ToggleCircle = Instance.new("Frame")
+ToggleCircle.Parent = TogglePill
+ToggleCircle.Size = UDim2.new(0, 14, 0, 14)
+ToggleCircle.Position = UDim2.new(1, -16, 0.5, -7)
+ToggleCircle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Instance.new("UICorner", ToggleCircle).CornerRadius = UDim.new(1, 0)
+TogglePill.MouseButton1Click:Connect(function()
+	t1.value34()
+	t1.value39 = not t1.value39
+
+	if t1.value39 then
+		local value5 = t1.value5
+		local TogglePill_ = TogglePill
+		local tweenInfo = TweenInfo.new(0.3, Enum.EasingStyle.Quart, Enum.EasingDirection.Out)
+		local Color3_ = Color3
+
+		value5.Create(value5, TogglePill_, tweenInfo, {
+			BackgroundColor3 = Color3_.fromRGB(0, 200, 100)
+		}):Play()
+		t1.value5:Create(ToggleCircle, TweenInfo.new(0.3, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {
+			Position = UDim2.new(1, -16, 0.5, -7)
+		}):Play()
+	else
+		t1.value5:Create(TogglePill, TweenInfo.new(0.3, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {
+			BackgroundColor3 = Color3.fromRGB(80, 80, 80)
+		}):Play()
+		t1.value5:Create(ToggleCircle, TweenInfo.new(0.3, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {
+			Position = UDim2.new(0, 2, 0.5, -7)
+		}):Play()
+	end
+end)
+PlayArea = Instance.new("Frame")
+PlayArea.Parent = Frame3
+PlayArea.Size = UDim2.new(1, 0, 1, -45)
+PlayArea.Position = UDim2.new(0, 0, 0, 45)
+PlayArea.BackgroundTransparency = 1
+PlayLayout = Instance.new("UIListLayout")
+PlayLayout.Parent = PlayArea
+PlayLayout.Padding = UDim.new(0, 5)
+PlayLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+t1.value22 = createTextBox(PlayArea, "Enter Audio ID...")
+t1.value22.FocusLost:Connect(function()
+	t1.value8 = t1.value22.Text
+end)
+t1.value22:GetPropertyChangedSignal("Text"):Connect(function()
+	t1.value8 = t1.value22.Text
+end)
+Spacer1 = Instance.new("Frame")
+Spacer1.Parent = PlayArea
+Spacer1.Size = UDim2.new(1, 0, 0, 2)
+Spacer1.BackgroundTransparency = 1
+SkateFrame = Instance.new("Frame")
+SkateFrame.Parent = PlayArea
+SkateFrame.Size = UDim2.new(0.9, 0, 0, 26)
+SkateFrame.BackgroundTransparency = 1
+SkateBtn1 = Instance.new("TextButton")
+SkateBtn1.Parent = SkateFrame
+SkateBtn1.Size = UDim2.new(0.48, 0, 1, 0)
+SkateBtn1.Position = UDim2.new(0, 0, 0, 0)
+SkateBtn1.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+SkateBtn1.BackgroundTransparency = 0.2
+SkateBtn1.Text = "Play Skateboard"
+SkateBtn1.TextColor3 = t1.value19
+SkateBtn1.Font = Enum.Font.Gotham
+SkateBtn1.TextSize = 9
+Instance.new("UICorner", SkateBtn1).CornerRadius = UDim.new(0, 6)
+t1.value35(SkateBtn1)
+t1.value46(SkateBtn1)
+SkateBtn2 = Instance.new("TextButton")
+SkateBtn2.Parent = SkateFrame
+SkateBtn2.Size = UDim2.new(0.48, 0, 1, 0)
+SkateBtn2.Position = UDim2.new(0.52, 0, 0, 0)
+SkateBtn2.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+SkateBtn2.BackgroundTransparency = 0.2
+SkateBtn2.Text = "RGB Skateboard"
+SkateBtn2.TextColor3 = t1.value19
+SkateBtn2.Font = Enum.Font.Gotham
+SkateBtn2.TextSize = 9
+Instance.new("UICorner", SkateBtn2).CornerRadius = UDim.new(0, 6)
+t1.value35(SkateBtn2)
+t1.value46(SkateBtn2)
+SkateBtn1.MouseButton1Click:Connect(function()
+	t1.value34()
+
+	local value373 = t1.value37
+
+	if value373 then
+		value373 = t1.value37:FindFirstChild("1Player1sCa1r")
+	end
+
+	if value373 then
+		value373:FireServer("NoMotorColor", unpack_({ Color3.fromRGB(255, 255, 255) }))
+	end
+
+	local function v318()
+		t1.value1.LocalPlayer.PlayerGui.MainGUIHandler.NoMotorVehicleControl.NoMotorColorPicks.SetColor:FireServer(unpack_({ Color3.fromRGB(255, 255, 255) }))
+	end
+
+	pcall(v318)
+	t1.value42()
+
+	if not t1.value38 then
+		return
+	end
+
+	t1.value38:FireServer("SkateBoard")
+	task.wait(1)
+	t1.value43(t1.value38, t1.value8)
+end)
+SkateBtn2.MouseButton1Click:Connect(function()
+	t1.value34()
+	t1.value42()
+
+	if not t1.value38 then
+		return
+	end
+
+	t1.value38:FireServer("SkateBoard")
+	task.wait(1)
+
+	if not t1.value16 then
+		t1.value16 = true
+		task.spawn(function()
+			local value373 = t1.value37
+
+			if value373 then
+				value373 = t1.value37:FindFirstChild("1Player1sCa1r")
+			end
+
+			while true do
+				local value16 = t1.value16
+
+				if value16 then
+					value16 = task.wait(0.1)
+				end
+
+				if not value16 then
+					return
+				end
+
+				local color3 = Color3.fromHSV(tick() % 5 / 5, 1, 1)
+
+				if value373 then
+					value373:FireServer("NoMotorColor", color3)
+				end
+
+				pcall(function()
+					t1.value1.LocalPlayer.PlayerGui.MainGUIHandler.NoMotorVehicleControl.NoMotorColorPicks.SetColor:FireServer(color3)
+				end)
+			end
+		end)
+	end
+
+	t1.value43(t1.value38, t1.value8)
+end)
+HoverFrame = Instance.new("Frame")
+HoverFrame.Parent = PlayArea
+HoverFrame.Size = UDim2.new(0.9, 0, 0, 26)
+HoverFrame.BackgroundTransparency = 1
+HoverBtn1 = Instance.new("TextButton")
+HoverBtn1.Parent = HoverFrame
+HoverBtn1.Size = UDim2.new(0.48, 0, 1, 0)
+HoverBtn1.Position = UDim2.new(0, 0, 0, 0)
+HoverBtn1.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+HoverBtn1.BackgroundTransparency = 0.2
+HoverBtn1.Text = "Play Hoverboard"
+HoverBtn1.TextColor3 = t1.value19
+HoverBtn1.Font = Enum.Font.Gotham
+HoverBtn1.TextSize = 9
+Instance.new("UICorner", HoverBtn1).CornerRadius = UDim.new(0, 6)
+t1.value35(HoverBtn1)
+t1.value46(HoverBtn1)
+HoverBtn2 = Instance.new("TextButton")
+HoverBtn2.Parent = HoverFrame
+HoverBtn2.Size = UDim2.new(0.48, 0, 1, 0)
+HoverBtn2.Position = UDim2.new(0.52, 0, 0, 0)
+HoverBtn2.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+HoverBtn2.BackgroundTransparency = 0.2
+HoverBtn2.Text = "RGB Hoverboard"
+HoverBtn2.TextColor3 = t1.value19
+HoverBtn2.Font = Enum.Font.Gotham
+HoverBtn2.TextSize = 9
+Instance.new("UICorner", HoverBtn2).CornerRadius = UDim.new(0, 6)
+t1.value35(HoverBtn2)
+t1.value46(HoverBtn2)
+HoverBtn1.MouseButton1Click:Connect(function()
+	t1.value34()
+
+	local value373 = t1.value37
+
+	if value373 then
+		value373 = t1.value37:FindFirstChild("1Player1sCa1r")
+	end
+
+	if value373 then
+		value373:FireServer("NoMotorColor", unpack_({ Color3.fromRGB(255, 255, 255) }))
+	end
+
+	local function v323()
+		t1.value1.LocalPlayer.PlayerGui.MainGUIHandler.NoMotorVehicleControl.NoMotorColorPicks.SetColor:FireServer(Color3.fromRGB(255, 255, 255))
+	end
+
+	pcall(v323)
+	t1.value42()
+
+	if not t1.value38 then
+		return
+	end
+
+	t1.value38:FireServer("SegwaySmall")
+	task.wait(1)
+	t1.value43(t1.value38, t1.value8)
+end)
+HoverBtn2.MouseButton1Click:Connect(function()
+	t1.value34()
+	t1.value42()
+
+	if not t1.value38 then
+		return
+	end
+
+	t1.value38:FireServer("SegwaySmall")
+	task.wait(1)
+
+	if not t1.value16 then
+		t1.value16 = true
+		task.spawn(function()
+			local value373 = t1.value37
+
+			if value373 then
+				value373 = t1.value37:FindFirstChild("1Player1sCa1r")
+			end
+
+			while true do
+				local value16 = t1.value16
+
+				if value16 then
+					value16 = task.wait(0.1)
+				end
+
+				if not value16 then
+					return
+				end
+
+				local color3 = Color3.fromHSV(tick() % 5 / 5, 1, 1)
+
+				if value373 then
+					value373:FireServer("NoMotorColor", color3)
+				end
+
+				pcall(function()
+					t1.value1.LocalPlayer.PlayerGui.MainGUIHandler.NoMotorVehicleControl.NoMotorColorPicks.SetColor:FireServer(color3)
+				end)
+			end
+		end)
+	end
+
+	t1.value43(t1.value38, t1.value8)
+end)
+createTextButton(PlayArea, "Stop & Unequip", Color3.fromRGB(150, 50, 50), function()
+	stopMusic()
+end)
+
+local Frame8 = Instance.new("Frame")
+
+Frame8.Parent = Frame4
+Frame8.Size = UDim2.new(1, 0, 0, 22)
+Frame8.BackgroundTransparency = 1
+
+local UIListLayout2 = Instance.new("UIListLayout")
+
+UIListLayout2.Parent = Frame8
+UIListLayout2.FillDirection = Enum.FillDirection.Horizontal
+UIListLayout2.Padding = UDim.new(0, 8)
+UIListLayout2.HorizontalAlignment = Enum.HorizontalAlignment.Center
+t1.value73 = Instance.new("TextButton")
+t1.value73.Parent = Frame8
+t1.value73.Size = UDim2.new(0, 110, 1, 0)
+t1.value73.BackgroundColor3 = Color3.fromRGB(0, 150, 0)
+t1.value73.Text = "Play: Skateboard"
+t1.value73.TextColor3 = Color3.new(1, 1, 1)
+t1.value73.Font = Enum.Font.GothamBold
+t1.value73.TextSize = 9
+Instance.new("UICorner", t1.value73).CornerRadius = UDim.new(0, 4)
+t1.value74 = Instance.new("TextButton")
+t1.value74.Parent = Frame8
+t1.value74.Size = UDim2.new(0, 110, 1, 0)
+t1.value74.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+t1.value74.Text = "Play: Hoverboard"
+t1.value74.TextColor3 = Color3.new(1, 1, 1)
+t1.value74.Font = Enum.Font.GothamBold
+t1.value74.TextSize = 9
+Instance.new("UICorner", t1.value74).CornerRadius = UDim.new(0, 4)
+t1.value73.MouseButton1Click:Connect(function()
+	t1.value34()
+
+	local value5 = t1.value5
+	local value73 = t1.value73
+	local tweenInfo = TweenInfo.new(0.2)
+
+	value5.Create(value5, value73, tweenInfo, {
+		BackgroundColor3 = Color3.fromRGB(0, 150, 0)
+	}):Play()
+
+	local value52 = t1.value5
+	local value74 = t1.value74
+	local tweenInfo2 = TweenInfo.new(0.2)
+	local Color3_ = Color3
+
+	value52.Create(value52, value74, tweenInfo2, {
+		BackgroundColor3 = Color3_.fromRGB(40, 40, 40)
+	}):Play()
+end)
+t1.value74.MouseButton1Click:Connect(function()
+	t1.value34()
+
+	local value5 = t1.value5
+	local value74 = t1.value74
+	local tweenInfo = TweenInfo.new(0.2)
+	local Color3_ = Color3
+
+	value5.Create(value5, value74, tweenInfo, {
+		BackgroundColor3 = Color3_.fromRGB(0, 150, 0)
+	}):Play()
+
+	local value52 = t1.value5
+	local value73 = t1.value73
+	local tweenInfo2 = TweenInfo.new(0.2)
+	local Color3_2 = Color3
+	local v344 = value52.Create(value52, value73, tweenInfo2, {
+		BackgroundColor3 = Color3_2.fromRGB(40, 40, 40)
+	})
+
+	local function v345()
+		t1.value7:SetCore("SendNotification", {
+			Title = "Hoverboard Selected",
+			Text = "Note: Hoverboard requires premium gamepass.",
+			Duration = 4
+		})
+	end
+
+	v344.Play(v344)
+	pcall(v345)
+end)
+t1.value75 = createTextBox(Frame4, "Search entire library...")
+t1.value75.Size = UDim2.new(0.9, 0, 0, 20)
+t1.value75.Position = UDim2.new(0.05, 0, 0, 25)
+
+local Frame9 = Instance.new("Frame")
+
+Frame9.Parent = Frame4
+Frame9.Size = UDim2.new(1, 0, 0, 20)
+Frame9.Position = UDim2.new(0, 0, 0, 48)
+Frame9.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+Instance.new("UICorner", Frame9).CornerRadius = UDim.new(0, 4)
+t1.value76 = Instance.new("TextButton")
+t1.value76.Parent = Frame9
+t1.value76.Size = UDim2.new(0, 30, 1, 0)
+t1.value76.BackgroundTransparency = 1
+t1.value76.Text = "<"
+t1.value76.TextColor3 = t1.value19
+t1.value76.Font = Enum.Font.GothamBold
+t1.value76.TextSize = 14
+t1.value35(t1.value76)
+t1.value77 = Instance.new("TextButton")
+t1.value77.Parent = Frame9
+t1.value77.Size = UDim2.new(0, 30, 1, 0)
+t1.value77.Position = UDim2.new(1, -30, 0, 0)
+t1.value77.BackgroundTransparency = 1
+t1.value77.Text = ">"
+t1.value77.TextColor3 = t1.value19
+t1.value77.Font = Enum.Font.GothamBold
+t1.value77.TextSize = 14
+t1.value35(t1.value77)
+t1.value78 = Instance.new("TextLabel")
+t1.value78.Parent = Frame9
+t1.value78.Size = UDim2.new(1, -60, 1, 0)
+t1.value78.Position = UDim2.new(0, 30, 0, 0)
+t1.value78.BackgroundTransparency = 1
+t1.value78.Text = "Top Hits"
+t1.value78.TextColor3 = t1.value19
+t1.value78.Font = Enum.Font.GothamBold
+t1.value78.TextSize = 11
+t1.value35(t1.value78)
+t1.value79 = Instance.new("TextLabel")
+t1.value79.Parent = Frame4
+t1.value79.Size = UDim2.new(0.9, 0, 0, 20)
+t1.value79.Position = UDim2.new(0.05, 0, 0, 72)
+t1.value79.BackgroundTransparency = 1
+t1.value79.TextColor3 = Color3.fromRGB(255, 80, 80)
+t1.value79.Font = Enum.Font.GothamBold
+t1.value79.TextSize = 10
+t1.value79.Text = "audio not found please check spelling mistakes!"
+t1.value79.Visible = false
+t1.value80 = {
+	"Top Hits",
+	"New Additions",
+	"English & Pop",
+	"Hindi",
+	"Bhojpuri",
+	"Phonk",
+	"Global Hits",
+	"Regional India",
+	"Others",
+	"Sounds & Memes"
+}
+t1.value81 = 1
+t1.value82 = {}
+t1.value83 = Instance.new("ScrollingFrame")
+t1.value83.Parent = Frame4
+t1.value83.Size = UDim2.new(1, 0, 1, -72)
+t1.value83.Position = UDim2.new(0, 0, 0, 72)
+t1.value83.BackgroundTransparency = 1
+t1.value83.BorderSizePixel = 0
+t1.value83.ScrollBarThickness = 2
+t1.value83.Visible = false
+
+local UIListLayout3 = Instance.new("UIListLayout")
+
+UIListLayout3.Parent = t1.value83
+UIListLayout3.Padding = UDim.new(0, 5)
+v236(t1.value83, UIListLayout3)
+
+local function v348(p40, p41, p42, p43)
+	local Frame10 = Instance.new("Frame")
+
+	Frame10.Parent = p40
+	Frame10.Size = UDim2.new(1, -5, 0, 26)
+	Frame10.BackgroundTransparency = 1
+
+	local TextLabel4 = Instance.new("TextLabel")
+
+	TextLabel4.Parent = Frame10
+	TextLabel4.Text = p41
+	TextLabel4.Size = UDim2.new(0.5, 0, 1, 0)
+	TextLabel4.BackgroundTransparency = 1
+	TextLabel4.TextColor3 = t1.value19
+	TextLabel4.Font = Enum.Font.Gotham
+	TextLabel4.TextSize = 10
+	TextLabel4.TextXAlignment = Enum.TextXAlignment.Left
+	TextLabel4.Position = UDim2.new(0, 5, 0, 0)
+	TextLabel4.ZIndex = 3
+	t1.value35(TextLabel4)
+
+	local TextButton2 = Instance.new("TextButton")
+
+	TextButton2.Parent = Frame10
+	TextButton2.Size = UDim2.new(0.45, 0, 0.8, 0)
+	TextButton2.Position = UDim2.new(0.53, 0, 0.1, 0)
+	TextButton2.Font = Enum.Font.GothamBold
+	TextButton2.TextSize = 8
+	TextButton2.ZIndex = 3
+	Instance.new("UICorner", TextButton2).CornerRadius = UDim.new(0, 4)
+
+	local u352 = p43
+
+	local function v353()
+		if u352 then
+			TextButton2.Text = "ENABLED"
+			TextButton2.BackgroundColor3 = Color3.fromRGB(50, 200, 50)
+			TextButton2.TextColor3 = Color3.new(1, 1, 1)
+		else
+			TextButton2.Text = "DISABLED"
+			TextButton2.BackgroundColor3 = Color3.fromRGB(200, 50, 50)
+			TextButton2.TextColor3 = Color3.new(1, 1, 1)
+		end
+	end
+
+	v353()
+	TextButton2.MouseButton1Click:Connect(function()
+		t1.value34()
+		u352 = not u352
+		v353()
+		p42(u352)
+	end)
+end
+
+for _, v in ipairs(t1.value80) do
+	local ScrollingFrame2 = Instance.new("ScrollingFrame")
+
+	ScrollingFrame2.Parent = Frame4
+	ScrollingFrame2.Size = UDim2.new(1, 0, 1, -72)
+	ScrollingFrame2.Position = UDim2.new(0, 0, 0, 72)
+	ScrollingFrame2.BackgroundTransparency = 1
+	ScrollingFrame2.BorderSizePixel = 0
+	ScrollingFrame2.ScrollBarThickness = 2
+	ScrollingFrame2.Visible = false
+
+	local UIListLayout4 = Instance.new("UIListLayout")
+
+	UIListLayout4.Parent = ScrollingFrame2
+	UIListLayout4.Padding = UDim.new(0, 5)
+	v236(ScrollingFrame2, UIListLayout4)
+	t1.value82[v] = ScrollingFrame2
+end
+
+t1.value82["Top Hits"].Visible = true
+t1.value75:GetPropertyChangedSignal("Text"):Connect(function()
+	local v358 = string.lower(t1.value75.Text)
+
+	if v358 == "" then
+		t1.value83.Visible = false
+		t1.value79.Visible = false
+
+		local v359, v360, v361 = pairs(t1.value82)
+
+		while true do
+			local v362
+
+			v361, v362 = v359(v360, v361)
+
+			if not v361 then
+				break
+			end
+
+			v362.Visible = v361 == t1.value80[t1.value81]
+		end
+
+		for _, v in ipairs(t1.value66) do
+			v.Frame.Parent = v.OriginalParent
+			v.Frame.Visible = true
+		end
+	else
+		for _, v in pairs(t1.value82) do
+			v.Visible = false
+		end
+
+		t1.value83.Visible = true
+
+		local v367 = false
+
+		for _, v in ipairs(t1.value66) do
+			if string.find(v.Name, v358) then
+				v.Frame.Parent = t1.value83
+				v.Frame.Visible = true
+				v367 = true
+			else
+				v.Frame.Parent = t1.value83
+				v.Frame.Visible = false
+			end
+		end
+
+		t1.value79.Visible = not v367
+	end
+end)
+
+local function v370(p44)
+	local v371 = t1.value80[t1.value81]
+
+	t1.value82[v371].Visible = false
+	t1.value81 = t1.value81 + p44
+
+	if t1.value81 > #t1.value80 then
+		t1.value81 = 1
+	end
+
+	if t1.value81 < 1 then
+		t1.value81 = #t1.value80
+	end
+
+	t1.value78.Text = t1.value80[t1.value81]
+
+	local v372 = t1.value80[t1.value81]
+
+	t1.value82[v372].Visible = true
+
+	local v373 = t1.value80[t1.value81]
+
+	t1.value82[v373].CanvasPosition = Vector2.new(0, 0)
+	t1.value75.Text = ""
+	task.spawn(function()
+		local value19 = t1.value19
+
+		t1.value78.TextColor3 = Color3.fromRGB(255, 255, 255)
+		t1.value78.TextSize = 13
+		t1.value5:Create(t1.value78, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+			TextColor3 = value19
+		}):Play()
+		task.wait(0.1)
+		t1.value78.TextSize = 11
+	end)
+end
+
+t1.value76.MouseButton1Click:Connect(function()
+	t1.value34()
+	v370(-1)
+
+	local TextColor3 = t1.value76.TextColor3
+	local value5 = t1.value5
+	local value76 = t1.value76
+	local TweenInfo_ = TweenInfo
+
+	value5.Create(value5, value76, TweenInfo_.new(0.1), {
+		TextColor3 = Color3.fromRGB(100, 100, 100)
+	}):Play()
+	task.delay(0.1, function()
+		local t13 = {
+			TextColor3 = TextColor3
+		}
+
+		t1.value5:Create(t1.value76, TweenInfo.new(0.15), t13):Play()
+	end)
+end)
+t1.value77.MouseButton1Click:Connect(function()
+	t1.value34()
+	v370(1)
+
+	local TextColor3 = t1.value77.TextColor3
+	local value5 = t1.value5
+	local value77 = t1.value77
+	local tweenInfoNew = TweenInfo.new
+
+	value5.Create(value5, value77, tweenInfoNew(0.1), {
+		TextColor3 = Color3.fromRGB(100, 100, 100)
+	}):Play()
+	task.delay(0.1, function()
+		local t14 = {
+			TextColor3 = TextColor3
+		}
+
+		t1.value5:Create(t1.value77, TweenInfo.new(0.15), t14):Play()
+	end)
+end)
+
+local function v385(p45, p46, p47)
+	local v386 = t1.value82[p45]
+
+	t1.value68(v386, p46, p47)
+end
+
+v385("Top Hits", "I wanna be yours", "75665995351106")
+v385("Top Hits", "Sweater weather", "98310334398449")
+v385("Top Hits", "Ksi thick of it", "85606540666879")
+v385("Top Hits", "Coolkid. V2 (loudest song ever)", "94635984925376")
+v385("Top Hits", "Shape of you", "121559463895939")
+v385("Top Hits", "Mocking bird", "114413637018398")
+v385("Top Hits", "Heatwaves", "109665450158022")
+v385("Top Hits", "Love song (very op)", "84558566674056")
+v385("Top Hits", "Creepy pasta (very loud)", "112877418400494")
+v385("Top Hits", "Var var (turkish very op)", "106251060487387")
+v385("Top Hits", "Cheap Thrills 888", "115492336583856")
+v385("Top Hits", "Red Funk (Speed Up)", "111621504412077")
+v385("Top Hits", "Bad Happening -2", "87373439541502")
+v385("Top Hits", "Heavenly", "73737713591256")
+v385("Top Hits", "Ishowspeed Shake", "85408568949006")
+v385("Top Hits", "Mortals", "97491944760306")
+v385("Top Hits", "Love Nwantiti", "113737237426134")
+v385("Top Hits", "Middle", "138410854139543")
+v385("Top Hits", "Cherly", "79910195620356")
+v385("Top Hits", "Memory Reboot", "105158334993991")
+v385("Top Hits", "Siren", "87655745800335")
+v385("Top Hits", "MrBeast", "78015487317045")
+v385("Top Hits", "Manasha", "80442979651569")
+v385("Top Hits", "Confess Your Love Funk", "87559737835956")
+v385("Top Hits", "I Wanna Runaway", "125579008816192")
+v385("Top Hits", "Sweet Little Bumblebee", "128961712071619")
+v385("Top Hits", "Fight-1", "83027502731555")
+v385("Top Hits", "Fight-2", "119821788900570")
+v385("Top Hits", "Fight-3", "78569190082582")
+v385("Top Hits", "Fight-4", "91554097572062")
+v385("Top Hits", "Life Force-", "110152577760152")
+v385("Top Hits", "Real Bass", "82089060279054")
+v385("Top Hits", "Iory", "88930144644456")
+v385("New Additions", "CUTEMAKMAKFUNK (Slowed)", "120871403922972")
+v385("New Additions", "right on time", "120576436665675")
+v385("New Additions", "StarsMoon", "112355709978731")
+v385("New Additions", "Din1c - can you", "15689448519")
+v385("New Additions", "Sadness", "128159342762162")
+v385("New Additions", "Name", "72031945149756")
+v385("New Additions", "sirene01", "87655745800335")
+v385("New Additions", "Fish Lofi", "91301048841024")
+v385("New Additions", "SOLO UNA NOCHE", "111205815697819")
+v385("New Additions", "Doggy Phonk", "123047130884626")
+v385("New Additions", "Screaming chicken on tree meme", "117909139728666")
+v385("New Additions", "classic vibes", "107813436145992")
+v385("New Additions", "honda", "98093367462579")
+v385("New Additions", "Pop", "128133152505121")
+v385("New Additions", "she can be katana", "76723221352415")
+v385("New Additions", "Japan", "109337680029292")
+v385("New Additions", "Rainy", "79277371759525")
+v385("New Additions", "Gostar", "103835005789306")
+v385("New Additions", "km_20260126-5_1080p_30f_20260126_213216 ", "72809432841703")
+v385("New Additions", "CID MEME Sound ", "105096889615032")
+v385("New Additions", "Lingaguli Angelic Sound", "120011175571061")
+v385("New Additions", "Freak", "106713398673658")
+v385("New Additions", "I LUV", "82148953715595")
+v385("New Additions", "YO DE TI", "125181345407169")
+v385("New Additions", "Update 8", "87111140463459")
+v385("New Additions", "Empina na onda (feito por keven)", "104621031886653")
+v385("New Additions", "??", "134130716324734")
+v385("New Additions", "dish", "138227481593967")
+v385("New Additions", "WhatDidIExpect?", "120915658433879")
+v385("New Additions", "Kamariya Gole Gole Dole Raja", "92471687832864")
+v385("New Additions", "nikal ", "78691577860086")
+v385("New Additions", "HIGHWAY TERROR SLOWED (Slowed + Reverb Phonk)", "79288817843124")
+v385("New Additions", "YAMEKRRE", "109453005596854")
+v385("New Additions", "SpellOnYou", "134345355594625")
+v385("New Additions", "He Ranglo Jamyo Kalindrine Ghat", "128232876294868")
+v385("New Additions", "massage yell louder", "134489447055645")
+v385("New Additions", "Hitting The Road.", "85408568949006")
+v385("New Additions", "SongOne", "103637998030679")
+v385("New Additions", "Heavenly Drift Funk", "73737713591256")
+v385("New Additions", "G3N0S", "130193530753120")
+v385("English & Pop", "Soft Skies & You", "140736931153864")
+v385("English & Pop", "Blue Young Kai", "84729628311938")
+v385("English & Pop", "Summertime Sadness", "107887768910692")
+v385("English & Pop", "Love Story", "135528953872601")
+v385("English & Pop", "Mommyy", "112429422439068")
+v385("English & Pop", "I Got You Baby", "115492336583856")
+v385("English & Pop", "Alone", "105512964264815")
+v385("English & Pop", "Another World", "111351357978027")
+v385("English & Pop", "Isekai", "131874270028720")
+v385("English & Pop", "StarsMoon", "112355709978731")
+v385("English & Pop", "Meow Meow", "99034537604129")
+v385("English & Pop", "Under the influence", "103222441664136")
+v385("English & Pop", "Sadness", "128159342762162")
+v385("English & Pop", "Sweater Weather", "75254239320157")
+v385("English & Pop", "Doraemon", "121640028060880")
+v385("English & Pop", "Baby Shark", "126462032038855")
+v385("English & Pop", "So Clean", "93958751571254")
+v385("English & Pop", "NoCopyrightSound", "72031945149756")
+v385("English & Pop", "LegendNeverDies", "112738519477450")
+v385("English & Pop", "Thought", "87373439541502")
+v385("English & Pop", "Confess You Love", "87559737835956")
+v385("English & Pop", "SetMcMn", "78631447496051")
+v385("Hindi", "Akhiyan", "104380086210152")
+v385("Hindi", "Aalu Kachlu Beta", "138396893861830")
+v385("Hindi", "Mann Mera", "88345320570909")
+v385("Hindi", "Ladki Badi Anjani Hai", "128892246666972")
+v385("Hindi", "PAL PAL DRILL TYPE BEAT", "77002121761232")
+v385("Hindi", "Tumse Milkar | Hindi Song", "133053501453467")
+v385("Hindi", "Pyaar Ka Ehsaas | Latest Hindi Songs 2025", "105568083374120")
+v385("Hindi", "Baithal Rahi Kera Ke Tham Par", "133421259018974")
+v385("Hindi", "Opening Doraemon", "121640028060880")
+v385("Hindi", "Bada Pachtaoge", "79561785821029")
+v385("Hindi", "Dil Ne Ye Kaha Hai Dil Se", "113554906905279")
+v385("Hindi", "Ozone345678\'s Place", "11826038812")
+v385("Hindi", "Saiyaara Female", "110710316953203")
+v385("Hindi", "Unke Andaze Karam", "95589943778476")
+v385("Hindi", "Hai Dil Ye Mera Female", "113792808283128")
+v385("Hindi", "Dhun Female", "129981117529204")
+v385("Hindi", "Zaroori", "90050076108794")
+v385("Hindi", "Mirchaan", "89597415160893")
+v385("Hindi", "Ranjheya Ve", "119786491353134")
+v385("Hindi", "Ghaghari Ghaghari Bhojpuri", "124233673176294")
+v385("Hindi", "Moh Lelu Up Bihar Ke (Neha Raj Bhojpuri)", "95909411418420")
+v385("Hindi", "Manjha", "83325283987770")
+v385("Hindi", "Jhol", "121180010622504")
+v385("Hindi", "Tere Karke", "81520033543798")
+v385("Hindi", "Sanson Ki Mala", "120349214701956")
+v385("Hindi", "Aaj ki Raat x Khuda kare ke Mohabbat", "73958484988503")
+v385("Hindi", "DIL NA DIYA X LE BETA", "122911160702077")
+v385("Hindi", "KRISH KA GANA X LE BETA", "108797529616559")
+v385("Hindi", "Aaj mangalwar hai chuhe ko bukhaar hai", "98606901625415")
+v385("Hindi", "Gali audio 🤬", "119136592904530")
+v385("Hindi", "Pakistano voye Bole Dekho Jay Shree Ram", "87828053226694")
+v385("Hindi", "Maharashtrat Rahta Tar Marathi Bola", "87905627284419")
+v385("Hindi", "Jawani Flex", "82246532114905")
+v385("Hindi", "Majisa Ghoomar Ghalo Rano Dhol Bajave", "91368973732735")
+v385("Hindi", "KABHI KABHI", "137355570793959")
+v385("Hindi", "Nacho Saare | Hindi Song", "108968616078928")
+v385("Hindi", "Gulabi Gulabi", "102924925389960")
+v385("Hindi", "AADAT Female", "94103203628909")
+v385("Hindi", "Nadia 2.0", "128688756073670")
+v385("Hindi", "Kabhi Kabhi Mere Dil Mein Khayal Aata Hai", "101068303675725")
+v385("Hindi", "Mere Maula", "105017950345985")
+v385("Hindi", "Andaz E Karam", "140298499491642")
+v385("Hindi", "Chalao Na Naino Se Baan Re", "108734798852042")
+v385("Hindi", "SAAWARE", "111219978139804")
+v385("Hindi", "Kitni Hasrat Hai HuMain", "93457193569619")
+v385("Hindi", "(DIL NA DIYA) LE BETA) KRISH KA GANA SUNEGA", "104916889617105")
+v385("Hindi", "Holi hai", "115634143210295")
+v385("Hindi", "Haathi Raja Bahut Bade", "106266156568507")
+v385("Hindi", "Krish Ka Gana Sunega (90,s Hits)", "112509603877994")
+v385("Hindi", "Mujhe Nafrat Hai Tumse", "88750836439164")
+v385("Hindi", "Pardesi", "90560862399777")
+v385("Hindi", "O Yaara", "117377307469141")
+v385("Hindi", "Sitam", "81582927737472")
+v385("Hindi", "Muskan", "74180449839527")
+v385("Hindi", "Ishq Ashiqana", "84689783601883")
+v385("Hindi", "Na Na Karte Karte", "87629461934311")
+v385("Hindi", "Parde Mein Rehne Do", "81161805007229")
+v385("Hindi", "Dil Hai Tera Deewana (90s Old Version)", "126020491218161")
+v385("Hindi", "Maain Jitna Tumhe Dekhun", "86442760739586")
+v385("Hindi", "Diwana", "74803752690893")
+v385("Hindi", "Tum Jo Aaye Zindagi Mein", "123883140253393")
+v385("Hindi", "Tera Mera Rishta", "133309449131920")
+v385("Hindi", "Tum Hi Aana", "121581884194482")
+v385("Hindi", "Rab Kare Tujhako Bhi Pyaar X Ja Hamro Umar", "85476270857623")
+v385("Hindi", "TUJH SE NARAZ", "132205900730979")
+v385("Hindi", "TuTUM SE MILNA", "109840879921151")
+v385("Bhojpuri", "Lamba Lamba Ghughat", "78431826650714")
+v385("Bhojpuri", "Nimbu Kharbuja Bhojpuri Song 2025", "89700384406008")
+v385("Bhojpuri", "Moh Lelu Up Bihar Ke (Neha Raj Bhojpuri)", "95909411418420")
+v385("Bhojpuri", "Baithal Rahi Kera Ke Tham Par", "133421259018974")
+v385("Bhojpuri", "Bol Jai Baba Ki", "78735782383680")
+v385("Bhojpuri", "O Ladki Diwani", "102511873453786")
+v385("Bhojpuri", "Bansuri (Bhojpuri)", "79568658897083")
+v385("Bhojpuri", "Sejiya Par Piya Aile Na . Bhojpuri Song", "87577798625777")
+v385("Bhojpuri", "Sadi Lalki Bhojpuri Song 2025", "104574653065736")
+v385("Bhojpuri", "Dar Lage Satala Par Bhojpuri", "128470232274219")
+v385("Bhojpuri", "HAMARA MARAD CHAHI BHOJPURI SONG", "131679833636653")
+v385("Bhojpuri", "Video Colling par Hot Bhojpuri Song Ajit& Amit", "126309103230345")
+v385("Bhojpuri", "Sadiya Karoya Bhojpuri Song", "140415804746906")
+v385("Bhojpuri", "Ghaghari Ghaghari Bhojpuri", "124233673176294")
+v385("Bhojpuri", "Taka Taki Dher Bhail Bhojpuri", "117615820552185")
+v385("Bhojpuri", "Kunj Bihari Milan", "108588298945210")
+v385("Phonk", "Jet 2 Holiday", "135701361688935")
+v385("Phonk", "VERTIGO FUNK (ULTRA SLOWED)", "100243051031264")
+v385("Phonk", "haha (NGI)", "122114766584918")
+v385("Phonk", "MAMMA MIA FUNK -THE END- (SLOWED)", "134153043498082")
+v385("Phonk", "MONTAGEM DRESCE", "134687778902887")
+v385("Phonk", "spooky scary lol", "100828050594137")
+v385("Phonk", "DARE", "139188421510869")
+v385("Phonk", "Montagem Vida", "79889952866985")
+v385("Phonk", "Montagem Balada", "83797836818857")
+v385("Phonk", "BRAZILIAN PHONK NEW", "85635811474451")
+v385("Phonk", "Gangstas Paradise (Loop)", "6070263388")
+v385("Phonk", "FISSION (original)", "118349786848415")
+v385("Phonk", "Escalate", "85306184126616")
+v385("Phonk", "Resistance Treinamento (Slowed)", "139470412088097")
+v385("Phonk", "Crystal Link (Super Slowed)", "79400027040201")
+v385("Phonk", "Uh Bufon Vei (Over Slowed)", "133815463890793")
+v385("Phonk", "Booya", "101772318848071")
+v385("Phonk", "FUSION (original)", "89180400948567")
+v385("Phonk", "Nova La Noche (Ultra Slowed)", "94032061631217")
+v385("Phonk", "melodia de verão (ultra sped up)", "72844613532784")
+v385("Phonk", "XENON", "127502623565534")
+v385("Phonk", "Pressao Bem Solto (Slowed)", "120021246334271")
+v385("Phonk", "Montagem Conmido", "93461183313089")
+v385("Phonk", "Funk Fortada (Slowed)", "73351216000380")
+v385("Phonk", "Bruxanzion", "110991416454626")
+v385("Phonk", "Funk Osigma (Slowed)", "77659460864754")
+v385("Phonk", "Vei Slay Solto", "119824506266281")
+v385("Phonk", "Avakiri", "89750212764961")
+v385("Phonk", "perpetual", "114339730158889")
+v385("Phonk", "Louder!", "101379652864597")
+v385("Phonk", "Scar M4 Louder!", "109403817807062")
+v385("Phonk", "Siren01 Loader!", "87655745800335")
+v385("Phonk", "Side of Moon Loader!", "92539330883705")
+v385("Phonk", "HEAVENLY JUMPSTYLE", "102332883378771")
+v385("Phonk", "CRYSTAL FUNK!", "103445348511856")
+v385("Phonk", "GOTH FUNK", "140704128008979")
+v385("Phonk", "GOTH FUNK (2)", "74482331795312")
+v385("Phonk", "FEMININO DO VAPO", "106317184644394")
+v385("Phonk", "PlayerChoice Louder!", "17534493393772")
+v385("Phonk", "Bambee Bumble bee", "128961712071619")
+v385("Phonk", "All Time Funk", "123809083385992")
+v385("Phonk", "BassBoost", "136893418307185")
+v385("Phonk", "7 Week-", "82149511707056")
+v385("Phonk", "Nothing Beast Jet-", "79928677555141")
+v385("Phonk", "Kash So Bad-", "128325191606770")
+v385("Phonk", "Din1c", "15689448519")
+v385("Phonk", "Death Is No More", "16831108393")
+v385("Phonk", "Beauty Phonk", "96760299701814")
+v385("Phonk", "Phonk 18", "140642559093189")
+v385("Phonk", "Eoropa Louder!", "111346133543699")
+v385("Phonk", "JobsGang Louder!", "93982558653126")
+v385("Phonk", "Sirene Louder!", "87655745800335")
+v385("Phonk", "Japanese Louder!", "126541836935153")
+v385("Phonk", "Anda BassBoost", "128961712071619")
+v385("Phonk", "Changes Louder!", "97835783105684")
+v385("Phonk", "F-D-1 Louder!", "124958445624871")
+v385("Phonk", "Phonk 1", "77501611905348")
+v385("Phonk", "Menta Ma", "98337901681441")
+v385("Phonk", "I\'m So Lucky", "120785124326826")
+v385("Phonk", "One Pound Fish", "91301048841024")
+v385("Phonk", "XE FUNK", "131415306381990")
+v385("Phonk", "Tester", "91299590639144")
+v385("Phonk", "Funk Do Chugi", "111314366671396")
+v385("Phonk", "Right Now", "91976386006545")
+v385("Phonk", "UnderMagic", "91007045451630")
+v385("Phonk", "Passo bem solto", "133323737388793")
+v385("Phonk", "Vocè Na Mira", "120579175218769")
+v385("Phonk", "Toma Toma Funk", "88266916032720")
+v385("Phonk", "Vtzin Кнопка", "124899151072996")
+v385("Phonk", "CuteMakMakFunk", "120871403922972")
+v385("Phonk", "Melodia", "118507373399694")
+v385("Phonk", "Tomagi", "111668097052966")
+v385("Phonk", "Nada Tropica", "88663628557954")
+v385("Phonk", "Caliente", "105492220688862")
+v385("Phonk", "Funk Sigcuro", "96028783423401")
+v385("Phonk", "Lalala", "83315524711012")
+v385("Phonk", "Solo ana noche", "111205815697819")
+v385("Phonk", "Dress To Impress", "139161205970637")
+v385("Phonk", "nMisaki, zangel", "16662833837")
+v385("Phonk", "Phonk Vol.2", "14145620056")
+v385("Phonk", "Alaanwad", "17422074849")
+v385("Phonk", "Brazilian Phonk", "108621585736031")
+v385("Phonk", "Lil Leica", "72920812093264")
+v385("Phonk", "Phonk Vol.1", "14145625743")
+v385("Phonk", "Phonk Favela", "103822969964838")
+v385("Phonk", "Phonk Fiesta", "125498129824026")
+v385("Phonk", "Doggy Phonk", "123047130884626")
+v385("Phonk", "Bravery", "72547465795364")
+v385("Phonk", "Recognized", "124256218818801")
+v385("Phonk", "Desprezo", "134991005784332")
+v385("Phonk", "F-Phonk", "101326109963284")
+v385("Phonk", "TRIPI TROPI", "101241740024903")
+v385("Phonk", "YA Brazil Phonk", "114811335026475")
+v385("Phonk", "Hard Drift", "93202214051700")
+v385("Phonk", "TOMA PHONK", "129098116998483")
+v385("Phonk", "Beauty (Slowed)", "115249562236391")
+v385("Phonk", "TOMA FUNK", "126291069838831")
+v385("Phonk", "LadyLike", "100703161099643")
+v385("Phonk", "Gold Phonk", "124956323731288")
+v385("Phonk", "Ratual Phonk", "115175275895587")
+v385("Phonk", "Controlled Distortion", "97250551932353")
+v385("Global Hits", "Gokul Sudini", "104114926542377")
+v385("Global Hits", "Ami Marathi", "121884195781496")
+v385("Global Hits", "Baba Maza", "72960995687335")
+v385("Global Hits", "Marathi Bolti", "87905627284419")
+v385("Global Hits", "Un Kaadhal", "81557968839949")
+v385("Global Hits", "Tamil Rap", "78321562362164")
+v385("Global Hits", "Jana Nayagan", "134611908527485")
+v385("Global Hits", "Nee En Uyire", "84710673912283")
+v385("Global Hits", "Kadhal Muttal", "97407313818909")
+v385("Global Hits", "Tunak Tunak", "117542440446894")
+v385("Global Hits", "Swaad", "125800612683016")
+v385("Global Hits", "Mirchaan", "89597415160893")
+v385("Global Hits", "You Drill", "72479777789620")
+v385("Global Hits", "Balle Balle", "101682048332257")
+v385("Global Hits", "Kamal Hogyi", "136891850788169")
+v385("Global Hits", "JagChhorDia", "78465649557695")
+v385("Global Hits", "Punjabi Anthem", "95903202203393")
+v385("Global Hits", "Punjabi Aagye", "76453914422555")
+v385("Global Hits", "Jay Haryana", "125935250237922")
+v385("Global Hits", "HR DRILL", "91327878757458")
+v385("Global Hits", "Gokul Sudini", "104114926542377")
+v385("Global Hits", "Ami Marathi", "121884195781496")
+v385("Global Hits", "Baba Maza", "72960995687335")
+v385("Global Hits", "Marathi Bolti", "87905627284419")
+v385("Global Hits", "Un Kaadhal", "81557968839949")
+v385("Global Hits", "Tamil Rap", "78321562362164")
+v385("Global Hits", "Jana Nayagan", "134611908527485")
+v385("Global Hits", "Nee En Uyire", "84710673912283")
+v385("Global Hits", "Kadhal Muttal", "97407313818909")
+v385("Regional India", "Chhogada", "132817140436217")
+v385("Regional India", "He Ranglo", "128232876294868")
+v385("Regional India", "Maa Durga", "82446868166514")
+v385("Regional India", "Jaago Maa Durga", "89047007812046")
+v385("Regional India", "Shree Durga", "135346318153434")
+v385("Regional India", "Jay Matadi", "101446595061046")
+v385("Regional India", "Jay Matadi 2", "131180916782154")
+v385("Regional India", "Maara Gaam Aavija", "86164220023320")
+v385("Regional India", "Gokul Sudini", "104114926542377")
+v385("Regional India", "Ami Marathi", "121884195781496")
+v385("Regional India", "Baba Maza", "72960995687335")
+v385("Regional India", "Marathi Bolti", "87905627284419")
+v385("Regional India", "Un Kaadhal", "81557968839949")
+v385("Regional India", "Tamil Rap", "78321562362164")
+v385("Regional India", "Jana Nayagan", "134611908527485")
+v385("Regional India", "Nee En Uyire", "84710673912283")
+v385("Regional India", "Kadhal Muttal", "97407313818909")
+v385("Others", "Legends Never Die (Nightcore)", "112738519477450")
+v385("Others", "Cheap Thrills 888", "115492336583856")
+v385("Others", "Lalala", "83315524711012")
+v385("Others", "Phonk (Meta)", "9046863261")
+v385("Others", "TREM FANTASMA FUNK", "132245626038510")
+v385("Others", "Montagem Solar Tropicana", "109308273341422")
+v385("Others", "Brazil Do Funk", "128851456518028")
+v385("Others", "Bem Solto Brazil", "119936139925486")
+v385("Others", "Red Funk (Speed Up)", "111621504412077")
+v385("Others", "Vein Funk (Sped Up)", "77501611905348")
+v385("Others", "Confess Your Love Funk", "87559737835956")
+v385("Others", "Cutemakmakfunk", "120871403922972")
+v385("Others", "Rusashka Ultrafunk", "95248559316142")
+v385("Others", "Angel Phonk", "91299590639144")
+v385("Others", "Espresso", "121552917879310")
+v385("Others", "Europapa Louder (Europa)", "111346133543699")
+v385("Others", "Dubidubidu (Remix)", "16190783444")
+v385("Others", "Pennywise", "130898046275622")
+v385("Others", "1, 2, Red, Blue", "6933607008")
+v385("Others", "Rain Falling", "124198323349260")
+v385("Others", "Subway", "82210016119269")
+v385("Others", "Moça", "112092781811805")
+v385("Others", "Trickymm", "97236085185833")
+v385("Others", "Vtzin Кнопка", "124899151072996")
+v385("Others", "AudioOdFrekyClan", "88622194255425")
+v385("Others", "Toque", "97835783105684")
+v385("Others", "Sounder", "77446238713316")
+v385("Others", "Reluk", "88232201387507")
+v385("Others", "Scar m4", "109403817807062")
+v385("Others", "Cold Wave", "97556576480511")
+v385("Others", "Right On Time", "120576436665675")
+v385("Others", "Gospel", "94328719121770")
+v385("Others", "Dare", "139188421510869")
+v385("Others", "Tntaud4", "136179020015211")
+v385("Others", "I Want You", "105876314059346")
+v385("Others", "Slaughter", "86322376706738")
+v385("Others", "Pop Gaz", "101055451438045")
+v385("Others", "Hypnotized", "92175624643620")
+v385("Others", "Empina Empina", "135005570239371")
+v385("Others", "Hex-06", "71701052305256")
+v385("Others", "Infinite", "16190784875")
+v385("Others", "Asede", "4004629054")
+v385("Others", "Traphouse", "18841896412")
+v385("Others", "F-D-1 (Slowed)", "124958445624871")
+v385("Others", "Next! (Slowed)", "114138177515042")
+v385("Others", "Hold Up", "6210853080")
+v385("Sounds & Memes", "UwU", "105577043687038")
+v385("Sounds & Memes", "Senpai", "115498703521334")
+v385("Sounds & Memes", "Kiss ??", "118235447189969")
+v385("Sounds & Memes", "Anime Ahh", "119651952208423")
+v385("Sounds & Memes", "Ah", "121259252258118")
+v385("Sounds & Memes", "18+ Girl", "131014261385625")
+v385("Sounds & Memes", "Girl Evil Laugh", "134548905274433")
+v385("Sounds & Memes", "Tom", "139694892021582")
+v385("Sounds & Memes", "Slayy", "139740597178232")
+v385("Sounds & Memes", "Scary", "140028279221307")
+v385("Sounds & Memes", "Kitisan", "122462786517802")
+v385("Sounds & Memes", "Flash", "123459967526974")
+v385("Sounds & Memes", "The Hand erase", "132573001115155")
+v385("Sounds & Memes", "Aishiteru-(ILoveYou)", "132952117418468")
+v385("Sounds & Memes", "Msg Y\'all Ahhhhwww", "134489447055645")
+v385("Sounds & Memes", "Goofy Horn", "136188985418657")
+v385("Sounds & Memes", "Faaahhhhh", "139999225792687")
+v385("Sounds & Memes", "Shidouuu", "89016013924693")
+v385("Sounds & Memes", "Jumpscare", "6201427049")
+v385("Sounds & Memes", "Desi Gun", "3177712713")
+v385("Sounds & Memes", "Laughing", "4767799547")
+v385("Sounds & Memes", "CID", "105096889615032")
+v385("Sounds & Memes", "Muthhal Baj", "87111140463459")
+v385("Sounds & Memes", "Nya Zo", "8842446965")
+v385("Sounds & Memes", "Chicken Sound", "117909139728666")
+v385("Sounds & Memes", "Ladle GhopGhopGhop", "88622194255425")
+v385("Sounds & Memes", "MadarChod", "126782260874451")
+v385("Sounds & Memes", "Yamate Kudasajj", "18990591883")
+v385("Sounds & Memes", "Monkey", "7196237097")
+v385("Sounds & Memes", "Ahhhhh", "169664410")
+v385("Sounds & Memes", "S-PunjabiMeme", "123161971384069")
+v385("Sounds & Memes", "Sound (1)", "77446238713316")
+v385("Sounds & Memes", "Sound (2)", "4575953237")
+v385("Sounds & Memes", "S-Popopo", "108896377576102")
+v385("Sounds & Memes", "S-SariRoti", "9075261161")
+v385("Phonk", "VERTIGO FUNK (ULTRA SLOWED)", "100243051031264")
+v385("Phonk", "haha (NGI)", "122114766584918")
+v385("Phonk", "MAMMA MIA FUNK -THE END- (SLOWED)", "134153043498082")
+v385("Phonk", "MONTAGEM DRESCE", "134687778902887")
+v385("Phonk", "spooky scary lol", "100828050594137")
+v385("Phonk", "DARE", "139188421510869")
+v385("Phonk", "Montagem Vida", "79889952866985")
+v385("Phonk", "Montagem Balada", "83797836818857")
+v385("Phonk", "BRAZILIAN PHONK NEW", "85635811474451")
+v385("Phonk", "Gangstas Paradise (Loop)", "6070263388")
+v385("Phonk", "FISSION (original)", "118349786848415")
+v385("Phonk", "Escalate", "85306184126616")
+v385("Phonk", "Resistance Treinamento (Slowed)", "139470412088097")
+v385("Phonk", "Crystal Link (Super Slowed)", "79400027040201")
+v385("Phonk", "Uh Bufon Vei (Over Slowed)", "133815463890793")
+v385("Phonk", "Booya", "101772318848071")
+v385("Phonk", "FUSION (original)", "89180400948567")
+v385("Phonk", "Nova La Noche (Ultra Slowed)", "94032061631217")
+v385("Phonk", "melodia de verão (ultra sped up)", "72844613532784")
+v385("Phonk", "XENON", "127502623565534")
+v385("Phonk", "Pressao Bem Solto (Slowed)", "120021246334271")
+v385("Phonk", "Montagem Conmido", "93461183313089")
+v385("Phonk", "Funk Fortada (Slowed)", "73351216000380")
+v385("Phonk", "Bruxanzion", "110991416454626")
+v385("Phonk", "Funk Osigma (Slowed)", "77659460864754")
+v385("Phonk", "Vei Slay Solto", "119824506266281")
+v385("Phonk", "Avakiri", "89750212764961")
+v385("Phonk", "perpetual", "114339730158889")
+v385("Phonk", "Louder!", "101379652864597")
+v385("Phonk", "Scar M4 Louder!", "109403817807062")
+v385("Phonk", "Siren01 Loader!", "87655745800335")
+v385("Phonk", "Side of Moon Loader!", "92539330883705")
+v385("Phonk", "HEAVENLY JUMPSTYLE", "102332883378771")
+v385("Phonk", "CRYSTAL FUNK!", "103445348511856")
+v385("Phonk", "GOTH FUNK", "140704128008979")
+v385("Phonk", "GOTH FUNK (2)", "74482331795312")
+v385("Phonk", "FEMININO DO VAPO", "106317184644394")
+v385("Phonk", "PlayerChoice Louder!", "17534493393772")
+v385("Phonk", "Run To Me", "105663768150465")
+v385("Phonk", "Funk 1", "86154690578670")
+v385("Phonk", "Bad Happening", "70661591361974")
+v385("Phonk", "Syko BloodPop", "88900228893875")
+v385("Phonk", "Monster", "77125850308362")
+
+local Frame10 = Instance.new("Frame")
+
+Frame10.Parent = Frame5
+Frame10.Size = UDim2.new(1, 0, 0, 26)
+Frame10.BackgroundTransparency = 1
+t1.value84 = createTextBox(Frame10, "Search Favorites...")
+t1.value84.Size = UDim2.new(0.73, 0, 0, 22)
+t1.value84.Position = UDim2.new(0.025, 0, 0, 2)
+t1.value85 = Instance.new("TextButton")
+t1.value85.Parent = Frame10
+t1.value85.Size = UDim2.new(0.2, 0, 0, 22)
+t1.value85.Position = UDim2.new(0.78, 0, 0, 2)
+t1.value85.BackgroundColor3 = Color3.fromRGB(25, 20, 20)
+t1.value85.BackgroundTransparency = 0.3
+t1.value85.Text = "⏹ STOP"
+t1.value85.TextColor3 = Color3.fromRGB(255, 75, 75)
+t1.value85.Font = Enum.Font.GothamBold
+t1.value85.TextSize = 9
+t1.value85.AutoButtonColor = false
+Instance.new("UICorner", t1.value85).CornerRadius = UDim.new(0, 6)
+t1.value86 = Instance.new("UIStroke")
+t1.value86.Parent = t1.value85
+t1.value86.Color = Color3.fromRGB(255, 75, 75)
+t1.value86.Transparency = 0.7
+t1.value86.Thickness = 1
+t1.value86.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+t1.value87 = Instance.new("UIScale")
+t1.value87.Scale = 1
+t1.value87.Parent = t1.value85
+t1.value88 = game:GetService("TweenService")
+t1.value89 = TweenInfo.new(0.2, Enum.EasingStyle.Sine, Enum.EasingDirection.Out)
+t1.value90 = TweenInfo.new(0.1, Enum.EasingStyle.Quint, Enum.EasingDirection.Out)
+t1.value91 = TweenInfo.new(0.35, Enum.EasingStyle.Back, Enum.EasingDirection.Out)
+t1.value85.MouseEnter:Connect(function()
+	t1.value88:Create(t1.value85, t1.value89, {
+		BackgroundTransparency = 0.1,
+		BackgroundColor3 = Color3.fromRGB(35, 20, 20)
+	}):Play()
+	t1.value88:Create(t1.value86, t1.value89, {
+		Transparency = 0.1
+	}):Play()
+end)
+t1.value85.MouseLeave:Connect(function()
+	local value88 = t1.value88
+	local value85 = t1.value85
+	local value89 = t1.value89
+
+	value88.Create(value88, value85, value89, {
+		BackgroundTransparency = 0.3,
+		BackgroundColor3 = Color3.fromRGB(25, 20, 20)
+	}):Play()
+	t1.value88:Create(t1.value86, t1.value89, {
+		Transparency = 0.7
+	}):Play()
+	t1.value88:Create(t1.value87, t1.value89, {
+		Scale = 1
+	}):Play()
+end)
+t1.value85.MouseButton1Down:Connect(function()
+	t1.value88:Create(t1.value85, t1.value90, {
+		BackgroundTransparency = 0
+	}):Play()
+	t1.value88:Create(t1.value87, t1.value90, {
+		Scale = 0.88
+	}):Play()
+end)
+t1.value85.MouseButton1Up:Connect(function()
+	t1.value88:Create(t1.value85, t1.value91, {
+		BackgroundTransparency = 0.1
+	}):Play()
+	t1.value88:Create(t1.value87, t1.value91, {
+		Scale = 1
+	}):Play()
+end)
+
+local Frame11 = Instance.new("Frame")
+
+Frame11.Parent = Frame5
+Frame11.Size = UDim2.new(0.95, 0, 0, 20)
+Frame11.Position = UDim2.new(0.025, 0, 0, 32)
+Frame11.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+Frame11.BackgroundTransparency = 0.2
+Instance.new("UICorner", Frame11).CornerRadius = UDim.new(0, 4)
+Instance.new("UIStroke", Frame11).Color = Color3.fromRGB(60, 60, 60)
+t1.value92 = Instance.new("TextLabel")
+t1.value92.Parent = Frame11
+t1.value92.Size = UDim2.new(1, 0, 1, 0)
+t1.value92.BackgroundTransparency = 1
+t1.value92.Text = "Tracks: 0  |  Last Added: None"
+t1.value92.TextColor3 = Color3.new(1, 1, 1)
+t1.value92.Font = Enum.Font.GothamBold
+t1.value92.TextSize = 9
+t1.value93 = Instance.new("ScrollingFrame")
+t1.value93.Parent = Frame5
+t1.value93.Size = UDim2.new(1, 0, 1, -60)
+t1.value93.Position = UDim2.new(0, 0, 0, 60)
+t1.value93.BackgroundTransparency = 1
+t1.value93.BorderSizePixel = 0
+t1.value93.ScrollBarThickness = 2
+
+local UIListLayout4 = Instance.new("UIListLayout")
+
+UIListLayout4.Parent = t1.value93
+UIListLayout4.Padding = UDim.new(0, 5)
+UIListLayout4.HorizontalAlignment = Enum.HorizontalAlignment.Center
+UIListLayout4.SortOrder = Enum.SortOrder.LayoutOrder;
+(function(p48, p49)
+	p48.CanvasSize = UDim2.new(0, 0, 0, p49.AbsoluteContentSize.Y + 40)
+	p49:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(function()
+		p48.CanvasSize = UDim2.new(0, 0, 0, p49.AbsoluteContentSize.Y + 40)
+	end)
+end)(t1.value93, UIListLayout4)
+t1.value94 = Instance.new("Frame")
+t1.value94.Parent = t1.value47
+t1.value94.Size = UDim2.new(1, 0, 1, 0)
+t1.value94.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+t1.value94.BackgroundTransparency = 1
+t1.value94.Visible = false
+t1.value94.ZIndex = 400
+
+local function v393(p50, p51, p52)
+	t1.value94.Visible = true
+	t1.value5:Create(t1.value94, TweenInfo.new(0.3), {
+		BackgroundTransparency = 0.5
+	}):Play()
+	p50.Parent = t1.value94
+
+	local value5 = t1.value5
+	local tweenInfo = TweenInfo.new(0.3, Enum.EasingStyle.Back)
+	local t15 = {
+		Size = UDim2.new(0, p51, 0, p52)
+	}
+
+	value5.Create(value5, p50, tweenInfo, t15):Play()
+end
+local function v397(p53)
+	local value5 = t1.value5
+	local tweenInfo = TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.In)
+
+	value5.Create(value5, p53, tweenInfo, {
+		Size = UDim2.new(0, 0, 0, 0)
+	}):Play()
+	t1.value5:Create(t1.value94, TweenInfo.new(0.2), {
+		BackgroundTransparency = 1
+	}):Play()
+	task.wait(0.2)
+	p53:Destroy()
+	t1.value94.Visible = false
+end
+
+t1.value95 = {}
+
+function t1.value96()
+	local v400 = #t1.value30
+	local Name = v400 > 0 and (t1.value30[v400].Name or "None") or "None"
+
+	t1.value92.Text = "Tracks: " .. v400 .. "  |  Last Added: " .. string.sub(Name, 1, 15) .. (string.len(Name) > 15 and "..." or "")
+end
+
+t1.value85.MouseButton1Click:Connect(function()
+	t1.value34()
+	_G.StopMusic()
+	t1.value23 = nil
+
+	for _, v in ipairs(t1.value95) do
+		v.Frame.BackgroundTransparency = 0.3
+
+		if v.PlayBtn then
+			v.PlayBtn.BackgroundColor3 = Color3.fromRGB(0, 150, 0)
+			v.PlayBtn.BackgroundTransparency = 0.2
+		end
+	end
+
+	task.spawn(function()
+		_G.ShowPopupMessage("Music Stopped")
+	end)
+end)
+
+function t1.value97(p54)
+	local Frame12 = Instance.new("Frame")
+
+	Frame12.Parent = t1.value93
+	Frame12.Size = UDim2.new(1, -5, 0, 35)
+	Frame12.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+	Frame12.BackgroundTransparency = 0.3
+	Instance.new("UICorner", Frame12).CornerRadius = UDim.new(0, 6)
+	Frame12.LayoutOrder = #t1.value95 + 1
+
+	local TextLabel4 = Instance.new("TextLabel")
+
+	TextLabel4.Parent = Frame12
+	TextLabel4.Text = p54.Name
+	TextLabel4.Size = UDim2.new(0.5, 0, 1, 0)
+	TextLabel4.Position = UDim2.new(0, 20, 0, 0)
+	TextLabel4.BackgroundTransparency = 1
+	TextLabel4.TextColor3 = t1.value19
+	TextLabel4.Font = Enum.Font.Gotham
+	TextLabel4.TextSize = 10
+	TextLabel4.TextXAlignment = Enum.TextXAlignment.Left
+	TextLabel4.TextTruncate = Enum.TextTruncate.AtEnd
+	t1.value35(TextLabel4)
+
+	local Frame13 = Instance.new("Frame")
+
+	Frame13.Parent = Frame12
+	Frame13.Size = UDim2.new(0, 8, 0, 8)
+	Frame13.Position = UDim2.new(0, 6, 0.5, -4)
+	Frame13.BackgroundColor3 = Color3.fromRGB(100, 100, 100)
+	Instance.new("UICorner", Frame13).CornerRadius = UDim.new(1, 0)
+	t1.value65(p54.ID, Frame13)
+
+	local TextButton2 = Instance.new("TextButton")
+
+	TextButton2.Parent = Frame12
+	TextButton2.Text = "▶"
+	TextButton2.Size = UDim2.new(0, 25, 0, 25)
+	TextButton2.Position = UDim2.new(1, -90, 0, 5)
+	TextButton2.BackgroundColor3 = Color3.fromRGB(0, 150, 0)
+	TextButton2.BackgroundTransparency = 0.2
+	TextButton2.TextColor3 = Color3.new(1, 1, 1)
+	Instance.new("UICorner", TextButton2).CornerRadius = UDim.new(0, 4)
+	t1.value46(TextButton2)
+	TextButton2.MouseButton1Click:Connect(function()
+		t1.value34()
+
+		local v408, v409, v410 = ipairs(t1.value95)
+
+		while true do
+			local v411
+
+			v410, v411 = v408(v409, v410)
+
+			if not v410 then
+				break
+			end
+
+			v411.Frame.BackgroundTransparency = 0.3
+
+			if v411.PlayBtn then
+				v411.PlayBtn.BackgroundColor3 = Color3.fromRGB(0, 150, 0)
+				v411.PlayBtn.BackgroundTransparency = 0.2
+			end
+		end
+
+		if t1.value23 == TextButton2 then
+			TextButton2.BackgroundColor3 = Color3.fromRGB(0, 150, 0)
+			TextButton2.BackgroundTransparency = 0.2
+			_G.StopMusic()
+			t1.value23 = nil
+		else
+			TextButton2.BackgroundColor3 = Color3.fromRGB(200, 50, 50)
+			TextButton2.BackgroundTransparency = 0.2
+			t1.value23 = TextButton2
+			Frame12.BackgroundTransparency = 0.05
+
+			local SmartPlayMusic = _G.SmartPlayMusic
+			local ID = p54.ID
+
+			SmartPlayMusic(tostring(ID), p54.Name)
+		end
+	end)
+
+	local TextButton3 = Instance.new("TextButton")
+
+	TextButton3.Parent = Frame12
+	TextButton3.Text = "C"
+	TextButton3.Size = UDim2.new(0, 25, 0, 25)
+	TextButton3.Position = UDim2.new(1, -60, 0, 5)
+	TextButton3.BackgroundColor3 = Color3.fromRGB(100, 100, 100)
+	TextButton3.BackgroundTransparency = 0.2
+	TextButton3.TextColor3 = Color3.new(1, 1, 1)
+	Instance.new("UICorner", TextButton3).CornerRadius = UDim.new(0, 4)
+	t1.value46(TextButton3)
+	TextButton3.MouseButton1Click:Connect(function()
+		t1.value34()
+
+		local ID = p54.ID
+		local value8 = tostring(ID)
+
+		t1.value8 = value8
+
+		if t1.value22 then
+			t1.value22.Text = value8
+		end
+
+		if setclipboard then
+			setclipboard(value8)
+		end
+
+		task.spawn(function()
+			TextButton3.Text = "✔"
+
+			local value5 = t1.value5
+			local v418 = TextButton3
+			local tweenInfo = TweenInfo.new(0.2)
+
+			value5.Create(value5, v418, tweenInfo, {
+				BackgroundColor3 = Color3.fromRGB(50, 200, 50)
+			}):Play()
+			task.wait(1)
+			TextButton3.Text = "C"
+
+			local value52 = t1.value5
+			local v421 = TextButton3
+			local tweenInfo2 = TweenInfo.new(0.2)
+
+			value52.Create(value52, v421, tweenInfo2, {
+				BackgroundColor3 = Color3.fromRGB(100, 100, 100)
+			}):Play()
+		end)
+	end)
+
+	local TextButton4 = Instance.new("TextButton")
+
+	TextButton4.Parent = Frame12
+	TextButton4.Text = "X"
+	TextButton4.Size = UDim2.new(0, 25, 0, 25)
+	TextButton4.Position = UDim2.new(1, -30, 0, 5)
+	TextButton4.BackgroundColor3 = Color3.fromRGB(150, 50, 50)
+	TextButton4.TextColor3 = Color3.new(1, 1, 1)
+	Instance.new("UICorner", TextButton4).CornerRadius = UDim.new(0, 4)
+	t1.value46(TextButton4)
+	TextButton4.MouseButton1Click:Connect(function()
+		t1.value34()
+
+		local Frame14 = Instance.new("Frame")
+
+		Frame14.Size = UDim2.new(0, 0, 0, 0)
+		Frame14.AnchorPoint = Vector2.new(0.5, 0.5)
+		Frame14.Position = UDim2.new(0.5, 0, 0.5, 0)
+		Frame14.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+		Frame14.ZIndex = 600
+		Instance.new("UICorner", Frame14).CornerRadius = UDim.new(0, 8)
+		Instance.new("UIStroke", Frame14).Color = Color3.new(1, 1, 1)
+
+		local TextLabel5 = Instance.new("TextLabel")
+
+		TextLabel5.Parent = Frame14
+		TextLabel5.Text = "Delete this favorite?"
+		TextLabel5.Size = UDim2.new(1, 0, 0.5, 0)
+		TextLabel5.TextColor3 = Color3.new(1, 1, 1)
+		TextLabel5.BackgroundTransparency = 1
+		TextLabel5.Font = Enum.Font.GothamBold
+		TextLabel5.ZIndex = 601
+
+		local TextButton5 = Instance.new("TextButton")
+
+		TextButton5.Parent = Frame14
+		TextButton5.Text = "YES"
+		TextButton5.BackgroundColor3 = Color3.fromRGB(150, 50, 50)
+		TextButton5.Position = UDim2.new(0.1, 0, 0.6, 0)
+		TextButton5.Size = UDim2.new(0.35, 0, 0.3, 0)
+		TextButton5.TextColor3 = Color3.new(1, 1, 1)
+		TextButton5.Font = Enum.Font.GothamBold
+		TextButton5.ZIndex = 601
+		Instance.new("UICorner", TextButton5).CornerRadius = UDim.new(0, 4)
+
+		local TextButton6 = Instance.new("TextButton")
+
+		TextButton6.Parent = Frame14
+		TextButton6.Text = "NO"
+		TextButton6.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+		TextButton6.Position = UDim2.new(0.55, 0, 0.6, 0)
+		TextButton6.Size = UDim2.new(0.35, 0, 0.3, 0)
+		TextButton6.TextColor3 = Color3.new(1, 1, 1)
+		TextButton6.Font = Enum.Font.GothamBold
+		TextButton6.ZIndex = 601
+		Instance.new("UICorner", TextButton6).CornerRadius = UDim.new(0, 4)
+		v393(Frame14, 180, 80)
+
+		local function v428()
+			for i = #t1.value30, 1, -1 do
+				local ID = t1.value30[i].ID
+				local v431 = tostring(ID)
+				local ID2 = p54.ID
+
+				if v431 == tostring(ID2) then
+					table.remove(t1.value30, i)
+				end
+			end
+
+			for i = #t1.value95, 1, -1 do
+				if t1.value95[i].Frame == Frame12 then
+					table.remove(t1.value95, i)
+				end
+			end
+
+			v74()
+			Frame12:Destroy()
+			t1.value96()
+			v397(Frame14)
+		end
+
+		TextButton5.MouseButton1Click:Connect(v428)
+
+		local function v434()
+			v397(Frame14)
+		end
+
+		TextButton6.MouseButton1Click:Connect(v434)
+	end)
+	table.insert(t1.value95, {
+		Frame = Frame12,
+		PlayBtn = TextButton2,
+		ID = p54.ID,
+		Name = string.lower(p54.Name)
+	})
+end
+
+(function()
+	local v435 = createTextButton(t1.value93, "[ + ] ADD NEW FAVORITE", Color3.fromRGB(0, 100, 200), function()
+		local Frame12 = Instance.new("Frame")
+
+		Frame12.Size = UDim2.new(0, 0, 0, 0)
+		Frame12.AnchorPoint = Vector2.new(0.5, 0.5)
+		Frame12.Position = UDim2.new(0.5, 0, 0.5, 0)
+		Frame12.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+		Frame12.ZIndex = 500
+		Instance.new("UICorner", Frame12).CornerRadius = UDim.new(0, 8)
+		Instance.new("UIStroke", Frame12).Color = Color3.new(1, 1, 1)
+
+		local TextLabel4 = Instance.new("TextLabel")
+
+		TextLabel4.Parent = Frame12
+		TextLabel4.Text = "Song Name (Optional):"
+		TextLabel4.Position = UDim2.new(0.05, 0, 0.05, 0)
+		TextLabel4.Size = UDim2.new(0.9, 0, 0.15, 0)
+		TextLabel4.TextColor3 = Color3.new(1, 1, 1)
+		TextLabel4.BackgroundTransparency = 1
+		TextLabel4.Font = Enum.Font.GothamBold
+		TextLabel4.TextSize = 9
+		TextLabel4.ZIndex = 501
+
+		local TextBox = Instance.new("TextBox")
+
+		TextBox.Parent = Frame12
+		TextBox.Position = UDim2.new(0.05, 0, 0.2, 0)
+		TextBox.Size = UDim2.new(0.9, 0, 0.15, 0)
+		TextBox.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+		TextBox.TextColor3 = Color3.new(1, 1, 1)
+		TextBox.Text = ""
+		TextBox.PlaceholderText = "Leave blank to auto-fetch"
+		TextBox.ZIndex = 501
+		Instance.new("UICorner", TextBox).CornerRadius = UDim.new(0, 4)
+
+		local TextLabel5 = Instance.new("TextLabel")
+
+		TextLabel5.Parent = Frame12
+		TextLabel5.Text = "Audio ID:"
+		TextLabel5.Position = UDim2.new(0.05, 0, 0.4, 0)
+		TextLabel5.Size = UDim2.new(0.9, 0, 0.15, 0)
+		TextLabel5.TextColor3 = Color3.new(1, 1, 1)
+		TextLabel5.BackgroundTransparency = 1
+		TextLabel5.Font = Enum.Font.GothamBold
+		TextLabel5.TextSize = 10
+		TextLabel5.ZIndex = 501
+
+		local TextBox2 = Instance.new("TextBox")
+
+		TextBox2.Parent = Frame12
+		TextBox2.Position = UDim2.new(0.05, 0, 0.55, 0)
+		TextBox2.Size = UDim2.new(0.9, 0, 0.15, 0)
+		TextBox2.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+		TextBox2.TextColor3 = Color3.new(1, 1, 1)
+		TextBox2.Text = t1.value8 or ""
+		TextBox2.PlaceholderText = "Required"
+		TextBox2.ZIndex = 501
+		Instance.new("UICorner", TextBox2).CornerRadius = UDim.new(0, 4)
+
+		local TextButton2 = Instance.new("TextButton")
+
+		TextButton2.Parent = Frame12
+		TextButton2.Text = "SAVE"
+		TextButton2.BackgroundColor3 = Color3.fromRGB(50, 150, 50)
+		TextButton2.Position = UDim2.new(0.05, 0, 0.8, 0)
+		TextButton2.Size = UDim2.new(0.4, 0, 0.15, 0)
+		TextButton2.TextColor3 = Color3.new(1, 1, 1)
+		TextButton2.ZIndex = 501
+		Instance.new("UICorner", TextButton2).CornerRadius = UDim.new(0, 4)
+
+		local TextButton3 = Instance.new("TextButton")
+
+		TextButton3.Parent = Frame12
+		TextButton3.Text = "CANCEL"
+		TextButton3.BackgroundColor3 = Color3.fromRGB(150, 50, 50)
+		TextButton3.Position = UDim2.new(0.55, 0, 0.8, 0)
+		TextButton3.Size = UDim2.new(0.4, 0, 0.15, 0)
+		TextButton3.TextColor3 = Color3.new(1, 1, 1)
+		TextButton3.ZIndex = 501
+		Instance.new("UICorner", TextButton3).CornerRadius = UDim.new(0, 4)
+		v393(Frame12, 200, 140)
+		TextButton2.MouseButton1Click:Connect(function()
+			local match = TextBox2.Text:match("%d+")
+
+			if not match then
+				TextBox2.Text = "INVALID ID!"
+
+				return
+			end
+
+			task.spawn(function()
+				TextButton2.Text = "..."
+
+				local Text = TextBox.Text
+
+				if Text ~= "" then
+					v499 = {
+						Name = Text,
+						ID = match
+					}
+					v500 = table
+					v501 = t1.value30
+					v500.insert(v501, v499)
+					v74()
+					t1.value97(v499)
+					t1.value96()
+					v397(Frame12)
+
+					return
+				end
+
+				local ok, result = pcall(function()
+					local value4 = t1.value4
+					local t16 = {}
+					local v449 = match
+
+					__set_list(t16, 1, {(tonumber(v449))})
+
+					return value4:GetProductInfo(unpack_(t16))
+				end)
+
+				Text = ok and (result and (result.Name and result.Name)) or "Unknown Audio"
+
+				local t17 = {
+					Name = Text,
+					ID = match
+				}
+				local table_ = table
+				local value30 = t1.value30
+
+				table_.insert(value30, t17)
+				v74()
+				t1.value97(t17)
+				t1.value96()
+				v397(Frame12)
+			end)
+		end)
+
+		local function v453()
+			v397(Frame12)
+		end
+
+		TextButton3.MouseButton1Click:Connect(v453)
+	end)
+
+	v435.Name = "AddBtn"
+	v435.LayoutOrder = -999999999
+
+	for i = 1, #t1.value30 do
+		t1.value97(t1.value30[i])
+	end
+
+	t1.value96()
+end)()
+_G.UpdateFavStats = t1.value96
+_G.CreateSingleFavoriteUI = t1.value97
+
+function _G.RemoveFavoriteUI(p55)
+	for i = #t1.value95, 1, -1 do
+		local ID = t1.value95[i].ID
+
+		if tostring(ID) == tostring(p55) then
+			if t1.value95[i].Frame then
+				t1.value95[i].Frame:Destroy()
+			end
+
+			table.remove(t1.value95, i)
+		end
+	end
+end
+
+t1.value84:GetPropertyChangedSignal("Text"):Connect(function()
+	local v457 = string.lower(t1.value84.Text)
+
+	for _, v in ipairs(t1.value95) do
+		if v457 == "" and true or string.find(v.Name, v457) then
+			v.Frame.Visible = true
+		else
+			v.Frame.Visible = false
+		end
+	end
+end)
+
+local Frame12 = Instance.new("Frame")
+
+Frame12.Parent = t1.value69
+Frame12.Size = UDim2.new(1, 0, 0, 70)
+Frame12.BackgroundTransparency = 1
+
+local UIListLayout5 = Instance.new("UIListLayout")
+
+UIListLayout5.Parent = Frame12
+UIListLayout5.Padding = UDim.new(0, 2)
+UIListLayout5.HorizontalAlignment = Enum.HorizontalAlignment.Center
+t1.value98 = Instance.new("Frame")
+t1.value98.Parent = t1.value69
+t1.value98.Size = UDim2.new(1, 0, 1, 0)
+t1.value98.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+t1.value98.BackgroundTransparency = 1
+t1.value98.Visible = false
+t1.value98.ZIndex = 50
+
+function t1.value99(p56, p57)
+	t1.value98.Visible = true
+	t1.value5:Create(t1.value98, TweenInfo.new(0.2), {
+		BackgroundTransparency = 0.5
+	}):Play()
+
+	local Frame13 = Instance.new("Frame")
+
+	Frame13.Parent = t1.value98
+	Frame13.Size = UDim2.new(0, 0, 0, 0)
+	Frame13.AnchorPoint = Vector2.new(0.5, 0.5)
+	Frame13.Position = UDim2.new(0.5, 0, 0.5, 0)
+	Frame13.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+	Frame13.ZIndex = 51
+	Instance.new("UICorner", Frame13).CornerRadius = UDim.new(0, 6)
+	Instance.new("UIStroke", Frame13).Color = Color3.fromRGB(100, 100, 100)
+
+	local TextLabel4 = Instance.new("TextLabel")
+
+	TextLabel4.Parent = Frame13
+	TextLabel4.Text = p56
+	TextLabel4.Size = UDim2.new(1, 0, 0.5, 0)
+	TextLabel4.TextColor3 = Color3.new(1, 1, 1)
+	TextLabel4.BackgroundTransparency = 1
+	TextLabel4.Font = Enum.Font.GothamBold
+	TextLabel4.TextSize = 10
+	TextLabel4.ZIndex = 52
+
+	local TextButton2 = Instance.new("TextButton")
+
+	TextButton2.Parent = Frame13
+	TextButton2.Text = "YES"
+	TextButton2.BackgroundColor3 = Color3.fromRGB(150, 50, 50)
+	TextButton2.Position = UDim2.new(0.1, 0, 0.6, 0)
+	TextButton2.Size = UDim2.new(0.35, 0, 0.3, 0)
+	TextButton2.TextColor3 = Color3.new(1, 1, 1)
+	TextButton2.Font = Enum.Font.GothamBold
+	TextButton2.ZIndex = 52
+	Instance.new("UICorner", TextButton2).CornerRadius = UDim.new(0, 4)
+	t1.value46(TextButton2)
+
+	local TextButton3 = Instance.new("TextButton")
+
+	TextButton3.Parent = Frame13
+	TextButton3.Text = "NO"
+	TextButton3.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+	TextButton3.Position = UDim2.new(0.55, 0, 0.6, 0)
+	TextButton3.Size = UDim2.new(0.35, 0, 0.3, 0)
+	TextButton3.TextColor3 = Color3.new(1, 1, 1)
+	TextButton3.Font = Enum.Font.GothamBold
+	TextButton3.ZIndex = 52
+	Instance.new("UICorner", TextButton3).CornerRadius = UDim.new(0, 4)
+	t1.value46(TextButton3)
+
+	local value5 = t1.value5
+	local tweenInfo = TweenInfo.new(0.2, Enum.EasingStyle.Back)
+	local uDim2New = UDim2.new
+
+	value5.Create(value5, Frame13, tweenInfo, {
+		Size = uDim2New(0, 160, 0, 70)
+	}):Play()
+
+	local function v469()
+		local value52 = t1.value5
+		local v471 = Frame13
+		local tweenInfo2 = TweenInfo.new(0.15)
+		local uDim2New2 = UDim2.new
+
+		value52.Create(value52, v471, tweenInfo2, {
+			Size = uDim2New2(0, 0, 0, 0)
+		}):Play()
+		t1.value5:Create(t1.value98, TweenInfo.new(0.15), {
+			BackgroundTransparency = 1
+		}):Play()
+		task.wait(0.15)
+		Frame13:Destroy()
+		t1.value98.Visible = false
+	end
+
+	TextButton2.MouseButton1Click:Connect(function()
+		t1.value34()
+		p57()
+		v469()
+	end)
+	TextButton3.MouseButton1Click:Connect(function()
+		t1.value34()
+		v469()
+	end)
+end
+
+local Frame13 = Instance.new("Frame")
+
+Frame13.Parent = Frame12
+Frame13.Size = UDim2.new(1, -5, 0, 26)
+Frame13.BackgroundTransparency = 1
+
+local TextLabel4 = Instance.new("TextLabel")
+
+TextLabel4.Parent = Frame13
+TextLabel4.Text = "Auto-Play Machine"
+TextLabel4.Size = UDim2.new(0.5, 0, 1, 0)
+TextLabel4.BackgroundTransparency = 1
+TextLabel4.TextColor3 = t1.value19
+TextLabel4.Font = Enum.Font.Gotham
+TextLabel4.TextSize = 10
+TextLabel4.TextXAlignment = Enum.TextXAlignment.Left
+TextLabel4.Position = UDim2.new(0, 5, 0, 0)
+TextLabel4.ZIndex = 3
+t1.value35(TextLabel4)
+t1.value100 = Instance.new("TextButton")
+t1.value100.Parent = Frame13
+t1.value100.Size = UDim2.new(0.45, 0, 0.8, 0)
+t1.value100.Position = UDim2.new(0.53, 0, 0.1, 0)
+t1.value100.Font = Enum.Font.GothamBold
+t1.value100.TextSize = 8
+t1.value100.ZIndex = 3
+Instance.new("UICorner", t1.value100).CornerRadius = UDim.new(0, 4)
+t1.value46(t1.value100)
+
+function t1.value101()
+	if t1.value26 then
+		t1.value100.Text = "ENABLED"
+		t1.value100.BackgroundColor3 = Color3.fromRGB(50, 200, 50)
+		t1.value100.TextColor3 = Color3.new(1, 1, 1)
+	else
+		t1.value100.Text = "DISABLED"
+		t1.value100.BackgroundColor3 = Color3.fromRGB(200, 50, 50)
+		t1.value100.TextColor3 = Color3.new(1, 1, 1)
+	end
+end
+
+t1.value101()
+t1.value100.MouseButton1Click:Connect(function()
+	t1.value34()
+	t1.value26 = not t1.value26
+	t1.value101()
+
+	if t1.value26 then
+		if #t1.value27 > 0 then
+			_G.ShowPopupMessage("Machine Started!")
+			_G.SmartPlayMusic(t1.value27[1].ID, t1.value27[1].Name)
+
+			if t1.value67 then
+				t1.value67()
+
+				return
+			else
+				return
+			end
+		else
+			t1.value101()
+			_G.ShowPopupMessage("Playlist is empty!")
+
+			return
+		end
+	end
+
+	_G.StopMusic()
+	t1.value8 = ""
+
+	if not t1.value67 then
+		return
+	end
+
+	t1.value67()
+end)
+t1.value29 = Instance.new("TextLabel")
+t1.value29.Parent = Frame12
+t1.value29.Size = UDim2.new(1, 0, 0, 15)
+t1.value29.BackgroundTransparency = 1
+t1.value29.Text = "Status: Idle"
+t1.value29.TextColor3 = t1.value19
+t1.value29.Font = Enum.Font.GothamBold
+t1.value29.TextSize = 10
+t1.value29.TextTruncate = Enum.TextTruncate.AtEnd
+t1.value35(t1.value29)
+
+local Frame14 = Instance.new("Frame")
+
+Frame14.Parent = Frame12
+Frame14.Size = UDim2.new(0.9, 0, 0, 22)
+Frame14.BackgroundTransparency = 1
+t1.value102 = Instance.new("TextBox")
+t1.value102.Parent = Frame14
+t1.value102.Size = UDim2.new(0.55, 0, 1, 0)
+t1.value102.Position = UDim2.new(0, 0, 0, 0)
+t1.value102.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+t1.value102.BackgroundTransparency = 0.5
+t1.value102.Text = ""
+t1.value102.PlaceholderText = "Paste Custom ID Here..."
+t1.value102.TextColor3 = t1.value19
+t1.value102.PlaceholderColor3 = Color3.fromRGB(180, 180, 180)
+t1.value102.Font = Enum.Font.Gotham
+t1.value102.TextSize = 9
+t1.value102.ClipsDescendants = true
+t1.value102.TextTruncate = Enum.TextTruncate.AtEnd
+t1.value35(t1.value102)
+Instance.new("UICorner", t1.value102).CornerRadius = UDim.new(0, 6)
+
+local UIStroke3 = Instance.new("UIStroke")
+
+UIStroke3.Parent = t1.value102
+UIStroke3.Thickness = 1
+UIStroke3.Color = Color3.fromRGB(255, 255, 255)
+UIStroke3.Transparency = 0.6
+UIStroke3.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+t1.value103 = Instance.new("TextButton")
+t1.value103.Parent = Frame14
+t1.value103.Size = UDim2.new(0.2, 0, 1, 0)
+t1.value103.Position = UDim2.new(0.58, 0, 0, 0)
+t1.value103.BackgroundColor3 = Color3.fromRGB(0, 150, 0)
+t1.value103.BackgroundTransparency = 0.2
+t1.value103.Text = "ADD"
+t1.value103.TextColor3 = Color3.new(1, 1, 1)
+t1.value103.Font = Enum.Font.GothamBold
+t1.value103.TextSize = 9
+Instance.new("UICorner", t1.value103).CornerRadius = UDim.new(0, 4)
+t1.value46(t1.value103)
+
+local TextButton2 = Instance.new("TextButton")
+
+TextButton2.Parent = Frame14
+TextButton2.Size = UDim2.new(0.2, 0, 1, 0)
+TextButton2.Position = UDim2.new(0.8, 0, 0, 0)
+TextButton2.BackgroundColor3 = Color3.fromRGB(150, 50, 50)
+TextButton2.BackgroundTransparency = 0.2
+TextButton2.Text = "CLEAR"
+TextButton2.TextColor3 = Color3.new(1, 1, 1)
+TextButton2.Font = Enum.Font.GothamBold
+TextButton2.TextSize = 9
+Instance.new("UICorner", TextButton2).CornerRadius = UDim.new(0, 4)
+t1.value46(TextButton2)
+t1.value103.MouseButton1Click:Connect(function()
+	t1.value34()
+
+	local match = t1.value102.Text:match("%d+")
+
+	if not match then
+		task.spawn(function()
+			_G.ShowPopupMessage("Invalid ID")
+		end)
+
+		return
+	end
+
+	local v480 = false
+
+	for _, v in ipairs(t1.value27) do
+		if v.ID == match then
+			v480 = true
+
+			break
+		end
+	end
+
+	if v480 then
+		task.spawn(function()
+			_G.ShowPopupMessage("Already in Playlist")
+		end)
+	else
+		task.spawn(function()
+			t1.value103.Text = "..."
+
+			local function v483()
+				local value4 = t1.value4
+				local t18 = {}
+				local v486 = match
+
+				__set_list(t18, 1, {(tonumber(v486))})
+
+				return value4:GetProductInfo(unpack_(t18))
+			end
+
+			local ok, result = pcall(v483)
+			local Name = ok and (result and (result.Name and result.Name)) or "Custom Audio"
+			local value27 = t1.value27
+			local t19 = {
+				Name = Name,
+				ID = match
+			}
+
+			table.insert(value27, t19)
+			v74()
+
+			if not t1.value67 then
+				t1.value102.Text = ""
+				t1.value103.Text = "ADD"
+				_G.ShowPopupMessage("Added to Playlist")
+
+				return
+			end
+
+			t1.value67()
+			t1.value102.Text = ""
+			t1.value103.Text = "ADD"
+			_G.ShowPopupMessage("Added to Playlist")
+		end)
+	end
+end)
+TextButton2.MouseButton1Click:Connect(function()
+	if not (#t1.value27 > 0) then
+		return
+	end
+
+	t1.value99("Clear entire playlist?", function()
+		t1.value27 = {}
+		v74()
+		t1.value8 = ""
+		t1.value67()
+		_G.ShowPopupMessage("Playlist Cleared")
+	end)
+end)
+t1.value104 = Instance.new("ScrollingFrame")
+t1.value104.Parent = t1.value69
+t1.value104.Size = UDim2.new(1, 0, 1, -70)
+t1.value104.Position = UDim2.new(0, 0, 0, 70)
+t1.value104.BackgroundTransparency = 1
+t1.value104.BorderSizePixel = 0
+t1.value104.ScrollBarThickness = 2
+
+local UIListLayout6 = Instance.new("UIListLayout")
+
+UIListLayout6.Parent = t1.value104
+UIListLayout6.Padding = UDim.new(0, 5)
+UIListLayout6.HorizontalAlignment = Enum.HorizontalAlignment.Center;
+(function(p58, p59)
+	p58.CanvasSize = UDim2.new(0, 0, 0, p59.AbsoluteContentSize.Y + 40)
+	p59:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(function()
+		p58.CanvasSize = UDim2.new(0, 0, 0, p59.AbsoluteContentSize.Y + 40)
+	end)
+end)(t1.value104, UIListLayout6)
+
+local function v493(p60, p61)
+	local clone = p60:Clone()
+
+	clone.Parent = t1.value69
+	clone.Position = UDim2.new(0, p60.AbsolutePosition.X - t1.value69.AbsolutePosition.X, 0, p60.AbsolutePosition.Y - t1.value69.AbsolutePosition.Y)
+	clone.ZIndex = 100
+	p60.Visible = false
+
+	local v495 = p61 == "up" and -40 or 40
+
+	t1.value5:Create(clone, TweenInfo.new(0.25, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {
+		Position = UDim2.new(0, clone.Position.X.Offset, 0, clone.Position.Y.Offset + v495)
+	}):Play()
+	task.wait(0.25)
+	clone:Destroy()
+end
+
+function t1.value67()
+	local pairs_ = pairs
+	local value104 = t1.value104
+	local v498, v502, v503 = pairs_(value104.GetChildren(value104))
+
+	while true do
+		local v504
+
+		v503, v504 = v498(v502, v503)
+
+		if not v503 then
+			break
+		end
+
+		if v504:IsA("Frame") then
+			v504:Destroy()
+		end
+	end
+
+	for i, v in ipairs(t1.value27) do
+		local Frame15 = Instance.new("Frame")
+
+		Frame15.Parent = t1.value104
+		Frame15.Size = UDim2.new(1, -5, 0, 35)
+		Frame15.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+		Frame15.BackgroundTransparency = 0.3
+		Instance.new("UICorner", Frame15).CornerRadius = UDim.new(0, 6)
+
+		local Frame16 = Instance.new("Frame")
+
+		Frame16.Parent = Frame15
+		Frame16.Size = UDim2.new(0, 8, 0, 8)
+		Frame16.Position = UDim2.new(0, 6, 0.5, -4)
+		Frame16.BackgroundColor3 = Color3.fromRGB(100, 100, 100)
+		Instance.new("UICorner", Frame16).CornerRadius = UDim.new(1, 0)
+		t1.value65(v.ID, Frame16)
+
+		local TextLabel5 = Instance.new("TextLabel")
+
+		TextLabel5.Parent = Frame15
+		TextLabel5.Size = UDim2.new(0.35, 0, 1, 0)
+		TextLabel5.Position = UDim2.new(0, 20, 0, 0)
+		TextLabel5.BackgroundTransparency = 1
+		TextLabel5.Text = tostring(i) .. ". " .. v.Name
+		TextLabel5.TextColor3 = t1.value19
+		TextLabel5.Font = Enum.Font.Gotham
+		TextLabel5.TextSize = 9
+		TextLabel5.TextXAlignment = Enum.TextXAlignment.Left
+		TextLabel5.TextTruncate = Enum.TextTruncate.AtEnd
+		t1.value35(TextLabel5)
+
+		local TextButton3 = Instance.new("TextButton")
+
+		TextButton3.Parent = Frame15
+		TextButton3.Size = UDim2.new(0, 25, 0, 25)
+		TextButton3.Position = UDim2.new(1, -120, 0, 5)
+		TextButton3.BackgroundColor3 = Color3.fromRGB(50, 150, 200)
+		TextButton3.BackgroundTransparency = 0.2
+		TextButton3.Text = "^"
+		TextButton3.TextColor3 = Color3.new(1, 1, 1)
+		Instance.new("UICorner", TextButton3).CornerRadius = UDim.new(0, 4)
+		t1.value46(TextButton3)
+
+		local function v508()
+			if not (i > 1) then
+				return
+			end
+
+			t1.value34()
+			v493(Frame15, "up")
+
+			local v509 = t1.value27[i]
+			local v510 = t1.value27[i - 1]
+
+			t1.value27[i] = v510
+
+			local v511 = i
+
+			t1.value27[v511 - 1] = v509
+			v74()
+			t1.value67()
+		end
+
+		TextButton3.MouseButton1Click:Connect(v508)
+
+		local TextButton4 = Instance.new("TextButton")
+
+		TextButton4.Parent = Frame15
+		TextButton4.Size = UDim2.new(0, 25, 0, 25)
+		TextButton4.Position = UDim2.new(1, -90, 0, 5)
+		TextButton4.BackgroundColor3 = Color3.fromRGB(50, 150, 200)
+		TextButton4.BackgroundTransparency = 0.2
+		TextButton4.Text = "v"
+		TextButton4.TextColor3 = Color3.new(1, 1, 1)
+		Instance.new("UICorner", TextButton4).CornerRadius = UDim.new(0, 4)
+		t1.value46(TextButton4)
+		TextButton4.MouseButton1Click:Connect(function()
+			if not (i < #t1.value27) then
+				return
+			end
+
+			t1.value34()
+			v493(Frame15, "down")
+
+			local v513 = t1.value27[i]
+			local v514 = t1.value27[i + 1]
+
+			t1.value27[i] = v514
+
+			local v515 = i
+
+			t1.value27[v515 + 1] = v513
+			v74()
+			t1.value67()
+		end)
+
+		local TextButton5 = Instance.new("TextButton")
+
+		TextButton5.Parent = Frame15
+		TextButton5.Size = UDim2.new(0, 25, 0, 25)
+		TextButton5.Position = UDim2.new(1, -60, 0, 5)
+		TextButton5.BackgroundColor3 = Color3.fromRGB(150, 50, 50)
+		TextButton5.BackgroundTransparency = 0.2
+		TextButton5.Text = "X"
+		TextButton5.TextColor3 = Color3.new(1, 1, 1)
+		Instance.new("UICorner", TextButton5).CornerRadius = UDim.new(0, 4)
+		t1.value46(TextButton5)
+		TextButton5.MouseButton1Click:Connect(function()
+			t1.value99("Remove track?", function()
+				table.remove(t1.value27, i)
+				v74()
+				t1.value67()
+			end)
+		end)
+
+		local v517 = false
+		local v518
+
+		if t1.value8 == nil then
+			v518 = false
+		else
+			v518 = t1.value8 ~= ""
+		end
+
+		if v518 then
+			local value8 = t1.value8
+
+			v517 = tostring(value8):match("%d+")
+
+			if not v517 then
+				local value82 = t1.value8
+				local v521 = tostring(value82)
+				local ID = v.ID
+
+				if v521 == tostring(ID):match("%d+") then
+					v517 = true
+				else
+					local ID2 = v.ID
+
+					v517 = tostring(ID2)
+				end
+			end
+		end
+
+		local TextButton6 = Instance.new("TextButton")
+
+		TextButton6.Parent = Frame15
+		TextButton6.Size = UDim2.new(0, 25, 0, 25)
+		TextButton6.Position = UDim2.new(1, -30, 0, 5)
+		TextButton6.BackgroundColor3 = v517 and Color3.fromRGB(200, 50, 50) or Color3.fromRGB(0, 150, 0)
+		TextButton6.BackgroundTransparency = 0.2
+		TextButton6.Text = v517 and "||" or "▶"
+		TextButton6.TextColor3 = Color3.new(1, 1, 1)
+		Instance.new("UICorner", TextButton6).CornerRadius = UDim.new(0, 4)
+		t1.value46(TextButton6)
+
+		if v517 then
+			t1.value23 = TextButton6
+		end
+
+		local function v525()
+			t1.value34()
+
+			if v517 then
+				_G.StopMusic()
+				t1.value8 = ""
+				t1.value101()
+				t1.value67()
+			else
+				local SmartPlayMusic = _G.SmartPlayMusic
+				local ID = v.ID
+
+				SmartPlayMusic(tostring(ID), v.Name)
+				t1.value67()
+			end
+		end
+
+		TextButton6.MouseButton1Click:Connect(v525)
+	end
+end
+
+_G.RefreshPlaylist = t1.value67
+t1.value67()
+
+local Frame15 = Instance.new("Frame")
+
+Frame15.Parent = Frame6
+Frame15.Size = UDim2.new(1, 0, 1, 0)
+Frame15.BackgroundTransparency = 1
+
+local Frame16 = Instance.new("Frame")
+
+Frame16.Parent = Frame15
+Frame16.Size = UDim2.new(0.9, 0, 0, 140)
+Frame16.Position = UDim2.new(0.05, 0, 0, 15)
+Frame16.BackgroundColor3 = Color3.fromRGB(20, 20, 25)
+Frame16.BackgroundTransparency = 0.1
+Instance.new("UICorner", Frame16).CornerRadius = UDim.new(0, 8)
+t1.value105 = Instance.new("UIStroke")
+t1.value105.Parent = Frame16
+t1.value105.Color = t1.value19
+t1.value105.Thickness = 1.5
+t1.value105.Transparency = 0.5
+task.spawn(function()
+	while task.wait(0.1) do
+		t1.value105.Color = t1.value19
+	end
+end)
+
+local TextLabel5 = Instance.new("TextLabel")
+
+TextLabel5.Parent = Frame16
+TextLabel5.Size = UDim2.new(1, 0, 0, 20)
+TextLabel5.Position = UDim2.new(0, 0, 0, 15)
+TextLabel5.BackgroundTransparency = 1
+TextLabel5.Text = "✨ OMNI-GOD VISUALIZER ✨"
+TextLabel5.TextColor3 = Color3.new(1, 1, 1)
+TextLabel5.Font = Enum.Font.GothamBold
+TextLabel5.TextSize = 12
+
+local TextLabel6 = Instance.new("TextLabel")
+
+TextLabel6.Parent = Frame16
+TextLabel6.Size = UDim2.new(0.9, 0, 0, 40)
+TextLabel6.Position = UDim2.new(0.05, 0, 0, 40)
+TextLabel6.BackgroundTransparency = 1
+TextLabel6.Text = "To ensure zero-lag performance in the main hub, the visualizer has been moved to a dedicated external module."
+TextLabel6.TextColor3 = Color3.fromRGB(180, 180, 180)
+TextLabel6.Font = Enum.Font.Gotham
+TextLabel6.TextSize = 10
+TextLabel6.TextWrapped = true
+
+local TextLabel7 = Instance.new("TextLabel")
+
+TextLabel7.Parent = Frame16
+TextLabel7.Size = UDim2.new(1, 0, 0, 15)
+TextLabel7.Position = UDim2.new(0, 0, 0, 80)
+TextLabel7.BackgroundTransparency = 1
+TextLabel7.Text = "⚠️ Exec Again If Spawning Bugs⚠️"
+TextLabel7.TextColor3 = Color3.fromRGB(255, 80, 80)
+TextLabel7.Font = Enum.Font.GothamBold
+TextLabel7.TextSize = 9
+t1.value106 = Instance.new("TextButton")
+t1.value106.Parent = Frame16
+t1.value106.Size = UDim2.new(0.8, 0, 0, 25)
+t1.value106.Position = UDim2.new(0.1, 0, 0, 100)
+t1.value106.BackgroundColor3 = Color3.fromRGB(35, 35, 40)
+t1.value106.BackgroundTransparency = 0.2
+t1.value106.Text = "🚀 LAUNCH VISUALIZER MODULE"
+t1.value106.TextColor3 = Color3.new(1, 1, 1)
+t1.value106.Font = Enum.Font.GothamBold
+t1.value106.TextSize = 10
+Instance.new("UICorner", t1.value106).CornerRadius = UDim.new(0, 6)
+t1.value46(t1.value106)
+t1.value107 = false
+t1.value106.MouseButton1Click:Connect(function()
+	if t1.value107 then
+		return
+	end
+
+	t1.value34()
+	t1.value106.Text = "EXECUTING... (PLEASE WAIT)"
+	task.spawn(function()
+		if game.CoreGui:FindFirstChild("OmniGodUI") then
+			game.CoreGui.OmniGodUI:Destroy()
+		end
+
+		if _G.OmniGodConnection then
+			_G.OmniGodConnection:Disconnect()
+			_G.OmniGodConnection = nil
+		end
+
+		_G.OmniGodLoopId = (_G.OmniGodLoopId or 0) + 1
+
+		local LocalPlayer = game:GetService("Players").LocalPlayer
+		local Backpack = LocalPlayer:FindFirstChild("Backpack")
+		local Fff0Ff9fFf94Ffa5DesignateTarget
+
+		if Backpack then
+			Fff0Ff9fFf94Ffa5DesignateTarget = Backpack:FindFirstChild("🔥 Designate Target")
+		else
+			Fff0Ff9fFf94Ffa5DesignateTarget = Backpack
+		end
+
+		if Fff0Ff9fFf94Ffa5DesignateTarget then
+			Backpack["🔥 Designate Target"]:Destroy()
+		end
+
+		pcall(function()
+			local RE = game:GetService("ReplicatedStorage"):WaitForChild("RE", 3)
+			local v537
+
+			if RE then
+				v537 = RE:FindFirstChild("1Clea1rTool1s")
+			else
+				v537 = RE
+			end
+
+			if not v537 then
+				return
+			end
+
+			RE["1Clea1rTool1s"]:FireServer("ClearAllProps")
+			RE["1Clea1rTool1s"]:FireServer("ClosePropMenu")
+		end)
+		task.wait(1.5)
+
+		local function v538()
+			local t20 = {}
+			local RunService = game:GetService("RunService")
+			local ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+			game:GetService("Players")
+
+			local t21 = {
+				value1 = LocalPlayer:GetMouse(),
+				value2 = 0.05,
+				value3 = "SPHERE",
+				value4 = "Prop" .. LocalPlayer.Name,
+				value5 = 8,
+				value6 = 1.5,
+				value7 = 20,
+				value8 = 3.23606797749979 / 2,
+				value9 = CFrame.new(6, 0, -2),
+				value10 = {
+					"Head",
+					"UpperTorso",
+					"LowerTorso",
+					"Torso",
+					"RightUpperArm",
+					"RightLowerArm",
+					"RightArm",
+					"LeftUpperArm",
+					"LeftLowerArm",
+					"LeftArm",
+					"RightUpperLeg",
+					"RightLowerLeg",
+					"RightLeg",
+					"LeftUpperLeg",
+					"LeftLowerLeg",
+					"LeftLeg"
+				},
+				value11 = 5,
+				value12 = 8,
+				value13 = 35,
+				value14 = 4,
+				value15 = 1.3,
+				value16 = 0.5,
+				value17 = 3,
+				value18 = 15,
+				value19 = 25,
+				value20 = 4,
+				value21 = 20,
+				value22 = 2.5,
+				value23 = 30,
+				value24 = 3.5,
+				value25 = -0.5,
+				value26 = {
+					{
+						part = "RightUpperArm",
+						offset = CFrame.new(0.8, 0.2, 0) * CFrame.Angles(0, 1.5707963267948966, 0)
+					},
+					{
+						part = "LeftUpperArm",
+						offset = CFrame.new(-0.8, 0.2, 0) * CFrame.Angles(0, -1.5707963267948966, 0)
+					},
+					{
+						part = "RightLowerArm",
+						offset = CFrame.new(0, 0, 0.6) * CFrame.Angles(1.5707963267948966, 0, 0)
+					},
+					{
+						part = "LeftLowerArm",
+						offset = CFrame.new(0, 0, 0.6) * CFrame.Angles(1.5707963267948966, 0, 0)
+					},
+					{
+						part = "UpperTorso",
+						offset = CFrame.new(0, 0.5, 1.2)
+					},
+					{
+						part = "UpperTorso",
+						offset = CFrame.new(0, -0.5, 1.2)
+					},
+					{
+						part = "LowerTorso",
+						offset = CFrame.new(0, 0, 1.2)
+					},
+					{
+						part = "RightUpperLeg",
+						offset = CFrame.new(0.6, 0, 0) * CFrame.Angles(0, math.pi / 2, 0)
+					},
+					{
+						part = "LeftUpperLeg",
+						offset = CFrame.new(-0.6, 0, 0) * CFrame.Angles(0, -1.5707963267948966, 0)
+					},
+					{
+						part = "Head",
+						offset = CFrame.new(0, 1.2, 0)
+					}
+				},
+				value27 = {},
+				value28 = {}
+			}
+			local WorkspaceCom = workspace:WaitForChild("WorkspaceCom")
+
+			t21.value29 = nil
+
+			local function v544()
+				local pairs_ = pairs
+				local value29 = t21.value29
+				local t22 = {}
+				local t23 = {}
+
+				for _, descendant in pairs_(value29.GetDescendants(value29)) do
+					if descendant.Name == t21.value4 then
+						local SetCurrentCFrame = descendant:FindFirstChild("SetCurrentCFrame")
+						local ChangePropColor = descendant:FindFirstChild("ChangePropColor")
+
+						if SetCurrentCFrame then
+							table.insert(t22, SetCurrentCFrame)
+						end
+
+						if ChangePropColor then
+							table.insert(t23, ChangePropColor)
+						end
+					end
+				end
+
+				return t22, t23
+			end
+
+			t21.value29 = WorkspaceCom
+
+			local v553 = v544()
+
+			t21.value27 = v553
+
+			if #t21.value27 < 20 then
+				print("FORB1D🔥: Bypassing limits. Initiating Ghost Spawner...")
+
+				local Character = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
+				local HumanoidRootPart = Character:WaitForChild("HumanoidRootPart")
+				local Humanoid = Character:WaitForChild("Humanoid")
+				local RE = ReplicatedStorage:WaitForChild("RE")
+
+				pcall(function()
+					RE:WaitForChild("1Too1l"):InvokeServer("PickingTools", "PropMaker")
+				end)
+
+				local PropMaker = LocalPlayer.Backpack:WaitForChild("PropMaker", 5) or Character:WaitForChild("PropMaker", 5)
+
+				if PropMaker then
+					local v560 = true
+					local ChildAdded = LocalPlayer.Backpack.ChildAdded
+					local v562 = ChildAdded.Connect(ChildAdded, function(p62)
+						local v563 = v560
+
+						if v563 then
+							v563 = p62.Name == "PropMaker"
+						end
+
+						if not v563 then
+							return
+						end
+
+						local function v564()
+							Humanoid:EquipTool(p62)
+						end
+
+						task.wait()
+						pcall(v564)
+					end)
+
+					pcall(function()
+						Humanoid:EquipTool(PropMaker)
+					end)
+					task.wait(0.5)
+					pcall(function()
+						RE:WaitForChild("1Clea1rTool1s"):FireServer("OpenPropMenu")
+					end)
+					task.wait(0.2)
+					pcall(function()
+						RE:WaitForChild("1Clea1rTool1s"):FireServer("RequestingPropName", "BoomboxProp", "Music")
+					end)
+					task.wait(1)
+
+					local Tool_PropMake = PropMaker:WaitForChild("Tool_PropMake")
+					local value2 = 20 - #t21.value27
+					local v567 = #t21.value27
+
+					t20.value2 = value2
+					t20.value5 = 1
+
+					for i = 1, t20.value2, t20.value5 do
+						t20.value1 = i
+
+						function t20.value6()
+							local v569 = Tool_PropMake
+							local Terrain = workspace.Terrain
+							local Position = HumanoidRootPart.Position
+							local vector3New = Vector3.new
+							local math_ = math
+
+							v569.FireServer(v569, Terrain, Position + vector3New(math_.random(-5, 5), 0.5, math.random(-5, 5)))
+						end
+
+						pcall(t20.value6)
+						task.wait(3.1)
+
+						local v574, v575 = v544()
+
+						t20.value3 = v574
+						t20.value4 = v575
+
+						local value6
+
+						if #t20.value3 == v567 then
+							value6 = t20.value1 > 1
+						else
+							value6 = false
+						end
+
+						t20.value6 = value6
+
+						if t20.value6 then
+							task.wait(1)
+
+							local v577, v578 = v544()
+
+							t20.value6 = v577
+							t20.value7 = v578
+							t20.value3 = t20.value6
+
+							if #t20.value3 == v567 then
+								print("FORB1D🔥: Limit hit. Booting engine.")
+
+								break
+							end
+						end
+
+						v567 = #t20.value3
+					end
+
+					t20.value1 = task.wait
+
+					function t20.value5()
+						Humanoid:UnequipTools()
+					end
+
+					t20.value1(1)
+					v560 = false
+					v562:Disconnect()
+					pcall(t20.value5)
+				end
+			end
+
+			local v579, v580 = v544()
+
+			t21.value27 = v579
+			t21.value28 = v580
+
+			if #t21.value27 > 20 then
+				local value27 = {}
+				local value28 = {}
+
+				for i = 1, 20 do
+					local v584 = t21.value27[i]
+
+					table.insert(value27, v584)
+
+					local v585 = t21.value28[i]
+
+					table.insert(value28, v585)
+				end
+
+				t21.value27 = value27
+				t21.value28 = value28
+			end
+
+			t21.value30 = nil
+			t21.value31 = 0
+			t21.value32 = 1
+			_G.OmniRGB = false
+			_G.OmniSync = false
+
+			function t21.value33()
+				local v586 = nil
+				local n5 = 0
+				local IsPlaying
+
+				if not LocalPlayer.Character then
+					v648 = pairs
+					v649 = workspace
+
+					for _, descendant in v648(v649.GetDescendants(v649)) do
+						IsPlaying = descendant:IsA("Sound") and descendant.IsPlaying
+
+						if IsPlaying then
+							IsPlaying = n5 < descendant.PlaybackLoudness
+						end
+
+						if IsPlaying then
+							n5 = descendant.PlaybackLoudness
+							v586 = descendant
+						end
+					end
+
+					return v586
+				end
+
+				local pairs_ = pairs
+				local Character = LocalPlayer.Character
+
+				for _, descendant in pairs_(Character.GetDescendants(Character)) do
+					local isSound = descendant:IsA("Sound")
+
+					if isSound then
+						isSound = descendant.IsPlaying
+					end
+
+					if isSound then
+						return descendant
+					end
+				end
+
+				local pairs_2 = pairs
+				local workspace_ = workspace
+
+				for _, descendant in pairs_2(workspace_.GetDescendants(workspace_)) do
+					IsPlaying = descendant:IsA("Sound") and descendant.IsPlaying
+
+					if IsPlaying then
+						IsPlaying = n5 < descendant.PlaybackLoudness
+					end
+
+					if IsPlaying then
+						n5 = descendant.PlaybackLoudness
+						v586 = descendant
+					end
+				end
+
+				return v586
+			end
+
+			t21.value34 = _G.OmniGodLoopId
+			task.spawn(function()
+				while task.wait(0.1) and _G.OmniGodLoopId == t21.value34 do
+					local v600 = not _G.OmniRGB
+
+					if v600 then
+						v600 = not _G.OmniSync
+					end
+
+					if v600 then
+						task.wait(0.5)
+					else
+						local color3 = nil
+
+						if _G.OmniRGB then
+							color3 = Color3.fromHSV(tick() % 5 / 5, 1, 1)
+						else
+							local OmniSync = _G.OmniSync
+
+							if OmniSync then
+								OmniSync = t21.value30
+
+								if OmniSync then
+									OmniSync = t21.value30.IsPlaying
+								end
+							end
+
+							if OmniSync then
+								local v603 = t21.value30.PlaybackLoudness / 1000
+								local v604 = math.clamp(v603, 0, 1)
+
+								color3 = Color3.fromHSV(0.7 - v604 * 0.7, 1, 1)
+							end
+						end
+
+						if color3 then
+							for _, v in ipairs(t21.value28) do
+								task.defer(function()
+									pcall(function()
+										v:InvokeServer(color3)
+									end)
+								end)
+							end
+						end
+					end
+				end
+			end)
+			t21.value35 = "SPHERE"
+			t21.value36 = 0
+			t20.value5 = Vector3.new(0, 0, 0)
+			t21.value37 = t20.value5
+			t21.value38 = "IDLE"
+			t21.value39 = 0
+			t20.value4 = Vector3.new(0, 0, 0)
+			t21.value40 = t20.value4
+			t21.value41 = Vector3.new(0, 0, 0)
+
+			local Tool = Instance.new("Tool")
+
+			Tool.Name = "🔥 Designate Target"
+			Tool.RequiresHandle = false
+			Tool.Parent = LocalPlayer.Backpack
+
+			local function v608()
+				if not (LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart")) then
+					return
+				end
+
+				if t21.value3 == "DOMAIN" then
+					t21.value37 = t21.value1.Hit.Position
+					t21.value35 = "BLACK_HOLE"
+					t21.value36 = tick()
+					pcall(function()
+						game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("hi Dominio Expansio FORBID MUSIC ON TOP)", "All")
+					end)
+					pcall(function()
+						game:GetService("TextChatService").TextChannels.RBXGeneral:SendAsync("hi Dominio Expansio FORBID MUSIC ON TOP)")
+					end)
+
+					return
+				end
+
+				local v609 = false
+
+				if t21.value1.Target then
+					local Model = t21.value1.Target:FindFirstAncestorOfClass("Model")
+					local Humanoid = Model and Model:FindFirstChild("Humanoid")
+
+					if Humanoid then
+						Humanoid = Model ~= LocalPlayer.Character
+					end
+
+					if Humanoid then
+						t21.value3 = "SWARM"
+						t21.value40 = Model:GetPivot().Position
+						pcall(function()
+							game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("hi Dominio Expansio FORBID MUSIC ON TOP)", "All")
+						end)
+						pcall(function()
+							game:GetService("TextChatService").TextChannels.RBXGeneral:SendAsync("hi Dominio Expansio FORBID MUSIC ON TOP)")
+						end)
+						v609 = true
+					end
+				end
+
+				if not v609 then
+					t21.value40 = t21.value1.Hit.Position
+				end
+
+				if t21.value38 ~= "IDLE" then
+					return
+				end
+
+				t21.value41 = LocalPlayer.Character.HumanoidRootPart.Position
+				t21.value38 = "TRAVEL"
+				t21.value39 = tick()
+			end
+
+			Tool.Activated:Connect(v608)
+			t21.value42 = 0
+			t21.value43 = 0
+			t21.value44 = 0
+			t21.value45 = 0
+			_G.OmniGodConnection = RunService.Heartbeat:Connect(function(dt)
+				local Character = LocalPlayer.Character
+
+				if not (Character and Character:FindFirstChild("HumanoidRootPart")) then
+					return
+				end
+
+				local HumanoidRootPart = Character.HumanoidRootPart
+				local UpperTorso = Character:FindFirstChild("UpperTorso") or Character:FindFirstChild("Torso")
+				local now = tick()
+
+				if now - t21.value31 >= t21.value32 then
+					t21.value30 = t21.value33()
+				end
+
+				local IsPlaying = _G.OmniSync and (t21.value30 and t21.value30.IsPlaying)
+
+				if IsPlaying then
+					IsPlaying = t21.value30.PlaybackLoudness
+				end
+
+				local v617 = IsPlaying or 0
+
+				t21.value43 = t21.value43 + t21.value6 * dt
+				t21.value44 = t21.value44 + t21.value14 * dt
+
+				local v618 = t21.value22 * dt
+
+				t21.value45 = t21.value45 + v618
+
+				local v619
+
+				if t21.value35 == "BLACK_HOLE" then
+					v619 = now - t21.value36 > 4
+				else
+					v619 = false
+				end
+
+				if v619 then
+					t21.value35 = "SPHERE"
+				end
+
+				local v620 = now - t21.value39
+				local v621
+
+				if t21.value38 == "TRAVEL" then
+					v621 = v620 > 1
+				else
+					v621 = false
+				end
+
+				if v621 then
+					t21.value38 = "ORBIT_TARGET"
+				else
+					local v622
+
+					if t21.value38 == "ORBIT_TARGET" then
+						v622 = v620 > 2.5
+					else
+						v622 = false
+					end
+
+					if v622 then
+						t21.value38 = "BLAST"
+					else
+						local v623
+
+						if t21.value38 == "BLAST" then
+							v623 = v620 > 0.5
+						else
+							v623 = false
+						end
+
+						if v623 then
+							t21.value38 = "RETURN"
+						else
+							local v624
+
+							if t21.value38 == "RETURN" then
+								v624 = v620 > 1
+							else
+								v624 = false
+							end
+
+							if v624 then
+								t21.value38 = "IDLE"
+							end
+						end
+					end
+				end
+
+				if not (now - t21.value42 >= t21.value2) then
+					return
+				end
+
+				local v625 = #t21.value27
+
+				if v625 == 0 then
+					return
+				end
+
+				local v626, v627, v628 = ipairs(t21.value10)
+				local t24 = {}
+
+				while true do
+					local v630
+
+					v628, v630 = v626(v627, v628)
+
+					if not v628 then
+						break
+					end
+
+					local v631 = Character:FindFirstChild(v630)
+					local isBasePart
+
+					if v631 then
+						isBasePart = v631:IsA("BasePart")
+					else
+						isBasePart = v631
+					end
+
+					if isBasePart then
+						table.insert(t24, v631)
+					end
+				end
+
+				for i, v in ipairs(t21.value27) do
+					local cFrame = CFrame.new(HumanoidRootPart.Position - Vector3.new(0, 50, 0))
+
+					if t21.value3 == "DOMAIN" then
+						local v636 = t21.value5 + v617 / t21.value7
+
+						if t21.value35 == "SPHERE" then
+							local v637 = 1 - 2 * (i / v625)
+							local v638 = math.acos(v637)
+							local v639 = 6.283185307179586 * t21.value8 * i + t21.value43
+							local v640 = math.sin(v638) * math.cos(v639) * v636
+							local v641 = math.sin(v638) * math.sin(v639) * v636
+							local v642 = math.cos(v638) * v636
+							local cFrame2 = CFrame.lookAt
+							local Position = HumanoidRootPart.Position
+							local vector3New = Vector3.new
+							local v646 = now * 2
+
+							cFrame = cFrame2(Position + vector3New(v640, v641 + math.sin(v646) * 1.5, v642), HumanoidRootPart.Position)
+						elseif t21.value35 == "BLACK_HOLE" then
+							local v647 = 15 - v620 * 3
+							local v650 = math.max(1, v647)
+							local v651 = 20 - v620 * 5
+							local v652 = t21.value43 * 5 + i / v625 * 3.141592653589793 * 2
+
+							cFrame = CFrame.lookAt(t21.value37 + Vector3.new(math.cos(v652) * v650, v651 + i * 0.2, math.sin(v652) * v650), t21.value37)
+						end
+					elseif t21.value3 == "CLONE" then
+						if #t24 > 0 then
+							local v653 = t24[(i - 1) % #t24 + 1]
+
+							if v653 then
+								cFrame = HumanoidRootPart.CFrame * t21.value9 * HumanoidRootPart.CFrame:ToObjectSpace(v653.CFrame)
+							end
+						end
+					elseif t21.value3 == "SWARM" then
+						local v654 = t21.value44 + i / v625 * 3.141592653589793 * 2
+
+						if t21.value38 == "IDLE" then
+							local cFrameNew = CFrame.new
+							local Position = HumanoidRootPart.Position
+							local vector3New = Vector3.new
+							local v656 = math.cos(v654) * t21.value11
+							local v657 = now * 2 + i
+
+							cFrame = cFrameNew(Position + vector3New(v656, math.sin(v657) * 1.5, math.sin(v654) * t21.value11), HumanoidRootPart.Position) * CFrame.Angles(0, 3.141592653589793, 0)
+						elseif t21.value38 == "TRAVEL" then
+							local v658 = v620 - i * 0.05
+							local v659 = math.clamp(v658, 0, 1)
+							local v660 = t21.value41:Lerp(t21.value40, v659)
+							local vector3New = Vector3.new
+							local v662 = now * 15 + i
+							local v663 = math.cos(v662) * 2
+							local v664 = now * 15 + i
+							local v665 = v660 + vector3New(v663, 0, math.sin(v664) * 2)
+
+							cFrame = CFrame.lookAt(v665, t21.value40)
+						elseif t21.value38 == "ORBIT_TARGET" then
+							local cFrameNew = CFrame.new
+							local value40 = t21.value40
+							local vector3New = Vector3.new
+							local v669 = math.cos(v654) * t21.value12
+							local v670 = now * 10 + i
+
+							cFrame = cFrameNew(value40 + vector3New(v669, math.sin(v670) * 5, math.sin(v654) * t21.value12), t21.value40) * CFrame.Angles(0, 3.141592653589793, 0)
+						elseif t21.value38 == "BLAST" then
+							local v671 = t21.value12 + t21.value13 * (v620 / 0.5)
+							local v672 = t21.value40 + Vector3.new(math.cos(v654) * v671, 0, math.sin(v654) * v671)
+
+							cFrame = CFrame.lookAt(v672, v672 + Vector3.new(math.cos(v654) * v671, 0, math.sin(v654) * v671)) * CFrame.Angles(0, 3.141592653589793, 0)
+						elseif t21.value38 == "RETURN" then
+							local v673 = v620 - i * 0.03
+							local v674 = math.clamp(v673, 0, 1)
+							local v675 = t21.value40 + Vector3.new(math.cos(v654) * (t21.value12 + t21.value13), 0, math.sin(v654) * (t21.value12 + t21.value13))
+
+							cFrame = CFrame.lookAt(v675:Lerp(HumanoidRootPart.Position, v674), HumanoidRootPart.Position) * CFrame.Angles(0, 3.141592653589793, 0)
+						end
+					elseif t21.value3 == "WINGS" then
+						local v676 = v625 / 2
+						local v677 = math.ceil(v676)
+						local v678 = i <= v677
+						local v679 = v678 and -1 or 1
+						local v680 = v678 and i and i or i - v677
+						local rad = math.rad
+						local v682 = 30 + v617 / t21.value19
+						local v683 = now * t21.value17
+						local v684 = rad(v682 + math.sin(v683) * t21.value18) * v679
+
+						cFrame = (UpperTorso and UpperTorso.CFrame or HumanoidRootPart.CFrame * CFrame.new(0, 0.5, 0.8)) * CFrame.Angles(0.17453292519943295, v684, 0) * CFrame.new(t21.value15 * v680 * v679, t21.value16 * v680, 0) * CFrame.Angles(0, 3.141592653589793, 0)
+					elseif t21.value3 == "ARMOR" then
+						local v685 = t21.value26[(i - 1) % #t21.value26 + 1]
+						local v686 = Character:FindFirstChild(v685.part)
+
+						if v686 then
+							cFrame = v686.CFrame * v685.offset
+						end
+					elseif t21.value3 == "VISUALIZER" then
+						local v687 = t21.value20 + v617 / t21.value23
+						local value21 = t21.value21
+						local v689 = math.min(v687, value21)
+						local v690 = v625 / 2
+						local v691 = math.ceil(v690)
+						local v692 = i <= v691
+						local v693 = v692 and v691 and v691 or v625 - v691
+						local v694 = math.max(1, v693)
+						local v695 = (v692 and t21.value45 or -t21.value45) + (v692 and i - 1 or (i - 1 - v691) / v694) * 3.141592653589793 * 2
+
+						cFrame = CFrame.new(HumanoidRootPart.Position + Vector3.new(math.cos(v695) * v689, v692 and t21.value24 or t21.value25, math.sin(v695) * v689), HumanoidRootPart.Position) * CFrame.Angles(0, 3.141592653589793, 0)
+					end
+
+					task.defer(function()
+						pcall(function()
+							v:InvokeServer(cFrame)
+						end)
+					end)
+				end
+			end)
+
+			if game.CoreGui:FindFirstChild("OmniGodUI") then
+				game.CoreGui.OmniGodUI:Destroy()
+			end
+
+			t21.value46 = Instance.new("ScreenGui")
+			t21.value46.Name = "OmniGodUI"
+			t21.value46.Parent = game.CoreGui
+			t21.value47 = 315
+			t21.value48 = Instance.new("Frame")
+			t21.value48.Size = UDim2.new(0, 200, 0, t21.value47)
+			t21.value48.Position = UDim2.new(0.8, 0, 0.4, 0)
+			t21.value48.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
+			t21.value48.BorderSizePixel = 2
+			t21.value48.BorderColor3 = Color3.fromRGB(80, 150, 255)
+			t21.value48.Active = true
+			t21.value48.Draggable = true
+			t21.value48.Parent = t21.value46
+			t21.value48.ClipsDescendants = true
+
+			local Frame17 = Instance.new("Frame")
+
+			Frame17.Size = UDim2.new(1, 0, 0, 30)
+			Frame17.BackgroundTransparency = 1
+			Frame17.Parent = t21.value48
+
+			local TextLabel8 = Instance.new("TextLabel")
+
+			TextLabel8.Size = UDim2.new(1, -60, 1, 0)
+			TextLabel8.BackgroundTransparency = 1
+			TextLabel8.Text = "🌌 OMNI By Forbid"
+			TextLabel8.TextColor3 = Color3.fromRGB(255, 255, 255)
+			TextLabel8.Font = Enum.Font.GothamBold
+			TextLabel8.TextSize = 12
+			TextLabel8.Parent = Frame17
+			t21.value49 = Instance.new("TextButton")
+			t21.value49.Size = UDim2.new(0, 30, 1, 0)
+			t21.value49.Position = UDim2.new(1, -60, 0, 0)
+			t21.value49.BackgroundTransparency = 1
+			t21.value49.Text = "➖"
+			t21.value49.TextColor3 = Color3.new(1, 1, 1)
+			t21.value49.Font = Enum.Font.GothamBold
+			t21.value49.TextSize = 14
+			t21.value49.Parent = Frame17
+
+			local TextButton3 = Instance.new("TextButton")
+
+			TextButton3.Size = UDim2.new(0, 30, 1, 0)
+			TextButton3.Position = UDim2.new(1, -30, 0, 0)
+			TextButton3.BackgroundTransparency = 1
+			TextButton3.Text = "❌"
+			TextButton3.TextColor3 = Color3.new(1, 1, 1)
+			TextButton3.Font = Enum.Font.GothamBold
+			TextButton3.TextSize = 10
+			TextButton3.Parent = Frame17
+			TextButton3.MouseButton1Click:Connect(function()
+				t1.value34()
+
+				if t21.value46 then
+					t21.value46:Destroy()
+				end
+
+				if _G.OmniGodConnection then
+					_G.OmniGodConnection:Disconnect()
+					_G.OmniGodConnection = nil
+				end
+
+				_G.OmniGodLoopId = (_G.OmniGodLoopId or 0) + 1
+
+				local Backpack2 = LocalPlayer:FindFirstChild("Backpack")
+
+				if Backpack2 and Backpack2:FindFirstChild("🔥 Designate Target") then
+					Backpack2["🔥 Designate Target"]:Destroy()
+				end
+
+				pcall(function()
+					local RE = game:GetService("ReplicatedStorage"):WaitForChild("RE", 3)
+					local v701
+
+					if RE then
+						v701 = RE:FindFirstChild("1Clea1rTool1s")
+					else
+						v701 = RE
+					end
+
+					if not v701 then
+						return
+					end
+
+					RE["1Clea1rTool1s"]:FireServer("ClearAllProps")
+					RE["1Clea1rTool1s"]:FireServer("ClosePropMenu")
+				end)
+			end)
+
+			local Folder = Instance.new("Folder")
+
+			Folder.Parent = t21.value48
+
+			local function v703(p63)
+				local value5 = t1.value5
+				local tweenInfo = TweenInfo.new(0.3, Enum.EasingStyle.Quart, Enum.EasingDirection.Out)
+				local v706 = value5.Create(value5, p63, tweenInfo, {
+					BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+				})
+				local tween = t1.value5:Create(p63, TweenInfo.new(0.3, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {
+					BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+				})
+
+				p63.MouseEnter:Connect(function()
+					v706:Play()
+				end)
+				p63.MouseLeave:Connect(function()
+					tween:Play()
+				end)
+				p63.MouseButton1Down:Connect(function()
+					local value52 = t1.value5
+					local v709 = p63
+					local tweenInfoNew = TweenInfo.new
+					local Quint = Enum.EasingStyle.Quint
+
+					value52.Create(value52, v709, tweenInfoNew(0.1, Quint, Enum.EasingDirection.Out), {
+						Size = UDim2.new(0.85, 0, 0, 26)
+					}):Play()
+				end)
+				p63.MouseButton1Up:Connect(function()
+					local value52 = t1.value5
+					local v713 = p63
+					local tweenInfoNew = TweenInfo.new
+					local Quart = Enum.EasingStyle.Quart
+					local EasingDirection = Enum.EasingDirection
+
+					value52.Create(value52, v713, tweenInfoNew(0.3, Quart, EasingDirection.Out), {
+						Size = UDim2.new(0.9, 0, 0, 28)
+					}):Play()
+				end)
+			end
+
+			for i, v in ipairs({
+				{
+					name = "👁️ Domain Expansion",
+					key = "DOMAIN"
+				},
+				{
+					name = "🎯 Orbital Swarm",
+					key = "SWARM"
+				},
+				{
+					name = "👥 Shadow Clone",
+					key = "CLONE"
+				},
+				{
+					name = "🪽 Archangel Wings",
+					key = "WINGS"
+				},
+				{
+					name = "🤖 Susanoo Armor",
+					key = "ARMOR"
+				},
+				{
+					name = "🎵 Visualizer Rings",
+					key = "VISUALIZER"
+				}
+			}) do
+				t20.value9 = Instance.new("TextButton")
+				t20.value11 = UDim2.new(0.9, 0, 0, 28)
+				t20.value9.Size = t20.value11
+				t20.value11 = UDim2.new(0.05, 0, 0, 35 + (i - 1) * 32)
+				t20.value9.Position = t20.value11
+				t20.value11 = Color3.fromRGB(30, 30, 30)
+				t20.value9.BackgroundColor3 = t20.value11
+				t20.value10 = v.name
+				t20.value9.Text = t20.value10
+				t20.value11 = Color3.fromRGB(255, 255, 255)
+				t20.value9.TextColor3 = t20.value11
+				t20.value10 = Enum.Font.GothamBold
+				t20.value9.Font = t20.value10
+				t20.value9.TextSize = 10
+				t20.value9.Parent = Folder
+				v703(t20.value9)
+
+				function t20.value11()
+					t21.value3 = v.key
+					print("FORB1D🔥: Form shifted to " .. v.key)
+				end
+
+				t20.value8 = t20.value9.MouseButton1Click
+				t20.value8:Connect(t20.value11)
+			end
+
+			t21.value50 = Instance.new("TextButton")
+			t21.value50.Size = UDim2.new(0.9, 0, 0, 28)
+			t21.value50.Position = UDim2.new(0.05, 0, 0, 240)
+			t21.value50.BackgroundColor3 = Color3.fromRGB(20, 40, 20)
+			t21.value50.Text = "🌈 RGB: OFF"
+			t21.value50.TextColor3 = Color3.new(1, 1, 1)
+			t21.value50.Font = Enum.Font.GothamBold
+			t21.value50.TextSize = 10
+			t21.value50.Parent = Folder
+			t21.value51 = Instance.new("TextButton")
+			t21.value51.Size = UDim2.new(0.9, 0, 0, 28)
+			t21.value51.Position = UDim2.new(0.05, 0, 0, 275)
+			t21.value51.BackgroundColor3 = Color3.fromRGB(40, 20, 40)
+			t21.value51.Text = "⚡ AUDIO SYNC: OFF"
+			t21.value51.TextColor3 = Color3.new(1, 1, 1)
+			t21.value51.Font = Enum.Font.GothamBold
+			t21.value51.TextSize = 10
+			t21.value51.Parent = Folder
+			t21.value50.MouseButton1Click:Connect(function()
+				_G.OmniRGB = not _G.OmniRGB
+				t21.value50.Text = _G.OmniRGB and "🌈 RGB: ON" or "🌈 RGB: OFF"
+				t21.value50.BackgroundColor3 = _G.OmniRGB and Color3.fromRGB(40, 150, 40) or Color3.fromRGB(20, 40, 20)
+			end)
+			t21.value51.MouseButton1Click:Connect(function()
+				_G.OmniSync = not _G.OmniSync
+				t21.value51.Text = _G.OmniSync and "⚡ AUDIO SYNC: ON" or "⚡ AUDIO SYNC: OFF"
+				t21.value51.BackgroundColor3 = _G.OmniSync and Color3.fromRGB(150, 40, 150) or Color3.fromRGB(40, 20, 40)
+			end)
+			t21.value52 = game:GetService("TweenService")
+			t21.value53 = false
+
+			local MouseButton1Click = t21.value49.MouseButton1Click
+
+			function t20.value10()
+				t21.value53 = not t21.value53
+				t21.value49.Text = t21.value53 and "➕" or "➖"
+
+				local uDim2 = t21.value53 and UDim2.new(0, 200, 0, 30) or UDim2.new(0, 200, 0, t21.value47)
+
+				t21.value52:Create(t21.value48, TweenInfo.new(0.3, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {
+					Size = uDim2
+				}):Play()
+			end
+
+			MouseButton1Click:Connect(t20.value10)
+		end
+
+		pcall(v538)
+		task.wait(1.5)
+		t1.value106.Text = "🚀 LAUNCH VISUALIZER MODULE"
+	end)
+end)
+
+if _G.OmniGodConnection then
+	_G.OmniGodConnection:Disconnect()
+	_G.OmniGodConnection = nil
+end
+
+local Frame17 = Instance.new("Frame")
+
+Frame17.Parent = Frame7
+Frame17.Size = UDim2.new(1, 0, 0, 30)
+Frame17.BackgroundTransparency = 1
+t1.value108 = Instance.new("TextBox")
+t1.value108.Parent = Frame17
+t1.value108.Size = UDim2.new(0.9, 0, 0, 22)
+t1.value108.Position = UDim2.new(0.05, 0, 0, 5)
+t1.value108.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+t1.value108.BackgroundTransparency = 0.5
+t1.value108.Text = ""
+t1.value108.PlaceholderText = "Search Logged Audios..."
+t1.value108.TextColor3 = t1.value19
+t1.value108.PlaceholderColor3 = Color3.fromRGB(180, 180, 180)
+t1.value108.Font = Enum.Font.Gotham
+t1.value108.TextSize = 10
+t1.value108.ClipsDescendants = true
+t1.value108.TextTruncate = Enum.TextTruncate.AtEnd
+t1.value35(t1.value108)
+Instance.new("UICorner", t1.value108).CornerRadius = UDim.new(0, 6)
+
+local UIStroke4 = Instance.new("UIStroke")
+
+UIStroke4.Parent = t1.value108
+UIStroke4.Thickness = 1
+UIStroke4.Color = Color3.fromRGB(255, 255, 255)
+UIStroke4.Transparency = 0.6
+UIStroke4.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+t1.value109 = Instance.new("ScrollingFrame")
+t1.value109.Parent = Frame7
+t1.value109.Size = UDim2.new(1, 0, 1, -30)
+t1.value109.Position = UDim2.new(0, 0, 0, 30)
+t1.value109.BackgroundTransparency = 1
+t1.value109.ScrollBarThickness = 2
+t1.value109.BorderSizePixel = 0
+
+local UIListLayout7 = Instance.new("UIListLayout")
+
+UIListLayout7.Parent = t1.value109
+UIListLayout7.Padding = UDim.new(0, 5)
+UIListLayout7.HorizontalAlignment = Enum.HorizontalAlignment.Center
+v236(t1.value109, UIListLayout7)
+v348(t1.value109, "Logger Status", function(p64)
+	t1.value10 = p64
+end, true)
+v348(t1.value109, "Notifications", function(p65)
+	t1.value11 = p65
+
+	local v724 = not p65
+
+	if v724 then
+		v724 = t1.value18
+	end
+
+	if not v724 then
+		return
+	end
+
+	t1.value18.Visible = false
+end, true)
+t1.value110 = Instance.new("TextLabel")
+t1.value110.Parent = t1.value109
+t1.value110.Size = UDim2.new(1, 0, 0, 20)
+t1.value110.BackgroundTransparency = 1
+t1.value110.TextColor3 = Color3.fromRGB(255, 100, 100)
+t1.value110.Text = "Listening strictly for PlayersChoice..."
+t1.value110.Font = Enum.Font.GothamBold
+t1.value110.TextSize = 10
+t1.value111 = {}
+t1.value108:GetPropertyChangedSignal("Text"):Connect(function()
+	local v725 = string.lower(t1.value108.Text)
+
+	for _, v in ipairs(t1.value111) do
+		if v725 == "" and true or string.find(v.Name, v725) then
+			v.Frame.Visible = true
+		else
+			v.Frame.Visible = false
+		end
+	end
+end)
+
+function t1.value112(p66, p67)
+	local v728
+
+	if p67 then
+		local random = math.random
+
+		v728 = "OBFUSCATED_" .. tostring(random(1000, 99999)) or p66
+	else
+		v728 = p66
+	end
+
+	if t1.value9[v728] then
+		return
+	end
+
+	t1.value9[v728] = true
+	t1.value14 = t1.value14 + 1
+	t1.value110.TextColor3 = Color3.fromRGB(100, 255, 100)
+	t1.value110.Text = "Audio Stolen: " .. t1.value14
+
+	local value18 = t1.value17 ~= "Logger" and t1.value18
+
+	if value18 then
+		value18 = t1.value11
+	end
+
+	if value18 then
+		t1.value15 = t1.value15 + 1
+
+		local value182 = t1.value18
+		local value15 = t1.value15
+
+		value182.Text = tostring(value15)
+		t1.value18.Visible = true
+	end
+
+	task.spawn(function()
+		local text
+
+		if p67 then
+			text = "🛡️ Obf F-Music (Protected)"
+		else
+			local function v734()
+				local value4 = t1.value4
+				local t25 = {}
+				local v737 = p66
+
+				__set_list(t25, 1, {(tonumber(v737))})
+
+				return value4:GetProductInfo(unpack_(t25))
+			end
+
+			local ok, result = pcall(v734)
+
+			text = ok and (result and (result.Name and result.Name)) or "Stolen Audio [" .. p66 .. "]"
+		end
+
+		local Frame18 = Instance.new("Frame")
+
+		Frame18.Parent = t1.value109
+		Frame18.Size = UDim2.new(1, -5, 0, 35)
+		Frame18.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+		Frame18.BackgroundTransparency = 0.3
+		Instance.new("UICorner", Frame18).CornerRadius = UDim.new(0, 6)
+
+		local TextLabel8 = Instance.new("TextLabel")
+
+		TextLabel8.Parent = Frame18
+		TextLabel8.Size = UDim2.new(0.5, 0, 1, 0)
+		TextLabel8.Position = UDim2.new(0, 10, 0, 0)
+		TextLabel8.BackgroundTransparency = 1
+		TextLabel8.Text = text
+
+		local color3 = p67
+
+		if color3 then
+			color3 = Color3.fromRGB(180, 100, 255)
+		end
+
+		TextLabel8.TextColor3 = color3 or t1.value19
+		TextLabel8.Font = Enum.Font.Gotham
+		TextLabel8.TextSize = 10
+		TextLabel8.TextXAlignment = Enum.TextXAlignment.Left
+		TextLabel8.TextTruncate = Enum.TextTruncate.AtEnd
+		t1.value35(TextLabel8)
+
+		if p67 then
+			local TextLabel9 = Instance.new("TextLabel")
+
+			TextLabel9.Parent = Frame18
+			TextLabel9.Size = UDim2.new(0, 55, 0, 25)
+			TextLabel9.Position = UDim2.new(1, -60, 0, 5)
+			TextLabel9.BackgroundColor3 = Color3.fromRGB(30, 20, 40)
+			TextLabel9.BackgroundTransparency = 0.2
+			TextLabel9.Text = "SECURED"
+			TextLabel9.TextColor3 = Color3.fromRGB(180, 120, 255)
+			TextLabel9.Font = Enum.Font.GothamBold
+			TextLabel9.TextSize = 8
+			Instance.new("UICorner", TextLabel9).CornerRadius = UDim.new(0, 4)
+
+			local UIStroke5 = Instance.new("UIStroke")
+
+			UIStroke5.Parent = TextLabel9
+			UIStroke5.Color = Color3.fromRGB(150, 100, 255)
+			UIStroke5.Thickness = 1
+			UIStroke5.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+		else
+			local TextButton3 = Instance.new("TextButton")
+
+			TextButton3.Parent = Frame18
+			TextButton3.Size = UDim2.new(0, 25, 0, 25)
+			TextButton3.Position = UDim2.new(1, -60, 0, 5)
+			TextButton3.BackgroundColor3 = Color3.fromRGB(0, 150, 0)
+			TextButton3.BackgroundTransparency = 0.2
+			TextButton3.Text = "▶"
+			TextButton3.TextColor3 = Color3.new(1, 1, 1)
+			Instance.new("UICorner", TextButton3).CornerRadius = UDim.new(0, 4)
+			t1.value46(TextButton3)
+			TextButton3.MouseButton1Click:Connect(function()
+				t1.value34()
+
+				if t1.value23 == TextButton3 then
+					TextButton3.BackgroundColor3 = Color3.fromRGB(0, 150, 0)
+					TextButton3.BackgroundTransparency = 0.2
+					_G.StopMusic()
+					t1.value23 = nil
+
+					return
+				end
+
+				if not t1.value23 then
+					TextButton3.BackgroundColor3 = Color3.fromRGB(200, 50, 50)
+					TextButton3.BackgroundTransparency = 0.2
+					_G.SmartPlayMusic(p66, text)
+
+					return
+				end
+
+				t1.value23.BackgroundColor3 = Color3.fromRGB(0, 150, 0)
+				t1.value23.BackgroundTransparency = 0.2
+				TextButton3.BackgroundColor3 = Color3.fromRGB(200, 50, 50)
+				TextButton3.BackgroundTransparency = 0.2
+				_G.SmartPlayMusic(p66, text)
+			end)
+
+			local TextButton4 = Instance.new("TextButton")
+
+			TextButton4.Parent = Frame18
+			TextButton4.Size = UDim2.new(0, 25, 0, 25)
+			TextButton4.Position = UDim2.new(1, -30, 0, 5)
+			TextButton4.BackgroundColor3 = Color3.fromRGB(100, 100, 100)
+			TextButton4.BackgroundTransparency = 0.2
+			TextButton4.Text = "C"
+			TextButton4.TextColor3 = Color3.new(1, 1, 1)
+			Instance.new("UICorner", TextButton4).CornerRadius = UDim.new(0, 4)
+			t1.value46(TextButton4)
+			TextButton4.MouseButton1Click:Connect(function()
+				t1.value34()
+				t1.value22.Text = p66
+				setclipboard(p66)
+				TextButton4.Text = "✔"
+				task.wait(1)
+				TextButton4.Text = "C"
+			end)
+		end
+
+		table.insert(t1.value111, {
+			Frame = Frame18,
+			Name = string.lower(text)
+		})
+	end)
+end
+
+local function v747(descendant)
+	local isSound = descendant:IsA("Sound")
+
+	if isSound then
+		isSound = descendant.Name == "PlayersChoice"
+	end
+
+	if not isSound then
+		return
+	end
+
+	local function v749()
+		local SoundId = t1.value10 and descendant.SoundId
+
+		if SoundId then
+			SoundId = descendant.SoundId ~= ""
+		end
+
+		if not SoundId then
+			return
+		end
+
+		if string.find(descendant.SoundId, "0x") then
+			t1.value112(nil, true)
+
+			return
+		end
+
+		local v751 = string.match(descendant.SoundId, "%d+")
+
+		if not v751 then
+			return
+		end
+
+		t1.value112(v751, false)
+	end
+
+	descendant:GetPropertyChangedSignal("SoundId"):Connect(v749)
+	v749()
+end
+
+if _G.ForbidAudioLoggerConnection then
+	_G.ForbidAudioLoggerConnection:Disconnect()
+end
+
+_G.ForbidAudioLoggerConnection = game:GetService("Workspace").DescendantAdded:Connect(v747)
+
+for _, descendant in pairs(game:GetDescendants()) do
+	v747(descendant)
+end
+
+local UIListLayout8 = Instance.new("UIListLayout")
+
+UIListLayout8.Parent = ScrollingFrame
+UIListLayout8.Padding = UDim.new(0, 5)
+UIListLayout8.HorizontalAlignment = Enum.HorizontalAlignment.Center
+v236(ScrollingFrame, UIListLayout8)
+v348(ScrollingFrame, "Anti-Ban Protection", function(p68)
+	_G.AntiBanEnabled = p68
+
+	if p68 then
+		warn("⚡ [FORBIDMUSIC SCAN]: Anti-Ban Protection Re-Enabled. 🛡️")
+	else
+		warn("🛑 [FORBIDMUSIC SCAN]: WARNING - Protection Disabled! ⚠️")
+	end
+end, true)
+v348(ScrollingFrame, "Button Sounds", function(p69)
+	t1.value12 = p69
+end, true)
+v348(ScrollingFrame, "New Icon Dragging", function(p70)
+	t1.value25 = p70
+end, true)
+v348(ScrollingFrame, "Enable Animations", function(p71)
+	t1.value13 = p71
+end, true)
+t1.value113 = Instance.new("UIScale")
+t1.value113.Parent = t1.value47
+t1.value113.Scale = 1
+t1.value114 = Instance.new("TextButton")
+t1.value114.Parent = t1.value47
+t1.value114.Size = UDim2.new(0, 20, 0, 20)
+t1.value114.Position = UDim2.new(1, -20, 1, -20)
+t1.value114.BackgroundTransparency = 1
+t1.value114.Text = "↘"
+t1.value114.TextColor3 = Color3.fromRGB(150, 150, 150)
+t1.value114.TextSize = 14
+t1.value114.ZIndex = 500
+t1.value114.Visible = false
+t1.value115 = false
+t1.value116 = nil
+t1.value117 = nil
+t1.value114.InputBegan:Connect(function(input)
+	if not (input.UserInputType == Enum.UserInputType.MouseButton1 and true or input.UserInputType == Enum.UserInputType.Touch) then
+		return
+	end
+
+	t1.value115 = true
+	t1.value116 = input.Position
+	t1.value117 = t1.value113.Scale
+end)
+UserInputService.InputChanged:Connect(function(input)
+	if not (t1.value115 and input.UserInputType == Enum.UserInputType.MouseMovement and true or input.UserInputType == Enum.UserInputType.Touch) then
+		return
+	end
+
+	local v755 = input.Position.X - t1.value116.X
+	local scale = math.clamp(t1.value117 + v755 / 350, 0.5, 2.5)
+
+	t1.value113.Scale = scale
+end)
+UserInputService.InputEnded:Connect(function(input)
+	local _ = input.UserInputType == Enum.UserInputType.MouseButton1 and true or input.UserInputType == Enum.UserInputType.Touch
+end)
+v348(ScrollingFrame, "Enable GUI Size Adjusting", function(p72)
+	t1.value114.Visible = p72
+end, false)
+
+local t26 = {
+	{ "White", Color3.fromRGB(255, 255, 255) },
+	{ "Red", Color3.fromRGB(255, 80, 80) },
+	{ "Blue", Color3.fromRGB(80, 150, 255) },
+	{ "Green", Color3.fromRGB(80, 255, 80) },
+	{ "Purple", Color3.fromRGB(170, 80, 255) },
+	{ "Orange", Color3.fromRGB(255, 150, 50) },
+	{ "Yellow", Color3.fromRGB(255, 255, 50) },
+	{ "Cyan", Color3.fromRGB(50, 255, 255) },
+	{ "Pink", Color3.fromRGB(255, 50, 150) },
+	{ "Lime", Color3.fromRGB(150, 255, 50) },
+	{ "Grey", Color3.fromRGB(150, 150, 150) },
+	{ "Crimson", Color3.fromRGB(200, 50, 50) },
+	{ "Mint", Color3.fromRGB(50, 200, 150) },
+	{ "Indigo", Color3.fromRGB(100, 50, 200) },
+	{ "Gold", Color3.fromRGB(200, 180, 50) },
+	{ "Magenta", Color3.fromRGB(200, 50, 200) },
+	{ "Teal", Color3.fromRGB(50, 150, 150) },
+	{ "Dark Grey", Color3.fromRGB(80, 80, 80) },
+	{ "Neon Green", Color3.fromRGB(100, 255, 100) },
+	{ "Neon Red", Color3.fromRGB(255, 100, 100) }
+}
+
+for _, v in ipairs(t26) do
+	local Frame18 = Instance.new("Frame")
+
+	Frame18.Parent = ScrollingFrame
+	Frame18.Size = UDim2.new(0.9, 0, 0, 25)
+	Frame18.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+	Frame18.BackgroundTransparency = 0.3
+	Instance.new("UICorner", Frame18).CornerRadius = UDim.new(0, 4)
+
+	local TextLabel8 = Instance.new("TextLabel")
+
+	TextLabel8.Parent = Frame18
+	TextLabel8.Size = UDim2.new(0.6, 0, 1, 0)
+	TextLabel8.Position = UDim2.new(0, 10, 0, 0)
+	TextLabel8.BackgroundTransparency = 1
+	TextLabel8.Text = v[1]
+	TextLabel8.TextColor3 = t1.value19
+	TextLabel8.Font = Enum.Font.GothamBold
+	TextLabel8.TextSize = 10
+	TextLabel8.TextXAlignment = Enum.TextXAlignment.Left
+	t1.value35(TextLabel8)
+
+	local TextButton3 = Instance.new("TextButton")
+
+	TextButton3.Parent = Frame18
+	TextButton3.Size = UDim2.new(0, 80, 0, 18)
+	TextButton3.Position = UDim2.new(1, -90, 0, 3)
+	TextButton3.BackgroundColor3 = v[2]
+	TextButton3.Text = ""
+	Instance.new("UICorner", TextButton3).CornerRadius = UDim.new(0, 4)
+	t1.value46(TextButton3)
+
+	local MouseButton1Click = TextButton3.MouseButton1Click
+
+	MouseButton1Click.Connect(MouseButton1Click, function()
+		t1.value34()
+
+		local v765 = v[2]
+
+		t1.value36(v765, false)
+	end)
+end
+
+local Frame18 = Instance.new("Frame")
+
+Frame18.Parent = ScrollingFrame
+Frame18.Size = UDim2.new(0.9, 0, 0, 25)
+Frame18.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+Frame18.BackgroundTransparency = 0.3
+Instance.new("UICorner", Frame18).CornerRadius = UDim.new(0, 4)
+
+local TextLabel8 = Instance.new("TextLabel")
+
+TextLabel8.Parent = Frame18
+TextLabel8.Size = UDim2.new(0.6, 0, 1, 0)
+TextLabel8.Position = UDim2.new(0, 10, 0, 0)
+TextLabel8.BackgroundTransparency = 1
+TextLabel8.Text = "RGB (Rainbow)"
+TextLabel8.TextColor3 = t1.value19
+TextLabel8.Font = Enum.Font.GothamBold
+TextLabel8.TextSize = 10
+TextLabel8.TextXAlignment = Enum.TextXAlignment.Left
+t1.value35(TextLabel8)
+
+local TextButton3 = Instance.new("TextButton")
+
+TextButton3.Parent = Frame18
+TextButton3.Size = UDim2.new(0, 80, 0, 18)
+TextButton3.Position = UDim2.new(1, -90, 0, 3)
+TextButton3.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+TextButton3.Text = "RGB"
+TextButton3.TextColor3 = Color3.new(1, 1, 1)
+TextButton3.Font = Enum.Font.GothamBold
+TextButton3.TextSize = 9
+Instance.new("UICorner", TextButton3).CornerRadius = UDim.new(0, 4)
+t1.value46(TextButton3)
+TextButton3.MouseButton1Click:Connect(function()
+	t1.value34()
+	t1.value36(Color3.fromRGB(255, 255, 255), true)
+end)
+
+local UIListLayout9 = Instance.new("UIListLayout")
+
+UIListLayout9.Parent = t1.value70
+UIListLayout9.Padding = UDim.new(0, 6)
+UIListLayout9.HorizontalAlignment = Enum.HorizontalAlignment.Center
+UIListLayout9.SortOrder = Enum.SortOrder.LayoutOrder
+v236(t1.value70, UIListLayout9)
+
+local function v770(p73, p74, p75, p76)
+	local TextLabel9 = Instance.new("TextLabel")
+
+	TextLabel9.Parent = t1.value70
+	TextLabel9.Size = UDim2.new(1, 0, 0, 20)
+	TextLabel9.BackgroundTransparency = 1
+	TextLabel9.Text = p73
+	TextLabel9.TextColor3 = p75 or t1.value19
+	TextLabel9.Font = Enum.Font.Gotham
+	TextLabel9.TextSize = p74 or 10
+	TextLabel9.LayoutOrder = p76
+	t1.value35(TextLabel9)
+end
+
+v770("Developer: ⚡FORB1D🔥", 14, nil, 1)
+v770("Youtube: @forbidofficial", 12, nil, 2)
+v770("Discord: forbiddenway", 12, nil, 3)
+v770("Version: 1.7 Ultimate", 10, Color3.fromRGB(150, 150, 150), 4)
+
+local Frame19 = Instance.new("Frame")
+
+Frame19.Parent = t1.value70
+Frame19.Size = UDim2.new(1, 0, 0, 15)
+Frame19.BackgroundTransparency = 1
+Frame19.LayoutOrder = 4
+
+local Frame20 = Instance.new("Frame")
+
+Frame20.Parent = t1.value70
+Frame20.Size = UDim2.new(1, 0, 0, 20)
+Frame20.BackgroundTransparency = 1
+Frame20.LayoutOrder = 5
+
+local UIListLayout10 = Instance.new("UIListLayout")
+
+UIListLayout10.Parent = Frame20
+UIListLayout10.FillDirection = Enum.FillDirection.Horizontal
+UIListLayout10.HorizontalAlignment = Enum.HorizontalAlignment.Center
+UIListLayout10.VerticalAlignment = Enum.VerticalAlignment.Center
+UIListLayout10.SortOrder = Enum.SortOrder.LayoutOrder
+UIListLayout10.Padding = UDim.new(0, 3)
+
+local TextLabel9 = Instance.new("TextLabel")
+
+TextLabel9.Parent = Frame20
+TextLabel9.BackgroundTransparency = 1
+TextLabel9.Text = "Click"
+TextLabel9.TextColor3 = Color3.fromRGB(180, 180, 180)
+TextLabel9.Font = Enum.Font.Gotham
+TextLabel9.TextSize = 9
+TextLabel9.AutomaticSize = Enum.AutomaticSize.X
+TextLabel9.Size = UDim2.new(0, 0, 1, 0)
+TextLabel9.LayoutOrder = 1
+t1.value118 = Instance.new("TextButton")
+t1.value118.Parent = Frame20
+t1.value118.BackgroundTransparency = 1
+t1.value118.Text = "here"
+t1.value118.TextColor3 = Color3.fromRGB(80, 150, 255)
+t1.value118.Font = Enum.Font.GothamBold
+t1.value118.TextSize = 10
+t1.value118.AutomaticSize = Enum.AutomaticSize.X
+t1.value118.Size = UDim2.new(0, 0, 1, 0)
+t1.value118.LayoutOrder = 2
+
+local TextLabel10 = Instance.new("TextLabel")
+
+TextLabel10.Parent = Frame20
+TextLabel10.BackgroundTransparency = 1
+TextLabel10.Text = "to execute forbid music lite for 32-bit users"
+TextLabel10.TextColor3 = Color3.fromRGB(180, 180, 180)
+TextLabel10.Font = Enum.Font.Gotham
+TextLabel10.TextSize = 9
+TextLabel10.AutomaticSize = Enum.AutomaticSize.X
+TextLabel10.Size = UDim2.new(0, 0, 1, 0)
+TextLabel10.LayoutOrder = 3
+t1.value119 = game:GetService("TweenService")
+t1.value118.MouseEnter:Connect(function()
+	local value119 = t1.value119
+	local value118 = t1.value118
+	local tweenInfo = TweenInfo.new(0.2)
+	local Color3_ = Color3
+
+	value119.Create(value119, value118, tweenInfo, {
+		TextColor3 = Color3_.fromRGB(130, 200, 255)
+	}):Play()
+end)
+t1.value118.MouseLeave:Connect(function()
+	t1.value119:Create(t1.value118, TweenInfo.new(0.2), {
+		TextColor3 = Color3.fromRGB(80, 150, 255)
+	}):Play()
+end)
+
+local MouseButton1Click = t1.value118.MouseButton1Click
+
+MouseButton1Click.Connect(MouseButton1Click, function()
+	t1.value34()
+
+	local Frame21 = Instance.new("Frame")
+
+	Frame21.Parent = t1.value47
+	Frame21.Size = UDim2.new(1, 0, 1, 0)
+	Frame21.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	Frame21.BackgroundTransparency = 1
+	Frame21.ZIndex = 1000
+
+	local Frame22 = Instance.new("Frame")
+
+	Frame22.Parent = Frame21
+	Frame22.AnchorPoint = Vector2.new(0.5, 0.5)
+	Frame22.Position = UDim2.new(0.5, 0, 0.5, 0)
+	Frame22.Size = UDim2.new(0, 0, 0, 0)
+	Frame22.BackgroundColor3 = Color3.fromRGB(20, 20, 22)
+	Frame22.ClipsDescendants = true
+	Frame22.ZIndex = 1001
+	Instance.new("UICorner", Frame22).CornerRadius = UDim.new(0, 8)
+	Instance.new("UIStroke", Frame22).Color = Color3.fromRGB(255, 80, 80)
+
+	local TextLabel11 = Instance.new("TextLabel")
+
+	TextLabel11.Parent = Frame22
+	TextLabel11.Size = UDim2.new(0.9, 0, 0.4, 0)
+	TextLabel11.Position = UDim2.new(0.05, 0, 0.1, 0)
+	TextLabel11.BackgroundTransparency = 1
+	TextLabel11.Text = "Are you sure u want to execute this?\n(not recommended)"
+	TextLabel11.TextColor3 = Color3.new(1, 1, 1)
+	TextLabel11.Font = Enum.Font.GothamBold
+	TextLabel11.TextSize = 10
+	TextLabel11.TextWrapped = true
+	TextLabel11.ZIndex = 1002
+
+	local TextButton4 = Instance.new("TextButton")
+
+	TextButton4.Parent = Frame22
+	TextButton4.Size = UDim2.new(0.4, 0, 0.25, 0)
+	TextButton4.Position = UDim2.new(0.075, 0, 0.6, 0)
+	TextButton4.BackgroundColor3 = Color3.fromRGB(200, 50, 50)
+	TextButton4.Text = "YES"
+	TextButton4.TextColor3 = Color3.new(1, 1, 1)
+	TextButton4.Font = Enum.Font.GothamBold
+	TextButton4.TextSize = 10
+	TextButton4.ZIndex = 1002
+	Instance.new("UICorner", TextButton4).CornerRadius = UDim.new(0, 4)
+
+	if t1.value46 then
+		t1.value46(TextButton4)
+	end
+
+	local TextButton5 = Instance.new("TextButton")
+
+	TextButton5.Parent = Frame22
+	TextButton5.Size = UDim2.new(0.4, 0, 0.25, 0)
+	TextButton5.Position = UDim2.new(0.525, 0, 0.6, 0)
+	TextButton5.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+	TextButton5.Text = "NO"
+	TextButton5.TextColor3 = Color3.new(1, 1, 1)
+	TextButton5.Font = Enum.Font.GothamBold
+	TextButton5.TextSize = 10
+	TextButton5.ZIndex = 1002
+	Instance.new("UICorner", TextButton5).CornerRadius = UDim.new(0, 4)
+
+	if t1.value46 then
+		t1.value46(TextButton5)
+	end
+
+	t1.value119:Create(Frame21, TweenInfo.new(0.2), {
+		BackgroundTransparency = 0.5
+	}):Play()
+
+	local value119 = t1.value119
+	local tweenInfo = TweenInfo.new(0.3, Enum.EasingStyle.Back, Enum.EasingDirection.Out)
+
+	value119.Create(value119, Frame22, tweenInfo, {
+		Size = UDim2.new(0, 220, 0, 100)
+	}):Play()
+
+	local function v789()
+		t1.value119:Create(Frame21, TweenInfo.new(0.2), {
+			BackgroundTransparency = 1
+		}):Play()
+
+		local value1192 = t1.value119
+		local v791 = Frame22
+		local tweenInfo2 = TweenInfo.new(0.2, Enum.EasingStyle.Sine, Enum.EasingDirection.In)
+		local v793 = value1192.Create(value1192, v791, tweenInfo2, {
+			Size = UDim2.new(0, 0, 0, 0)
+		})
+
+		v793:Play()
+		v793.Completed:Wait()
+		Frame21:Destroy()
+	end
+	local function v794()
+		t1.value34()
+		v789()
+	end
+
+	TextButton5.MouseButton1Click:Connect(v794)
+	TextButton4.MouseButton1Click:Connect(function()
+		t1.value34()
+		v789()
+		t1.value118.Text = "executing..."
+		t1.value118.TextColor3 = Color3.fromRGB(50, 200, 100)
+		task.spawn(function()
+			pcall(function()
+				loadstring(game:HttpGet("https://pastefy.app/X6hR3KJ0/raw"))()
+			end)
+			task.wait(1.5)
+			t1.value118.Text = "here"
+			t1.value118.TextColor3 = Color3.fromRGB(80, 150, 255)
+		end)
+	end)
+end)
